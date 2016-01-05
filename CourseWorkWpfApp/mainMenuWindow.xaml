@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Главное меню" Height="522.527" Width="731.868">
+        Title="Главное меню" Height="417.527" Width="515.868" Loaded="Window_Loaded">
     <Grid>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
             <MenuItem Header="Файл" ToolTip="Файл">
@@ -19,7 +19,7 @@
                 <MenuItem x:Name="menuFileSave" Header="Сохранить"/>
                 <MenuItem x:Name="menuFileSaveAs" Header="Сохранить как"/>
                 <Separator/>
-                <MenuItem x:Name="menuFilePrint" Header="Печать"/>
+                <MenuItem x:Name="menuFilePrint" Header="Печать" Click="menuFilePrint_Click"/>
                 <Separator/>
                 <MenuItem x:Name="menuFileExit" Header="Выход" Click="menuFileExit_Click"/>
             </MenuItem>
@@ -36,10 +36,21 @@
             <MenuItem Header="Помощь" ToolTip="Помощь">
                 <MenuItem Header="Справка"/>
                 <Separator/>
-                <MenuItem Header="О программе"/>
+                <MenuItem x:Name="menuAbout" Header="О программе" Click="menuAbout_Click"/>
             </MenuItem>
             <MenuItem x:Name="menuExit" Header="Выход" ToolTip="Выход" Click="menuExit_Click"/>
         </Menu>
+        <Label x:Name="label" Content="Клиент" HorizontalAlignment="Left" Margin="35,56,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="88,60,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" MaxWidth="120" ToolTip="Фамилия клиента"/>
+        <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="311,60,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="354,60,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
+        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,0" Height="188" VerticalAlignment="Top"/>
+        <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click"/>
+        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,331,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,331,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="250,331,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="ascSortingButton" Content="Asc" HorizontalAlignment="Left" Margin="382,316,0,0" VerticalAlignment="Top" Width="55" Height="35"/>
+        <Button x:Name="descSortingButton" Content="Desc" HorizontalAlignment="Left" Margin="440,316,0,0" VerticalAlignment="Top" Width="55" Height="35"/>
 
     </Grid>
 </Window>

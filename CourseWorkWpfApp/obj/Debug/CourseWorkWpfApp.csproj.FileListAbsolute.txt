@@ -36,3 +36,4 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\CourseWorkWpfApp\CourseWorkWpfApp\bin\Debug\CourseWorkWpfApp.exe.config
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.exe
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.pdb
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.AboutAppWindow.resources

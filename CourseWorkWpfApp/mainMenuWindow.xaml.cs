@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace CourseWorkWpfApp
         public mainMenuWindow()
         {
             InitializeComponent();
+            dateBeginDatePicker.DisplayDateStart = DateTime.Now;
         }
 
         private void menuAddClient_Click(object sender, RoutedEventArgs e)
@@ -98,6 +100,38 @@ namespace CourseWorkWpfApp
                 {
                     MessageBox.Show("Ошибка чтения из файла!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void menuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            AboutAppWindow aboutAppWindow = new AboutAppWindow();
+            aboutAppWindow.Show();
+        }
+
+        private void menuFilePrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.PageRangeSelection = PageRangeSelection.AllPages;
+            printDialog.UserPageRangeEnabled = true;
+            bool? doPrint = printDialog.ShowDialog();
+            if (doPrint != true)
+            {
+                return;
+            }
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            clientComboBox.SelectedIndex = -1;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (var Db = new DatabaseContext())
+            {
+                
+                
             }
         }
     }
