@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abonement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="client_id" Type="int" Nullable="false" />
+    <Property Name="date_begin" Type="date" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="sex" Type="int" Nullable="false" />
+    <Property Name="passp_num" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telephone" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="Coach">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="sex" Type="int" Nullable="false" />
+    <Property Name="passp_num" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telephone" Type="varchar" MaxLength="7" />
+    <Property Name="post" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="coach_id" Type="int" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="salary" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupService">
+    <Key>
+      <PropertyRef Name="service_id" />
+    </Key>
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="room_num" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalService">
+    <Key>
+      <PropertyRef Name="service_id" />
+    </Key>
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="additional_payment" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+    <Property Name="price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServicePosition">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="abonement_id" Type="int" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="date_end" Type="date" />
+    <Property Name="count" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewAbonements">
+    <Key>
+      <PropertyRef Name="surname" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="cost" />
+    </Key>
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="date_begin" Type="date" />
+    <Property Name="date_end" Type="date" />
+    <Property Name="count" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="cost" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewCoaches">
+    <Key>
+      <PropertyRef Name="surname" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="sex" />
+      <PropertyRef Name="passp_num" />
+      <PropertyRef Name="address" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="salary" />
+    </Key>
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="sex" Type="int" Nullable="false" />
+    <Property Name="passp_num" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telephone" Type="varchar" MaxLength="7" />
+    <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="salary" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewGroupService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewGroupService">
+    <Key>
+      <PropertyRef Name="title" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="room_num" />
+      <PropertyRef Name="surname" />
+    </Key>
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="room_num" Type="int" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewPersonalService">
+    <Key>
+      <PropertyRef Name="title" />
+      <PropertyRef Name="sum price" />
+      <PropertyRef Name="surname" />
+    </Key>
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="sum price" Type="float" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_abonement">
+    <End Role="Abonement" Type="Self.Abonement" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServicePosition" Type="Self.ServicePosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServicePosition">
+        <PropertyRef Name="abonement_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Abonement" Type="Self.Abonement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Abonement">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_coachc">
+    <End Role="Coach" Type="Self.Coach" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="coach_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_grserv_parent">
+    <End Role="Service" Type="Self.Service" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GroupService" Type="Self.GroupService" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GroupService">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pserv_parent">
+    <End Role="Service" Type="Self.Service" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PersonalService" Type="Self.PersonalService" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PersonalService">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_service">
+    <End Role="Service" Type="Self.Service" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServicePosition" Type="Self.ServicePosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServicePosition">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_servicec">
+    <End Role="Service" Type="Self.Service" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbModelStoreContainer">
+    <EntitySet Name="Abonement" EntityType="Self.Abonement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coach" EntityType="Self.Coach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupService" EntityType="Self.GroupService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalService" EntityType="Self.PersonalService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicePosition" EntityType="Self.ServicePosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ViewAbonements" EntityType="Self.ViewAbonements" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ViewAbonements].[surname] AS [surname], 
+[ViewAbonements].[name] AS [name], 
+[ViewAbonements].[title] AS [title], 
+[ViewAbonements].[date_begin] AS [date_begin], 
+[ViewAbonements].[date_end] AS [date_end], 
+[ViewAbonements].[count] AS [count], 
+[ViewAbonements].[price] AS [price], 
+[ViewAbonements].[cost] AS [cost]
+FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewCoaches" EntityType="Self.ViewCoaches" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ViewCoaches].[surname] AS [surname], 
+[ViewCoaches].[name] AS [name], 
+[ViewCoaches].[sex] AS [sex], 
+[ViewCoaches].[passp_num] AS [passp_num], 
+[ViewCoaches].[address] AS [address], 
+[ViewCoaches].[telephone] AS [telephone], 
+[ViewCoaches].[title] AS [title], 
+[ViewCoaches].[salary] AS [salary]
+FROM [dbo].[ViewCoaches] AS [ViewCoaches]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewGroupService" EntityType="Self.ViewGroupService" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ViewGroupService].[title] AS [title], 
+[ViewGroupService].[price] AS [price], 
+[ViewGroupService].[room_num] AS [room_num], 
+[ViewGroupService].[surname] AS [surname]
+FROM [dbo].[ViewGroupService] AS [ViewGroupService]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewPersonalService" EntityType="Self.ViewPersonalService" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ViewPersonalService].[title] AS [title], 
+[ViewPersonalService].[sum price] AS [sum price], 
+[ViewPersonalService].[surname] AS [surname]
+FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_abonement" Association="Self.fk_abonement">
+      <End Role="Abonement" EntitySet="Abonement" />
+      <End Role="ServicePosition" EntitySet="ServicePosition" />
+    </AssociationSet>
+    <AssociationSet Name="fk_client" Association="Self.fk_client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Abonement" EntitySet="Abonement" />
+    </AssociationSet>
+    <AssociationSet Name="fk_coachc" Association="Self.fk_coachc">
+      <End Role="Coach" EntitySet="Coach" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="fk_grserv_parent" Association="Self.fk_grserv_parent">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="GroupService" EntitySet="GroupService" />
+    </AssociationSet>
+    <AssociationSet Name="fk_post" Association="Self.fk_post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Coach" EntitySet="Coach" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pserv_parent" Association="Self.fk_pserv_parent">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="PersonalService" EntitySet="PersonalService" />
+    </AssociationSet>
+    <AssociationSet Name="fk_service" Association="Self.fk_service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServicePosition" EntitySet="ServicePosition" />
+    </AssociationSet>
+    <AssociationSet Name="fk_servicec" Association="Self.fk_servicec">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de191436721e4d41b9239601c1cea51d" Name="Diagram1">
+        <EntityTypeShape EntityType="DbModel.Abonement" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Client" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Coach" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Contract" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.GroupService" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.PersonalService" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Post" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Service" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.ServicePosition" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.ViewCoaches" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.ViewAbonements" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true"/>
+        <AssociationConnector Association="DbModel.fk_abonement" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_client" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_coachc" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_post" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_servicec" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_grserv_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_pserv_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.fk_service" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbModel.ViewGroupService" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DbModel.ViewPersonalService" Width="1.5" PointX="5.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

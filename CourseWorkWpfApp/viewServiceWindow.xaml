@@ -1,0 +1,15 @@
+﻿<Window x:Class="CourseWorkWpfApp.viewServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseWorkWpfApp"
+        mc:Ignorable="d"
+        Title="viewServiceWindow" Height="445.943" Width="473.847" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="serviceDataGrid" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Height="121" Width="382"/>
+        <ComboBox x:Name="changeServiceComboBox" HorizontalAlignment="Left" Margin="272,166,0,0" VerticalAlignment="Top" Width="120" Loaded="changeServiceComboBox_Loaded" SelectionChanged="changeServiceComboBox_SelectionChanged"/>
+        <DataGrid x:Name="changeServiceDataGrid" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="382" Height="193"/>
+
+    </Grid>
+</Window>
