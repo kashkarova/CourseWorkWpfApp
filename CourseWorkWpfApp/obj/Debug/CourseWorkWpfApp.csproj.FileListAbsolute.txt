@@ -37,3 +37,7 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\CourseWorkWpfApp\
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.exe
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.pdb
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.AboutAppWindow.resources
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\addContractWindow.g.cs
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\viewContractWindow.g.cs
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\addContractWindow.baml
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\viewContractWindow.baml

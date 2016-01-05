@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\App.xaml
-101999208669
+12-135203539
 2-1817397698
-36535710187
+38596692682
 201612663266
-addClientWindow.xaml;addCoachWindow.xaml;addServiceWindow.xaml;mainMenuWindow.xaml;MainWindow.xaml;registrationWindow.xaml;viewAbonementWindow.xaml;viewClientWindow.xaml;viewCoachWindow.xaml;viewServiceWindow.xaml;
+addClientWindow.xaml;addCoachWindow.xaml;addContractWindow.xaml;addServiceWindow.xaml;mainMenuWindow.xaml;MainWindow.xaml;registrationWindow.xaml;viewAbonementWindow.xaml;viewClientWindow.xaml;viewCoachWindow.xaml;viewContractWindow.xaml;viewServiceWindow.xaml;
 
-True
+False
 

@@ -268,6 +268,10 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="CurrentServicePositionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="idServicePosition" Type="int" Mode="In" />
+    <Parameter Name="idClient" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="DbModelStoreContainer">
     <EntitySet Name="Abonement" EntityType="Self.Abonement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />

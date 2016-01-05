@@ -80,6 +80,9 @@
     <Compile Include="addCoachWindow.xaml.cs">
       <DependentUpon>addCoachWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="addContractWindow.xaml.cs">
+      <DependentUpon>addContractWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="addServiceWindow.xaml.cs">
       <DependentUpon>addServiceWindow.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,9 @@
     <Compile Include="viewCoachWindow.xaml.cs">
       <DependentUpon>viewCoachWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="viewContractWindow.xaml.cs">
+      <DependentUpon>viewContractWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewGroupService.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -153,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="addCoachWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="addContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="viewCoachWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="viewContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

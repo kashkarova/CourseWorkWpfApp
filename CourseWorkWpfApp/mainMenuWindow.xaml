@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Главное меню" Height="417.527" Width="515.868" Loaded="Window_Loaded">
+        Title="Главное меню" Height="417.527" Width="515.868">
     <Grid>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
             <MenuItem Header="Файл" ToolTip="Файл">
                 <MenuItem Header="Добавить">
                     <MenuItem x:Name="menuAddClient" Header="Добавить клиента" Click="menuAddClient_Click"/>
+                    <MenuItem x:Name="menuAddContract" Header="Добавить контракт" Click="menuAddContract_Click"/>
                     <MenuItem x:Name="menuAddCoach" Header="Добавить тренера" Click="menuAddCoach_Click"/>
                     <MenuItem x:Name="menuAddService" Header="Добавить услугу" Click="menuAddService_Click"/>
                 </MenuItem>
@@ -23,13 +24,18 @@
                 <Separator/>
                 <MenuItem x:Name="menuFileExit" Header="Выход" Click="menuFileExit_Click"/>
             </MenuItem>
-            <MenuItem Header="Правка" ToolTip="Правка"/>
+            <MenuItem Header="Правка" ToolTip="Правка">
+                <MenuItem x:Name="menuEditUndo" Header="Отмена"/>
+                <MenuItem x:Name="menuEditRedo" Header="Вернуть"/>
+                <Separator/>
+                <MenuItem x:Name="menuEditDelete" Header="Удалить"/>
+            </MenuItem>
             <MenuItem Header="Просмотр" ToolTip="Просмотр">
                 <MenuItem x:Name="menuViewAbonement" Header="Абонементы" Click="menuViewAbonement_Click"/>
                 <MenuItem x:Name="menuViewClient" Header="Клиенты" Click="menuViewClient_Click"/>
-                <MenuItem x:Name="menuViewCoach" Header="Тренеры"/>
-                <MenuItem x:Name="menuViewService" Header="Услуги" Click="menuViewService_Click">
-                </MenuItem>
+                <MenuItem x:Name="menuViewContract" Header="Контракты" Click="menuViewContract_Click"/>
+                <MenuItem x:Name="menuViewCoach" Header="Тренеры" Click="menuViewCoach_Click"/>
+                <MenuItem x:Name="menuViewService" Header="Услуги" Click="menuViewService_Click"/>
             </MenuItem>
             <MenuItem Header="Поиск" ToolTip="Поиск"/>
             <MenuItem Header="Отчёт" ToolTip="Отчёт"/>
