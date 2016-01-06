@@ -36,5 +36,12 @@ namespace CourseWorkWpfApp.DefendClasses
             return true;
         }
 
+        public static bool AddContract(double salary)
+        {
+            if (salary.Equals(null)) return false;
+
+            return true;
+        }
+
     }
 }

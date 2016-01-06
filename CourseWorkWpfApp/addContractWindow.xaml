@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="addContractWindow" Height="300" Width="300">
+        Title="Новый контракт" Height="378.602" Width="508.901">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label" Content="ФИО тренера" HorizontalAlignment="Left" Margin="33,43,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="coachComboBox" HorizontalAlignment="Left" Margin="139,47,0,0" VerticalAlignment="Top" Width="327" IsEditable="True" Loaded="coachComboBox_Loaded" SelectionChanged="coachComboBox_SelectionChanged"/>
+        <Label x:Name="label1" Content="Должность" HorizontalAlignment="Left" Margin="47,86,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="postTextBox" HorizontalAlignment="Left" Height="23" Margin="139,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AllowDrop="False" IsReadOnly="True"/>
+        <Label x:Name="label2" Content="Тип услуги" HorizontalAlignment="Left" Margin="49,132,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="typeServiceComboBox" HorizontalAlignment="Left" Margin="139,136,0,0" VerticalAlignment="Top" Width="120" Loaded="typeServiceComboBox_Loaded" SelectionChanged="typeServiceComboBox_SelectionChanged"/>
+        <Label x:Name="label3" Content="Услуга" HorizontalAlignment="Left" Margin="296,132,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="titleServiceComboBox" HorizontalAlignment="Left" Margin="346,136,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="salaryTextBox" HorizontalAlignment="Left" Height="23" Margin="139,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label4" Content="Оплата" HorizontalAlignment="Left" Margin="67,197,0,0" VerticalAlignment="Top" Width="51"/>
+        <Button x:Name="addContractButton" Content="Добавить" HorizontalAlignment="Left" Margin="43,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="addContractButton_Click"/>
+        <Button x:Name="saveContractButton" Content="Сохранить" HorizontalAlignment="Left" Margin="139,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="saveContractButton_Click"/>
+        <Button x:Name="cancelContractButton" Content="Отмена" HorizontalAlignment="Left" Margin="234,265,0,0" VerticalAlignment="Top" Width="75" Height="32"/>
+
     </Grid>
 </Window>

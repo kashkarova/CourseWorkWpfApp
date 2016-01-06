@@ -283,6 +283,7 @@
     <EntitySet Name="ViewAbonements" EntityType="DbModel.ViewAbonements" />
     <EntitySet Name="ViewGroupService" EntityType="DbModel.ViewGroupService" />
     <EntitySet Name="ViewPersonalService" EntityType="DbModel.ViewPersonalService" />
+    <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -323,5 +324,15 @@
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="sum_price" Type="Double" Nullable="false" />
     <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CoachesNames">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>
