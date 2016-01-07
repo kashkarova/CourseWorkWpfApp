@@ -284,6 +284,7 @@
     <EntitySet Name="ViewGroupService" EntityType="DbModel.ViewGroupService" />
     <EntitySet Name="ViewPersonalService" EntityType="DbModel.ViewPersonalService" />
     <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
+    <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -334,5 +335,16 @@
     <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ViewContractWithAddPayment">
+    <Key>
+      <PropertyRef Name="coach_id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="payment" />
+    </Key>
+    <Property Name="coach_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="payment" Type="Double" Nullable="false" />
+    <Property Name="additional_payment" Type="Double" />
   </EntityType>
 </Schema>

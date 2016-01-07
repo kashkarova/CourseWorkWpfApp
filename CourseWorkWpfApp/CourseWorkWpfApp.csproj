@@ -148,6 +148,9 @@
     <Compile Include="viewContractWindow.xaml.cs">
       <DependentUpon>viewContractWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewContractWithAddPayment.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewGroupService.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

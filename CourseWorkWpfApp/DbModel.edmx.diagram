@@ -28,6 +28,7 @@
         <EntityTypeShape EntityType="DbModel.ViewGroupService" Width="1.5" PointX="8.375" PointY="4.75" />
         <EntityTypeShape EntityType="DbModel.ViewPersonalService" Width="1.5" PointX="5.375" PointY="8.75" />
         <EntityTypeShape EntityType="DbModel.CoachesNames" Width="1.5" PointX="8.625" PointY="8.25" />
+        <EntityTypeShape EntityType="DbModel.ViewContractWithAddPayment" Width="1.5" PointX="7.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

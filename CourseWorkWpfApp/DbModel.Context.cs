@@ -40,5 +40,6 @@ namespace CourseWorkWpfApp
         public DbSet<ViewGroupService> ViewGroupService { get; set; }
         public DbSet<ViewPersonalService> ViewPersonalService { get; set; }
         public DbSet<CoachesNames> CoachesNames { get; set; }
+        public DbSet<ViewContractWithAddPayment> ViewContractWithAddPayment { get; set; }
     }
 }

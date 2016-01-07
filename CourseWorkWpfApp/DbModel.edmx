@@ -150,6 +150,19 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a p
           <Property Name="salary" Type="money" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewContractWithAddPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewContractWithAddPayment">
+          <Key>
+            <PropertyRef Name="coach_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="payment" />
+          </Key>
+          <Property Name="coach_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="payment" Type="float" Nullable="false" />
+          <Property Name="additional_payment" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewGroupService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewGroupService">
           <Key>
@@ -330,6 +343,14 @@ FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
 [ViewCoaches].[title] AS [title], 
 [ViewCoaches].[salary] AS [salary]
 FROM [dbo].[ViewCoaches] AS [ViewCoaches]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewContractWithAddPayment" EntityType="Self.ViewContractWithAddPayment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ViewContractWithAddPayment].[coach_id] AS [coach_id], 
+[ViewContractWithAddPayment].[title] AS [title], 
+[ViewContractWithAddPayment].[payment] AS [payment], 
+[ViewContractWithAddPayment].[additional_payment] AS [additional_payment]
+FROM [dbo].[ViewContractWithAddPayment] AS [ViewContractWithAddPayment]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewGroupService" EntityType="Self.ViewGroupService" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -667,6 +688,7 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
           <EntitySet Name="ViewGroupService" EntityType="DbModel.ViewGroupService" />
           <EntitySet Name="ViewPersonalService" EntityType="DbModel.ViewPersonalService" />
           <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
+          <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
         </EntityContainer>
         <EntityType Name="ViewAbonements">
           <Key>
@@ -717,6 +739,17 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
           <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewContractWithAddPayment">
+          <Key>
+            <PropertyRef Name="coach_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="payment" />
+          </Key>
+          <Property Name="coach_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="payment" Type="Double" Nullable="false" />
+          <Property Name="additional_payment" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -881,7 +914,17 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="ViewContractWithAddPayment">
+            <EntityTypeMapping TypeName="DbModel.ViewContractWithAddPayment">
+              <MappingFragment StoreEntitySet="ViewContractWithAddPayment">
+                <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="coach_id" ColumnName="coach_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

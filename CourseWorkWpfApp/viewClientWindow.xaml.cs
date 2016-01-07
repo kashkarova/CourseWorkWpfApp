@@ -62,7 +62,7 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    clientDataGrid.ItemsSource = Db.Client.ToList();
+                    clientDataGrid.ItemsSource = Db.Client.OrderByDescending(x => x.surname).ToList();
                 }
             }
             catch (Exception)

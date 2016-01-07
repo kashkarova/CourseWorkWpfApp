@@ -158,5 +158,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ViewContractWithAddPayment">
+      <EntityTypeMapping TypeName="DbModel.ViewContractWithAddPayment">
+        <MappingFragment StoreEntitySet="ViewContractWithAddPayment">
+          <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="coach_id" ColumnName="coach_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
