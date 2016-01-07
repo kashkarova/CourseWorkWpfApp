@@ -86,7 +86,6 @@
           <Property Name="service_id" Type="int" Nullable="false" />
           <Property Name="date_end" Type="date" />
           <Property Name="count" Type="int" Nullable="false" />
-          <Property Name="price" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -95,6 +94,16 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ClientsNames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ClientsNames">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -187,6 +196,21 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not 
           <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="sum price" Type="float" Nullable="false" />
           <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewServicePosition">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="count" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="date_end" Type="date" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
         </EntityType>
         <Association Name="fk_abonement">
           <End Role="Abonement" Type="Self.Abonement" Multiplicity="1">
@@ -298,8 +322,7 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="CurrentServicePositionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
-          <Parameter Name="idServicePosition" Type="int" Mode="In" />
+        <Function Name="CurrentSPId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="idClient" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DbModelStoreContainer">
@@ -313,6 +336,12 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not 
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServicePosition" EntityType="Self.ServicePosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientsNames" EntityType="Self.ClientsNames" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ClientsNames].[id] AS [id], 
+[ClientsNames].[name] AS [name]
+FROM [dbo].[ClientsNames] AS [ClientsNames]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="CoachesNames" EntityType="Self.CoachesNames" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [CoachesNames].[id] AS [id], 
@@ -366,6 +395,15 @@ FROM [dbo].[ViewGroupService] AS [ViewGroupService]</DefiningQuery>
 [ViewPersonalService].[sum price] AS [sum price], 
 [ViewPersonalService].[surname] AS [surname]
 FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewServicePosition" EntityType="Self.ViewServicePosition" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ViewServicePosition].[id] AS [id], 
+[ViewServicePosition].[title] AS [title], 
+[ViewServicePosition].[date_end] AS [date_end], 
+[ViewServicePosition].[count] AS [count], 
+[ViewServicePosition].[price] AS [price]
+FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="fk_abonement" Association="Self.fk_abonement">
             <End Role="Abonement" EntitySet="Abonement" />
@@ -499,7 +537,6 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
           <Property Name="service_id" Type="Int32" Nullable="false" />
           <Property Name="date_end" Type="DateTime" Precision="0" />
           <Property Name="count" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="Double" Nullable="false" />
           <NavigationProperty Name="Abonement" Relationship="Self.fk_abonement" FromRole="ServicePosition" ToRole="Abonement" />
           <NavigationProperty Name="Service" Relationship="Self.fk_service" FromRole="ServicePosition" ToRole="Service" />
         </EntityType>
@@ -689,6 +726,8 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
           <EntitySet Name="ViewPersonalService" EntityType="DbModel.ViewPersonalService" />
           <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
           <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
+          <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
+          <EntitySet Name="ViewServicePosition" EntityType="DbModel.ViewServicePosition" />
         </EntityContainer>
         <EntityType Name="ViewAbonements">
           <Key>
@@ -750,6 +789,27 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
           <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="payment" Type="Double" Nullable="false" />
           <Property Name="additional_payment" Type="Double" />
+        </EntityType>
+        <EntityType Name="ClientsNames">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ViewServicePosition">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="count" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date_end" Type="DateTime" Precision="0" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -845,7 +905,6 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
                 <ScalarProperty Name="service_id" ColumnName="service_id" />
                 <ScalarProperty Name="date_end" ColumnName="date_end" />
                 <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="price" ColumnName="price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -921,6 +980,25 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
                 <ScalarProperty Name="payment" ColumnName="payment" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="coach_id" ColumnName="coach_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientsNames">
+            <EntityTypeMapping TypeName="DbModel.ClientsNames">
+              <MappingFragment StoreEntitySet="ClientsNames">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewServicePosition">
+            <EntityTypeMapping TypeName="DbModel.ViewServicePosition">
+              <MappingFragment StoreEntitySet="ViewServicePosition">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

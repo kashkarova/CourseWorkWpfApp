@@ -33,9 +33,9 @@ namespace CourseWorkWpfApp
                     abonementDataGrid.ItemsSource = Db.ViewAbonements.ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "");
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -95,7 +95,6 @@
     <Property Name="service_id" Type="Int32" Nullable="false" />
     <Property Name="date_end" Type="DateTime" Precision="0" />
     <Property Name="count" Type="Int32" Nullable="false" />
-    <Property Name="price" Type="Double" Nullable="false" />
     <NavigationProperty Name="Abonement" Relationship="Self.fk_abonement" FromRole="ServicePosition" ToRole="Abonement" />
     <NavigationProperty Name="Service" Relationship="Self.fk_service" FromRole="ServicePosition" ToRole="Service" />
   </EntityType>
@@ -285,6 +284,8 @@
     <EntitySet Name="ViewPersonalService" EntityType="DbModel.ViewPersonalService" />
     <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
     <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
+    <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
+    <EntitySet Name="ViewServicePosition" EntityType="DbModel.ViewServicePosition" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -346,5 +347,26 @@
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="payment" Type="Double" Nullable="false" />
     <Property Name="additional_payment" Type="Double" />
+  </EntityType>
+  <EntityType Name="ClientsNames">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="ViewServicePosition">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="count" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="date_end" Type="DateTime" Precision="0" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
   </EntityType>
 </Schema>

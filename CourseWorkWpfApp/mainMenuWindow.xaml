@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Главное меню" Height="417.527" Width="515.868">
+        Title="Главное меню" Height="417.527" Width="582.868">
     <Grid>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
             <MenuItem Header="Файл" ToolTip="Файл">
@@ -46,17 +46,18 @@
             </MenuItem>
             <MenuItem x:Name="menuExit" Header="Выход" ToolTip="Выход" Click="menuExit_Click"/>
         </Menu>
-        <Label x:Name="label" Content="Клиент" HorizontalAlignment="Left" Margin="35,56,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="88,60,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" MaxWidth="120" ToolTip="Фамилия клиента"/>
-        <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="311,60,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="354,60,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
-        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,0" Height="188" VerticalAlignment="Top"/>
-        <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click"/>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,331,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,331,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="250,331,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="ascSortingButton" Content="Asc" HorizontalAlignment="Left" Margin="382,316,0,0" VerticalAlignment="Top" Width="55" Height="35"/>
-        <Button x:Name="descSortingButton" Content="Desc" HorizontalAlignment="Left" Margin="440,316,0,0" VerticalAlignment="Top" Width="55" Height="35"/>
+        <Label x:Name="label" Content="Клиент" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="Фамилия клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded" SelectionChanged="clientComboBox_SelectionChanged"/>
+        <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="401,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.343,-0.308"/>
+        <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,59,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
+        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,76"/>
+        <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,36" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,36" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,36" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="250,0,0,36" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="ascSortingButton" Content="Asc" Margin="0,0,71,36" VerticalAlignment="Bottom" Height="35" HorizontalAlignment="Right" Width="55"/>
+        <Button x:Name="descSortingButton" Content="Desc" Margin="0,0,13,36" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="218,86,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

@@ -12,15 +12,9 @@ namespace CourseWorkWpfApp
     using System;
     using System.Collections.Generic;
     
-    public partial class ServicePosition
+    public partial class ClientsNames
     {
+        public string name { get; set; }
         public int id { get; set; }
-        public int abonement_id { get; set; }
-        public int service_id { get; set; }
-        public Nullable<System.DateTime> date_end { get; set; }
-        public int count { get; set; }
-    
-        public virtual Abonement Abonement { get; set; }
-        public virtual Service Service { get; set; }
     }
 }

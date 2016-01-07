@@ -147,6 +147,48 @@ namespace CourseWorkWpfApp
             }
         }
 
-        
+        private void clientComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    clientComboBox.ItemsSource = Db.ClientsNames.Select(x => x.name).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          //  try
+         //   {
+
+                using (var Db = new DatabaseContext())
+                {
+                    int i = Db.ClientsNames.FirstOrDefault(n => n.name == (string)clientComboBox.SelectedValue).id;
+
+                    System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter("@idClient", i);
+
+                    var id = Db.Database.SqlQuery<ServicePosition>("select * from CurrentSPId (@idClient)", param).ToList();
+
+
+
+                    foreach (ServicePosition servicePosition_id in id)
+                    {
+                        textBox.Text = servicePosition_id.id.ToString();
+                    }
+                    
+
+                }
+        //    }
+          //  catch (Exception)
+           // {
+               // MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+          //  }
+        }
     }
 }

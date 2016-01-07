@@ -3,7 +3,6 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\bin\Debug\CourseWorkWpfApp.pdb
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\bin\Debug\EntityFramework.dll
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\bin\Debug\EntityFramework.xml
-E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.csprojResolveAssemblyReference.cache
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\MainWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\App.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp_Content.g.cs
@@ -41,3 +40,4 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\viewContractWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\addContractWindow.baml
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWpfApp\CourseWorkWpfApp\obj\Debug\viewContractWindow.baml
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.csprojResolveAssemblyReference.cache

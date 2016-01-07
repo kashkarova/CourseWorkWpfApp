@@ -89,7 +89,6 @@
           <ScalarProperty Name="service_id" ColumnName="service_id" />
           <ScalarProperty Name="date_end" ColumnName="date_end" />
           <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="price" ColumnName="price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -165,6 +164,25 @@
           <ScalarProperty Name="payment" ColumnName="payment" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="coach_id" ColumnName="coach_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientsNames">
+      <EntityTypeMapping TypeName="DbModel.ClientsNames">
+        <MappingFragment StoreEntitySet="ClientsNames">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewServicePosition">
+      <EntityTypeMapping TypeName="DbModel.ViewServicePosition">
+        <MappingFragment StoreEntitySet="ViewServicePosition">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

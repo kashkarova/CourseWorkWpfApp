@@ -89,6 +89,9 @@
     <Compile Include="Client.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClientsNames.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Coach.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -155,6 +158,9 @@
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewPersonalService.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewServicePosition.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="viewServiceWindow.xaml.cs">
