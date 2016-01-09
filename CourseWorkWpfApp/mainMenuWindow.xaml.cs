@@ -132,7 +132,10 @@ namespace CourseWorkWpfApp
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            clientComboBox.SelectedIndex = -1;
+
+            clientComboBox_Loaded(sender, e);
+
+            servicePositionDataGrid.ItemsSource = null;
         }
 
         private void menuExit_Click(object sender, RoutedEventArgs e)
@@ -188,11 +191,6 @@ namespace CourseWorkWpfApp
                     foreach (DateTime date in dateBegin_result)
                     {
                         date_begin = date.ToString();
-
-                        if (date < DateTime.Now)
-                        {
-                            flag = false;
-                        }
                     }
 
                     dateBeginDatePicker.IsEnabled = flag;
