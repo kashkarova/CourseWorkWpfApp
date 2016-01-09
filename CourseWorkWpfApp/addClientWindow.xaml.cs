@@ -34,9 +34,7 @@ namespace CourseWorkWpfApp
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            mainMenuWindow mainMenuWindow = new mainMenuWindow();
-            mainMenuWindow.Show();
-            this.Close();
+
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)

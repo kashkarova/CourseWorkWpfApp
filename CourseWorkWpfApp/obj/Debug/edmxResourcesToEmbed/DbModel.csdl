@@ -114,7 +114,6 @@
       <PropertyRef Name="passp_num" />
       <PropertyRef Name="address" />
       <PropertyRef Name="title" />
-      <PropertyRef Name="salary" />
     </Key>
     <Property Name="surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
@@ -123,7 +122,6 @@
     <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
     <Property Name="title" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
   </EntityType>
   <Association Name="fk_abonement">
     <End Role="Abonement" Type="Self.Abonement" Multiplicity="1">

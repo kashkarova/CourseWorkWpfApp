@@ -23,5 +23,59 @@ namespace CourseWorkWpfApp
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    coachDataGrid.ItemsSource = Db.ViewCoaches.ToList();
+                }
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ascSortCoachButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    coachDataGrid.ItemsSource = Db.ViewCoaches.OrderBy(x => x.surname).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void descSortCoachButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    coachDataGrid.ItemsSource = Db.ViewCoaches.OrderByDescending(x => x.surname).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void addCoachButton_Click(object sender, RoutedEventArgs e)
+        {
+            addCoachWindow addCoachWindow = new addCoachWindow();
+            addCoachWindow.Show();
+        }
     }
 }

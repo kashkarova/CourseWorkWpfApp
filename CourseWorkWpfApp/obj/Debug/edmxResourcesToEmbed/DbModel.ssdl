@@ -171,7 +171,6 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a p
       <PropertyRef Name="passp_num" />
       <PropertyRef Name="address" />
       <PropertyRef Name="title" />
-      <PropertyRef Name="salary" />
     </Key>
     <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
@@ -180,7 +179,6 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a p
     <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="telephone" Type="varchar" MaxLength="7" />
     <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="salary" Type="money" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewContractWithAddPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -410,8 +408,7 @@ FROM [dbo].[ViewClients] AS [ViewClients]</DefiningQuery>
 [ViewCoaches].[passp_num] AS [passp_num], 
 [ViewCoaches].[address] AS [address], 
 [ViewCoaches].[telephone] AS [telephone], 
-[ViewCoaches].[title] AS [title], 
-[ViewCoaches].[salary] AS [salary]
+[ViewCoaches].[title] AS [title]
 FROM [dbo].[ViewCoaches] AS [ViewCoaches]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewContractWithAddPayment" EntityType="Self.ViewContractWithAddPayment" store:Type="Views" store:Schema="dbo">
