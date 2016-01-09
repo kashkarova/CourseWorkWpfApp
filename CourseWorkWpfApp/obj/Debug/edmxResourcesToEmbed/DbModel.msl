@@ -118,6 +118,7 @@
     <EntitySetMapping Name="ViewAbonements">
       <EntityTypeMapping TypeName="DbModel.ViewAbonements">
         <MappingFragment StoreEntitySet="ViewAbonements">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="cost" ColumnName="cost" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="count" ColumnName="count" />

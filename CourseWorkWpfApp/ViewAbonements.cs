@@ -22,5 +22,6 @@ namespace CourseWorkWpfApp
         public int count { get; set; }
         public double price { get; set; }
         public double cost { get; set; }
+        public int id { get; set; }
     }
 }

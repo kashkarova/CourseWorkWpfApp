@@ -126,6 +126,7 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does no
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewAbonements">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="surname" />
       <PropertyRef Name="name" />
       <PropertyRef Name="title" />
@@ -133,6 +134,7 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have 
       <PropertyRef Name="price" />
       <PropertyRef Name="cost" />
     </Key>
+    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
@@ -362,6 +364,7 @@ FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewAbonements" EntityType="Self.ViewAbonements" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[ViewAbonements].[id] AS [id], 
 [ViewAbonements].[surname] AS [surname], 
 [ViewAbonements].[name] AS [name], 
 [ViewAbonements].[title] AS [title], 

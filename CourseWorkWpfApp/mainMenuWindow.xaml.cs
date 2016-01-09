@@ -174,11 +174,30 @@ namespace CourseWorkWpfApp
                     var result = Db.CurrServicePositionId.Where(x => x.client_id == i && x.sP_id != null).Select(y => y.sP_id).ToList();
 
                     int id = 0;
+                    string date_begin="";
 
                     foreach (int temp_id in result)
                     {
                         id = temp_id;
                     }
+
+                    var dateBegin_result = Db.ViewAbonements.Where(x => x.id == i && x.date_begin != null).Select(x => x.date_begin).ToList();
+
+                    bool flag = true;
+
+                    foreach (DateTime date in dateBegin_result)
+                    {
+                        date_begin = date.ToString();
+
+                        if (date < DateTime.Now)
+                        {
+                            flag = false;
+                        }
+                    }
+
+                    dateBeginDatePicker.IsEnabled = flag;
+
+                    dateBeginDatePicker.Text = date_begin;         
 
                     servicePositionDataGrid.ItemsSource = Db.ViewServicePosition.Where(j => j.id == id).Select(j => j).ToList();
                 }
