@@ -44,5 +44,6 @@ namespace CourseWorkWpfApp
         public DbSet<ClientsNames> ClientsNames { get; set; }
         public DbSet<ViewServicePosition> ViewServicePosition { get; set; }
         public DbSet<CurrServicePositionId> CurrServicePositionId { get; set; }
+        public DbSet<ViewClients> ViewClients { get; set; }
     }
 }

@@ -287,6 +287,7 @@
     <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
     <EntitySet Name="ViewServicePosition" EntityType="DbModel.ViewServicePosition" />
     <EntitySet Name="CurrServicePositionId" EntityType="DbModel.CurrServicePositionId" />
+    <EntitySet Name="ViewClients" EntityType="DbModel.ViewClients" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -379,5 +380,20 @@
     </Key>
     <Property Name="sP_id" Type="Int32" Nullable="false" />
     <Property Name="client_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ViewClients">
+    <Key>
+      <PropertyRef Name="surname" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="sex" />
+      <PropertyRef Name="passp_num" />
+      <PropertyRef Name="address" />
+    </Key>
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="Int32" Nullable="false" />
+    <Property Name="passp_num" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -145,6 +145,23 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have 
     <Property Name="cost" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewClients">
+    <Key>
+      <PropertyRef Name="surname" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="sex" />
+      <PropertyRef Name="passp_num" />
+      <PropertyRef Name="address" />
+    </Key>
+    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="sex" Type="int" Nullable="false" />
+    <Property Name="passp_num" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="telephone" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewCoaches">
     <Key>
@@ -374,6 +391,16 @@ FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
 [ViewAbonements].[price] AS [price], 
 [ViewAbonements].[cost] AS [cost]
 FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewClients" EntityType="Self.ViewClients" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ViewClients].[surname] AS [surname], 
+[ViewClients].[name] AS [name], 
+[ViewClients].[sex] AS [sex], 
+[ViewClients].[passp_num] AS [passp_num], 
+[ViewClients].[address] AS [address], 
+[ViewClients].[telephone] AS [telephone]
+FROM [dbo].[ViewClients] AS [ViewClients]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewCoaches" EntityType="Self.ViewCoaches" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

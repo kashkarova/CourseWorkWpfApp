@@ -133,9 +133,6 @@ namespace CourseWorkWpfApp
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
 
-            clientComboBox_Loaded(sender, e);
-
-            servicePositionDataGrid.ItemsSource = null;
         }
 
         private void menuExit_Click(object sender, RoutedEventArgs e)

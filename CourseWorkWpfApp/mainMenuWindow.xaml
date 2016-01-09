@@ -50,7 +50,14 @@
         <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="Фамилия клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded" SelectionChanged="clientComboBox_SelectionChanged"/>
         <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="401,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.343,-0.308"/>
         <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,59,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
-        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,76"/>
+        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,76" ItemsSource="{Binding}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=title}" Header="Название услуги" />
+                <DataGridTextColumn Binding="{Binding Path=date_end}" Header="Дата окончания абонемента" />
+                <DataGridTextColumn Binding="{Binding Path=count}" Header="Колическтво занятий" />
+                <DataGridTextColumn Binding="{Binding Path=price}" Header="Цена за 1 занятие" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,36" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom"/>
         <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,36" VerticalAlignment="Bottom" Width="75"/>
         <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,36" VerticalAlignment="Bottom" Width="75"/>

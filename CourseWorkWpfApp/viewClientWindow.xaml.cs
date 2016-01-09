@@ -21,9 +21,7 @@ namespace CourseWorkWpfApp
     {
         public viewClientWindow()
         {
-            InitializeComponent();
-
-            clientDataGrid.Items.Refresh();
+            InitializeComponent();           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -32,8 +30,10 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    clientDataGrid.ItemsSource = Db.Client.ToList();
+                    clientDataGrid.ItemsSource = Db.ViewClients.ToList();
                 }
+
+
             }
             catch (Exception)
             {
@@ -47,7 +47,7 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    clientDataGrid.ItemsSource = Db.Client.OrderBy(x => x.surname).ToList();
+                    clientDataGrid.ItemsSource = Db.ViewClients.OrderBy(x => x.surname).ToList();
                 }
             }
             catch (Exception)
@@ -62,8 +62,9 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    clientDataGrid.ItemsSource = Db.Client.OrderByDescending(x => x.surname).ToList();
+                    clientDataGrid.ItemsSource = Db.ViewClients.OrderByDescending(x => x.surname).ToList();
                 }
+
             }
             catch (Exception)
             {

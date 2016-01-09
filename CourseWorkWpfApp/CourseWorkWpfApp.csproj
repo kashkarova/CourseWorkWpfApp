@@ -142,6 +142,9 @@
     <Compile Include="viewAbonementWindow.xaml.cs">
       <DependentUpon>viewAbonementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewClients.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="viewClientWindow.xaml.cs">
       <DependentUpon>viewClientWindow.xaml</DependentUpon>
     </Compile>

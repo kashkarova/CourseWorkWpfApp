@@ -150,6 +150,23 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have 
           <Property Name="cost" Type="float" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewClients">
+          <Key>
+            <PropertyRef Name="surname" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="passp_num" />
+            <PropertyRef Name="address" />
+          </Key>
+          <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="sex" Type="int" Nullable="false" />
+          <Property Name="passp_num" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="varchar" MaxLength="7" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewCoaches">
           <Key>
@@ -379,6 +396,16 @@ FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
 [ViewAbonements].[price] AS [price], 
 [ViewAbonements].[cost] AS [cost]
 FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewClients" EntityType="Self.ViewClients" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ViewClients].[surname] AS [surname], 
+[ViewClients].[name] AS [name], 
+[ViewClients].[sex] AS [sex], 
+[ViewClients].[passp_num] AS [passp_num], 
+[ViewClients].[address] AS [address], 
+[ViewClients].[telephone] AS [telephone]
+FROM [dbo].[ViewClients] AS [ViewClients]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewCoaches" EntityType="Self.ViewCoaches" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -748,6 +775,7 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
           <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
           <EntitySet Name="ViewServicePosition" EntityType="DbModel.ViewServicePosition" />
           <EntitySet Name="CurrServicePositionId" EntityType="DbModel.CurrServicePositionId" />
+          <EntitySet Name="ViewClients" EntityType="DbModel.ViewClients" />
         </EntityContainer>
         <EntityType Name="ViewAbonements">
           <Key>
@@ -840,6 +868,21 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
           </Key>
           <Property Name="sP_id" Type="Int32" Nullable="false" />
           <Property Name="client_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewClients">
+          <Key>
+            <PropertyRef Name="surname" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="passp_num" />
+            <PropertyRef Name="address" />
+          </Key>
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="Int32" Nullable="false" />
+          <Property Name="passp_num" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1038,6 +1081,18 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
               <MappingFragment StoreEntitySet="CurrServicePositionId">
               <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="sP_id" ColumnName="sP_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewClients">
+            <EntityTypeMapping TypeName="DbModel.ViewClients">
+              <MappingFragment StoreEntitySet="ViewClients">
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="passp_num" ColumnName="passp_num" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
