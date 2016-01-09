@@ -186,5 +186,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CurrServicePositionId">
+      <EntityTypeMapping TypeName="DbModel.CurrServicePositionId">
+        <MappingFragment StoreEntitySet="CurrServicePositionId">
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

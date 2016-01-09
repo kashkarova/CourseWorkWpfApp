@@ -118,6 +118,16 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNames' does not have a 
           <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CurrServicePositionId">
+          <Key>
+            <PropertyRef Name="sP_id" />
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="sP_id" Type="int" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewAbonements">
           <Key>
@@ -322,7 +332,7 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="CurrentSPId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+        <Function Name="CurrentServicePositionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="idClient" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DbModelStoreContainer">
@@ -348,6 +358,12 @@ FROM [dbo].[ClientsNames] AS [ClientsNames]</DefiningQuery>
 [CoachesNames].[name] AS [name], 
 [CoachesNames].[title] AS [title]
 FROM [dbo].[CoachesNames] AS [CoachesNames]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CurrServicePositionId" EntityType="Self.CurrServicePositionId" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[CurrServicePositionId].[sP_id] AS [sP_id], 
+[CurrServicePositionId].[client_id] AS [client_id]
+FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewAbonements" EntityType="Self.ViewAbonements" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -728,6 +744,7 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
           <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
           <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
           <EntitySet Name="ViewServicePosition" EntityType="DbModel.ViewServicePosition" />
+          <EntitySet Name="CurrServicePositionId" EntityType="DbModel.CurrServicePositionId" />
         </EntityContainer>
         <EntityType Name="ViewAbonements">
           <Key>
@@ -810,6 +827,14 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
           <Property Name="date_end" Type="DateTime" Precision="0" />
           <Property Name="count" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrServicePositionId">
+          <Key>
+            <PropertyRef Name="sP_id" />
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="sP_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -999,6 +1024,14 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
                 <ScalarProperty Name="date_end" ColumnName="date_end" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrServicePositionId">
+            <EntityTypeMapping TypeName="DbModel.CurrServicePositionId">
+              <MappingFragment StoreEntitySet="CurrServicePositionId">
+              <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="sP_id" ColumnName="sP_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -171,16 +171,9 @@ namespace CourseWorkWpfApp
                 {
                     int i = Db.ClientsNames.FirstOrDefault(n => n.name == (string)clientComboBox.SelectedValue).id;
 
-                    System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter("@idClient", i);
-
-                    var id = Db.Database.SqlQuery<ServicePosition>("select * from CurrentSPId (@idClient)", param).ToList();
 
 
-
-                    foreach (ServicePosition servicePosition_id in id)
-                    {
-                        textBox.Text = servicePosition_id.id.ToString();
-                    }
+                   
                     
 
                 }

@@ -30,7 +30,8 @@
         <EntityTypeShape EntityType="DbModel.CoachesNames" Width="1.5" PointX="8.625" PointY="8.25" />
         <EntityTypeShape EntityType="DbModel.ViewContractWithAddPayment" Width="1.5" PointX="7.375" PointY="10.75" />
         <EntityTypeShape EntityType="DbModel.ClientsNames" Width="1.5" PointX="9.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DbModel.ViewServicePosition" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DbModel.ViewServicePosition" Width="1.5" PointX="10.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.CurrServicePositionId" Width="1.5" PointX="11.5" PointY="9.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
