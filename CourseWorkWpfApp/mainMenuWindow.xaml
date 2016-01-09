@@ -17,7 +17,7 @@
                 </MenuItem>
                 <MenuItem x:Name="menuFileOpen" Header="Открыть" Click="menuFileOpen_Click"/>
                 <Separator/>
-                <MenuItem x:Name="menuFileSave" Header="Сохранить"/>
+                <MenuItem x:Name="menuFileSave" Header="Сохранить" Click="menuFileSave_Click"/>
                 <MenuItem x:Name="menuFileSaveAs" Header="Сохранить как"/>
                 <Separator/>
                 <MenuItem x:Name="menuFilePrint" Header="Печать" Click="menuFilePrint_Click"/>
@@ -52,8 +52,14 @@
         <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,59,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
         <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,76" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=title}" Header="Название услуги" />
-                <DataGridTextColumn Binding="{Binding Path=date_end}" Header="Дата окончания абонемента" />
+                <DataGridTextColumn Binding="{Binding title}" Header="Название услуги" />
+                <DataGridTemplateColumn Header="Дата окончания абонемента">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding date_end}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding Path=count}" Header="Колическтво занятий" />
                 <DataGridTextColumn Binding="{Binding Path=price}" Header="Цена за 1 занятие" />
             </DataGrid.Columns>

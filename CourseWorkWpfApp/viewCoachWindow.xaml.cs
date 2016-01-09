@@ -31,6 +31,8 @@ namespace CourseWorkWpfApp
                 using (var Db = new DatabaseContext())
                 {
                     coachDataGrid.ItemsSource = Db.ViewCoaches.ToList();
+
+                    
                 }
 
 
