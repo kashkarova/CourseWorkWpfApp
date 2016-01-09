@@ -38,5 +38,36 @@ namespace CourseWorkWpfApp
                 MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void ascSortAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.OrderBy(x => x.surname).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void descSortAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.OrderByDescending(x => x.surname).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

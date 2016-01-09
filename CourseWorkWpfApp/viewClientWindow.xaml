@@ -18,9 +18,18 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="addClientButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,24" Width="113" Click="addClientButton_Click" Height="41" VerticalAlignment="Bottom"/>
-        <Button x:Name="deleteClientButton" Content="Удалить" HorizontalAlignment="Left" Margin="259,0,0,24" Width="112" Click="deleteClientButton_Click" Height="41" VerticalAlignment="Bottom"/>
-        <Button x:Name="ascSortClientButton" Content="Asc" Margin="0,0,71,24" Click="ascSortClientButton_Click" HorizontalAlignment="Right" Width="57" Height="41" VerticalAlignment="Bottom"/>
-        <Button x:Name="descSortClientButton" Content="Desc" HorizontalAlignment="Right" Margin="0,0,10,24" Width="57" Click="descSortClientButton_Click" Height="41" VerticalAlignment="Bottom"/>
+        <Button x:Name="deleteClientButton" Content="Удалить" HorizontalAlignment="Left" Margin="259,0,0,24" Width="112" Click="deleteClientButton_Click" Height="41" VerticalAlignment="Bottom" Background="#FFDDDDDD"/>
+        <Button x:Name="ascSortClientButton" Margin="0,0,71,24" Click="ascSortClientButton_Click" HorizontalAlignment="Right" Width="57" Height="41" VerticalAlignment="Bottom" IsHitTestVisible="True" BorderBrush="{x:Null}" ToolTip="Сортировка по возрастанию">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
+            </Button.Background>
+
+        </Button>
+        <Button x:Name="descSortClientButton" HorizontalAlignment="Right" Margin="0,0,10,24" Width="57" Click="descSortClientButton_Click" Height="41" VerticalAlignment="Bottom" IsHitTestVisible="True" BorderBrush="{x:Null}" ToolTip="Сортировка по убыванию">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
+            </Button.Background>
+        </Button>
         <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="135,0,0,24" Width="113" Click="saveButton_Click" Height="41" VerticalAlignment="Bottom"/>
 
     </Grid>

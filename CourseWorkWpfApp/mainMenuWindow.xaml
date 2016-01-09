@@ -68,8 +68,16 @@
         <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,36" VerticalAlignment="Bottom" Width="75"/>
         <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,36" VerticalAlignment="Bottom" Width="75"/>
         <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="250,0,0,36" VerticalAlignment="Bottom" Width="75"/>
-        <Button x:Name="ascSortingButton" Content="Asc" Margin="0,0,71,36" VerticalAlignment="Bottom" Height="35" HorizontalAlignment="Right" Width="55"/>
-        <Button x:Name="descSortingButton" Content="Desc" Margin="0,0,13,36" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55"/>
+        <Button x:Name="ascSortingButton"  Margin="0,0,71,36" VerticalAlignment="Bottom" Height="35" HorizontalAlignment="Right" Width="55" ToolTip="Сортировка по возрастанию" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="descSortingButton"  Margin="0,0,13,36" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55" ToolTip="Сортировка по убыванию" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

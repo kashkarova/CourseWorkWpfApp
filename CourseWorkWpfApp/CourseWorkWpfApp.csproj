@@ -278,6 +278,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\gtk-sort-ascending.png" />
+    <Resource Include="Resources\gtk-sort-descending.png" />
     <Resource Include="Resources\back.png" />
     <Content Include="DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
