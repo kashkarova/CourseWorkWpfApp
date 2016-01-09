@@ -116,9 +116,11 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNames' does not have a 
 warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CurrServicePositionId">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="sP_id" />
+      <PropertyRef Name="client_id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sP_id" Type="int" Nullable="false" />
+    <Property Name="client_id" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -354,7 +356,8 @@ FROM [dbo].[CoachesNames] AS [CoachesNames]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="CurrServicePositionId" EntityType="Self.CurrServicePositionId" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[CurrServicePositionId].[id] AS [id]
+[CurrServicePositionId].[sP_id] AS [sP_id], 
+[CurrServicePositionId].[client_id] AS [client_id]
 FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewAbonements" EntityType="Self.ViewAbonements" store:Type="Views" store:Schema="dbo">

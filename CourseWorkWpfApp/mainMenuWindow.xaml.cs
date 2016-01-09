@@ -96,7 +96,7 @@ namespace CourseWorkWpfApp
         {
             viewClientWindow viewClientWindow = new viewClientWindow();
             viewClientWindow.Show();
-        }  
+        }
 
         private void menuViewAbonement_Click(object sender, RoutedEventArgs e)
         {
@@ -128,7 +128,7 @@ namespace CourseWorkWpfApp
             aboutAppWindow.Show();
         }
 
-       
+
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
@@ -164,24 +164,30 @@ namespace CourseWorkWpfApp
 
         private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-          //  try
-         //   {
+            try
+            {
 
                 using (var Db = new DatabaseContext())
                 {
                     int i = Db.ClientsNames.FirstOrDefault(n => n.name == (string)clientComboBox.SelectedValue).id;
 
+                    var result = Db.CurrServicePositionId.Where(x => x.client_id == i && x.sP_id != null).Select(y => y.sP_id).ToList();
 
+                    int id = 0;
 
-                   
-                    
+                    foreach (int temp_id in result)
+                    {
+                        id = temp_id;
+                    }
 
+                    servicePositionDataGrid.ItemsSource = Db.ViewServicePosition.Where(j => j.id == id).Select(j => j).ToList();
                 }
-        //    }
-          //  catch (Exception)
-           // {
-               // MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-          //  }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

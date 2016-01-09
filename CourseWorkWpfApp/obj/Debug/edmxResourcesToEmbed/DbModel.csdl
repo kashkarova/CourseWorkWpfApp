@@ -372,8 +372,10 @@
   </EntityType>
   <EntityType Name="CurrServicePositionId">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="sP_id" />
+      <PropertyRef Name="client_id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sP_id" Type="Int32" Nullable="false" />
+    <Property Name="client_id" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

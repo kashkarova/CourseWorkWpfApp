@@ -189,7 +189,8 @@
     <EntitySetMapping Name="CurrServicePositionId">
       <EntityTypeMapping TypeName="DbModel.CurrServicePositionId">
         <MappingFragment StoreEntitySet="CurrServicePositionId">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="sP_id" ColumnName="sP_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
