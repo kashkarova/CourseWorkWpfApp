@@ -104,6 +104,7 @@
     <EntitySetMapping Name="ViewCoaches">
       <EntityTypeMapping TypeName="DbModel.ViewCoaches">
         <MappingFragment StoreEntitySet="ViewCoaches">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="sex" ColumnName="sex" />
@@ -197,6 +198,7 @@
     <EntitySetMapping Name="ViewClients">
       <EntityTypeMapping TypeName="DbModel.ViewClients">
         <MappingFragment StoreEntitySet="ViewClients">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="telephone" ColumnName="telephone" />
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="passp_num" ColumnName="passp_num" />

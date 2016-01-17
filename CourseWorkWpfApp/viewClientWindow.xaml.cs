@@ -21,7 +21,7 @@ namespace CourseWorkWpfApp
     {
         public viewClientWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -85,7 +85,43 @@ namespace CourseWorkWpfApp
 
         private void deleteClientButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            int row = clientDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((clientDataGrid.Columns[0].GetCellContent(clientDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    Db.Client.Remove(Db.Client.FirstOrDefault(c => c.id==id));
+                    Db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            Client cl = new Client();
+
+            int row = clientDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((clientDataGrid.Columns[0].GetCellContent(clientDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    cl = Db.Client.FirstOrDefault(c => c.id == id);
+                }
+            }
+            catch (Exception)
+            { 
+
+                MessageBox.Show("Ошибка соединения с базой данных!","Ошибка соединения",MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            addClientWindow addClientWindow = new addClientWindow(cl);
+            addClientWindow.Show();
         }
     }
 }

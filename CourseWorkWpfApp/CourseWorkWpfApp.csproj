@@ -83,6 +83,9 @@
     <Compile Include="addContractWindow.xaml.cs">
       <DependentUpon>addContractWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="addPostWindow.xaml.cs">
+      <DependentUpon>addPostWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="addServiceWindow.xaml.cs">
       <DependentUpon>addServiceWindow.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="addPostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="addServiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -280,6 +287,7 @@
   <ItemGroup>
     <Resource Include="Resources\gtk-sort-ascending.png" />
     <Resource Include="Resources\gtk-sort-descending.png" />
+    <Resource Include="Resources\save.png" />
     <Resource Include="Resources\back.png" />
     <Content Include="DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

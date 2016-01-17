@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="client_id" Type="int" Nullable="false" />
-    <Property Name="date_begin" Type="date" />
+    <Property Name="date_begin" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Client">
     <Key>
@@ -79,7 +79,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="abonement_id" Type="int" Nullable="false" />
     <Property Name="service_id" Type="int" Nullable="false" />
-    <Property Name="date_end" Type="date" />
+    <Property Name="date_end" Type="date" Nullable="false" />
     <Property Name="count" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
@@ -148,12 +148,14 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have 
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewClients">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="surname" />
       <PropertyRef Name="name" />
       <PropertyRef Name="sex" />
       <PropertyRef Name="passp_num" />
       <PropertyRef Name="address" />
     </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="sex" Type="int" Nullable="false" />
@@ -165,6 +167,7 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a p
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewCoaches">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="surname" />
       <PropertyRef Name="name" />
       <PropertyRef Name="sex" />
@@ -172,6 +175,7 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a p
       <PropertyRef Name="address" />
       <PropertyRef Name="title" />
     </Key>
+    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
     <Property Name="sex" Type="int" Nullable="false" />
@@ -392,6 +396,7 @@ FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewClients" EntityType="Self.ViewClients" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[ViewClients].[id] AS [id], 
 [ViewClients].[surname] AS [surname], 
 [ViewClients].[name] AS [name], 
 [ViewClients].[sex] AS [sex], 
@@ -402,6 +407,7 @@ FROM [dbo].[ViewClients] AS [ViewClients]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewCoaches" EntityType="Self.ViewCoaches" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[ViewCoaches].[id] AS [id], 
 [ViewCoaches].[surname] AS [surname], 
 [ViewCoaches].[name] AS [name], 
 [ViewCoaches].[sex] AS [sex], 

@@ -21,5 +21,6 @@ namespace CourseWorkWpfApp
         public string address { get; set; }
         public string telephone { get; set; }
         public string title { get; set; }
+        public int id { get; set; }
     }
 }

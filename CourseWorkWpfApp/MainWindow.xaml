@@ -5,17 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Авторизация" Height="340.042" Width="534.166" ResizeMode="NoResize">
+        Title="Авторизация" Height="340.042" Width="534.166" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Label x:Name="label" Content="Информационная система фитнес-клуба &quot;Спарта&quot;" Margin="10,10,0,0" FontSize="21.333" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="506"/>
         <Label x:Name="label1" Content="Добро пожаловать!" Margin="172,70,0,0" FontSize="18.667" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="182"/>
         <Label x:Name="label2" Content="Логин" HorizontalAlignment="Left" Margin="172,148,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3" Content="Пароль" HorizontalAlignment="Left" Margin="165,197,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="loginTextBox" Height="23" Margin="234,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
-        <PasswordBox x:Name="passwordTextBox" Margin="234,200,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="120"/>
-        <Button x:Name="authorizationButton" Content="Войти" Margin="172,249,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Click="authorizationButton_Click"/>
-        <TextBlock x:Name="textBlock" Margin="286,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="77">
-            <Hyperlink x:Name="registerReference" NavigateUri="registrationWindow.xaml" Click="registerReference_Click">Регистрация</Hyperlink>
-        </TextBlock>
+        <PasswordBox x:Name="passwordTextBox" Margin="234,200,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="120" ToolTip="Пароль"/>
+        <Button x:Name="authorizationButton" Content="Войти" Margin="234,245,0,0" VerticalAlignment="Top" Click="authorizationButton_Click" HorizontalAlignment="Left" Width="75" ToolTip="Войти в систему"/>
+        <ComboBox x:Name="loginComboBox" HorizontalAlignment="Left" Margin="234,148,0,0" VerticalAlignment="Top" Width="120" ToolTip="Выберите пользователя"/>
     </Grid>
 </Window>

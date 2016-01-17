@@ -32,9 +32,7 @@ namespace CourseWorkWpfApp
                 {
                     coachDataGrid.ItemsSource = Db.ViewCoaches.ToList();
 
-                    
                 }
-
 
             }
             catch (Exception)
@@ -78,6 +76,57 @@ namespace CourseWorkWpfApp
         {
             addCoachWindow addCoachWindow = new addCoachWindow();
             addCoachWindow.Show();
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            coachDataGrid.Items.Refresh();
+        }
+
+        private void editCoachButton_Click(object sender, RoutedEventArgs e)
+        {
+            Coach coach = new Coach();
+
+            int row = coachDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((coachDataGrid.Columns[0].GetCellContent(coachDataGrid.Items[row]) as TextBlock).Text);
+
+            MessageBox.Show(id.ToString());
+            
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    coach = Db.Coach.FirstOrDefault(c => c.id == id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            addCoachWindow addCoachWindow = new addCoachWindow(coach);
+            addCoachWindow.Show();
+        }
+
+        private void deleteCoachtButton_Click(object sender, RoutedEventArgs e)
+        {
+            int row = coachDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((coachDataGrid.Columns[0].GetCellContent(coachDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    Db.Coach.Remove(Db.Coach.FirstOrDefault(c => c.id == id));
+                    Db.SaveChanges();
+                }
+
+                MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

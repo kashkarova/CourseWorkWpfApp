@@ -24,12 +24,15 @@ namespace CourseWorkWpfApp
         public authorizationWindow()
         {
             InitializeComponent();
+
+            loginComboBox.SelectedIndex = 0;
+
         }
 
         private void authorizationButton_Click(object sender, RoutedEventArgs e)
         {
-            string login = loginTextBox.Text;
-            string password = passwordTextBox.Password;
+            string login = loginComboBox.SelectedValue.ToString();
+            string password = passwordTextBox.Password;          
 
             if (AuthorizationDefend.EntranceToSystem(login, password) == false)
             {
@@ -38,23 +41,38 @@ namespace CourseWorkWpfApp
 
                 if (result == MessageBoxResult.OK)
                 {
-                    loginTextBox.Clear();
+                    loginComboBox.SelectedIndex = 0;
                     passwordTextBox.Clear();
                 }
             }
             else
             {
                 mainMenuWindow mainMenuWindow = new mainMenuWindow();
+
+                if (loginComboBox.SelectedIndex == 0)
+                {
+                    mainMenuWindow.Title = mainMenuWindow.Title + ": Администратор";
+                }
+                
                 mainMenuWindow.Show();
                 this.Close();
             }
+            
         }
 
-        private void registerReference_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            registrationWindow registrWindow = new registrationWindow();
-            registrWindow.Show();
-            this.Close();
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    loginComboBox.ItemsSource = Db.User.Select(u => u.login).ToList();
+                }          
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

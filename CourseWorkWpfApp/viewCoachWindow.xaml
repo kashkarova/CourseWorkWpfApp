@@ -9,6 +9,7 @@
     <Grid>
         <DataGrid x:Name="coachDataGrid" Margin="10,34,10,73" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=id}" Header="Код тренера" />
                 <DataGridTextColumn Binding="{Binding Path=surname}" Header="Фамилия" />
                 <DataGridTextColumn Binding="{Binding Path=name}" Header="Имя, отчество" />
                 <DataGridTextColumn Binding="{Binding Path=sex}" Header="Пол" />
@@ -16,10 +17,11 @@
                 <DataGridTextColumn Binding="{Binding Path=address}" Header="Адрес" />
                 <DataGridTextColumn Binding="{Binding Path=telephone}" Header="Телефон" />
                 <DataGridTextColumn Binding="{Binding Path=title}" Header="Должность" />
+
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="addCoachButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,16" Width="113" Height="41" VerticalAlignment="Bottom" Click="addCoachButton_Click"/>
-        <Button x:Name="deleteCoachtButton" Content="Удалить" HorizontalAlignment="Left" Margin="259,0,0,16" VerticalAlignment="Bottom" Width="112" Height="41"/>
+        <Button x:Name="deleteCoachtButton" Content="Удалить" HorizontalAlignment="Left" Margin="259,0,0,16" VerticalAlignment="Bottom" Width="112" Height="41" Click="deleteCoachtButton_Click"/>
         <Button x:Name="ascSortCoachButton" Margin="0,0,73,16" HorizontalAlignment="Right" Width="55" Click="ascSortCoachButton_Click" Height="41" VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию" BorderBrush="{x:Null}" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
@@ -30,7 +32,8 @@
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="135,0,0,16" Width="113" Height="41" VerticalAlignment="Bottom"/>
+        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="135,0,0,37" Width="113" Height="22" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+        <Button x:Name="editCoachButton" Content="Изменить" HorizontalAlignment="Left" Margin="135,0,0,13" Width="113" Click="editCoachButton_Click" Height="19" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

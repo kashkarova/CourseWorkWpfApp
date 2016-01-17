@@ -26,7 +26,31 @@ namespace CourseWorkWpfApp
         public mainMenuWindow()
         {
             InitializeComponent();
+
             dateBeginDatePicker.DisplayDateStart = DateTime.Now;
+        }
+
+        private void UserMode()
+        {
+            menuAddContract.IsEnabled = false;
+            menuAddCoach.IsEnabled = false;
+            menuAddService.IsEnabled = false;
+            menuSettingChangePassword.IsEnabled = false;
+            menuSettingsAddPost.IsEnabled = false;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.Title.Length > 12)
+            {
+                menuSettingChangeUserIsAdmin.IsChecked = true;
+            }
+            else
+            {
+                menuSettingChangeUserIsUser.IsChecked = true;
+
+                UserMode();
+            }
         }
 
         #region File
@@ -70,6 +94,21 @@ namespace CourseWorkWpfApp
                 {
                     MessageBox.Show("Ошибка чтения из файла!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void menuFileSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    Db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -204,13 +243,15 @@ namespace CourseWorkWpfApp
             }
         }
 
-        private void menuFileSave_Click(object sender, RoutedEventArgs e)
+        
+
+        private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 using (var Db = new DatabaseContext())
                 {
-                    Db.SaveChanges();
+                   
                 }
             }
             catch (Exception)
@@ -218,5 +259,13 @@ namespace CourseWorkWpfApp
                 MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void menuSettingsAddPost_Click(object sender, RoutedEventArgs e)
+        {
+            addPostWindow addPostWindow = new addPostWindow();
+            addPostWindow.Show();
+        }
+
+        
     }
 }

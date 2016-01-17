@@ -20,5 +20,6 @@ namespace CourseWorkWpfApp
         public string passp_num { get; set; }
         public string address { get; set; }
         public string telephone { get; set; }
+        public int id { get; set; }
     }
 }

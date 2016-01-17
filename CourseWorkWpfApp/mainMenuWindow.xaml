@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Главное меню" Height="417.527" Width="582.868">
+        Title="Главное меню" Height="417.527" Width="582.868" Loaded="Window_Loaded">
     <Grid>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
             <MenuItem Header="Файл" ToolTip="Файл">
@@ -39,6 +39,15 @@
             </MenuItem>
             <MenuItem Header="Поиск" ToolTip="Поиск"/>
             <MenuItem Header="Отчёт" ToolTip="Отчёт"/>
+            <MenuItem Header="Настройки" ToolTip="Настройки">
+                <MenuItem Header="Сменить пользователя">
+                    <MenuItem x:Name="menuSettingChangeUserIsAdmin" Header="Администратор" IsCheckable="True"/>
+                    <MenuItem x:Name="menuSettingChangeUserIsUser" Header="Пользователь" IsCheckable="True"/>
+                </MenuItem>
+                <MenuItem x:Name="menuSettingChangePassword" Header="Сменить пароль"/>
+                <Separator/>
+                <MenuItem x:Name="menuSettingsAddPost" Header="Добавить должность" Click="menuSettingsAddPost_Click"/>
+            </MenuItem>
             <MenuItem Header="Помощь" ToolTip="Помощь">
                 <MenuItem Header="Справка"/>
                 <Separator/>
@@ -64,20 +73,21 @@
                 <DataGridTextColumn Binding="{Binding Path=price}" Header="Цена за 1 занятие" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,36" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom"/>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,36" VerticalAlignment="Bottom" Width="75"/>
-        <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,36" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="addMain_MenuButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,36" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="saveMain_MenuButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,36" VerticalAlignment="Bottom" Width="75"/>
+        <Button x:Name="deleteMain_MenuButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,36" VerticalAlignment="Bottom" Width="75" Click="deleteMain_MenuButton_Click"/>
         <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="250,0,0,36" VerticalAlignment="Bottom" Width="75"/>
-        <Button x:Name="ascSortingButton"  Margin="0,0,71,36" VerticalAlignment="Bottom" Height="35" HorizontalAlignment="Right" Width="55" ToolTip="Сортировка по возрастанию" BorderBrush="{x:Null}">
+        <Button x:Name="ascSortingButton"  Margin="0,0,54,36" VerticalAlignment="Bottom" Height="36" HorizontalAlignment="Right" Width="36" ToolTip="Сортировка по возрастанию" BorderBrush="#FFB0ACAC">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="descSortingButton"  Margin="0,0,13,36" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55" ToolTip="Сортировка по убыванию" BorderBrush="{x:Null}">
+        <Button x:Name="descSortingButton"  Margin="0,0,13,36" Height="36" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="36" ToolTip="Сортировка по убыванию" BorderBrush="#FFB0ACAC">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="218,86,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

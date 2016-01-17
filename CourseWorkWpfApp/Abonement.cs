@@ -21,7 +21,7 @@ namespace CourseWorkWpfApp
     
         public int id { get; set; }
         public int client_id { get; set; }
-        public Nullable<System.DateTime> date_begin { get; set; }
+        public System.DateTime date_begin { get; set; }
     
         public virtual ICollection<ServicePosition> ServicePosition { get; set; }
         public virtual Client Client { get; set; }
