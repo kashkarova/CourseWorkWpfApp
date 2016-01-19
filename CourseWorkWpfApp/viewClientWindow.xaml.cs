@@ -24,6 +24,22 @@ namespace CourseWorkWpfApp
             InitializeComponent();
         }
 
+        private void RefreshClientDataGrid()
+        {
+            clientDataGrid.Items.Refresh();
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    clientDataGrid.ItemsSource = Db.ViewClients.ToList();
+                }
+
+                clientDataGrid.Items.Refresh();
+            }
+            catch (Exception) { }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -74,7 +90,7 @@ namespace CourseWorkWpfApp
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            clientDataGrid.Items.Refresh();
+            RefreshClientDataGrid();
         }
 
         private void addClientButton_Click(object sender, RoutedEventArgs e)

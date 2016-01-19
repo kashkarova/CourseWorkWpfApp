@@ -127,13 +127,13 @@ namespace CourseWorkWpfApp
                             {
                                 MessageBox.Show("Возможно, были введены некорректные данные! Попробуйте ещё раз.", "Ошибка изменения данных", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
-                    }
+                        }
 
                         MessageBox.Show("Данные о клиенте изменены успешно!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show("Возможно, были введены некорректные данные! Попробуйте ещё раз.", "Ошибка изменения данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                
                 

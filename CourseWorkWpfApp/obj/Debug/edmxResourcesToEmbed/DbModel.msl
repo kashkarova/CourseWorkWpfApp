@@ -133,6 +133,7 @@
     <EntitySetMapping Name="ViewGroupService">
       <EntityTypeMapping TypeName="DbModel.ViewGroupService">
         <MappingFragment StoreEntitySet="ViewGroupService">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="room_num" ColumnName="room_num" />
           <ScalarProperty Name="price" ColumnName="price" />
@@ -143,6 +144,7 @@
     <EntitySetMapping Name="ViewPersonalService">
       <EntityTypeMapping TypeName="DbModel.ViewPersonalService">
         <MappingFragment StoreEntitySet="ViewPersonalService">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="sum_price" ColumnName="sum price" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -205,6 +207,25 @@
           <ScalarProperty Name="sex" ColumnName="sex" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="surname" ColumnName="surname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoachesNamesWithContract">
+      <EntityTypeMapping TypeName="DbModel.CoachesNamesWithContract">
+        <MappingFragment StoreEntitySet="CoachesNamesWithContract">
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewServices">
+      <EntityTypeMapping TypeName="DbModel.ViewServices">
+        <MappingFragment StoreEntitySet="ViewServices">
+          <ScalarProperty Name="count_coaches" ColumnName="count_coaches" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

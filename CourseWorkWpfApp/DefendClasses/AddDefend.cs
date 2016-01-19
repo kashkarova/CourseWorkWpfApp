@@ -43,5 +43,12 @@ namespace CourseWorkWpfApp.DefendClasses
             return true;
         }
 
+        public static bool AddPostTitle(string title)
+        {
+            if(title.Equals(null))return false;
+
+            return true;
+        }
+
     }
 }

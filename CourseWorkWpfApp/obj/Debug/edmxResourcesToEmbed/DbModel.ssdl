@@ -113,6 +113,18 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNames' does not have a 
     <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNamesWithContract' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CoachesNamesWithContract">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CurrServicePositionId">
     <Key>
@@ -201,11 +213,13 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewContractWithAddPayment' do
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewGroupService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewGroupService">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="title" />
       <PropertyRef Name="price" />
       <PropertyRef Name="room_num" />
       <PropertyRef Name="surname" />
     </Key>
+    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
     <Property Name="room_num" Type="int" Nullable="false" />
@@ -215,10 +229,12 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewGroupService' does not hav
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewPersonalService">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="title" />
       <PropertyRef Name="sum price" />
       <PropertyRef Name="surname" />
     </Key>
+    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="sum price" Type="float" Nullable="false" />
     <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
@@ -237,6 +253,18 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not 
     <Property Name="date_end" Type="date" />
     <Property Name="count" Type="int" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewServices">
+    <Key>
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="count_coaches" Type="int" />
   </EntityType>
   <Association Name="fk_abonement">
     <End Role="Abonement" Type="Self.Abonement" Multiplicity="1">
@@ -375,6 +403,13 @@ FROM [dbo].[ClientsNames] AS [ClientsNames]</DefiningQuery>
 [CoachesNames].[title] AS [title]
 FROM [dbo].[CoachesNames] AS [CoachesNames]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="CoachesNamesWithContract" EntityType="Self.CoachesNamesWithContract" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[CoachesNamesWithContract].[id] AS [id], 
+[CoachesNamesWithContract].[name] AS [name], 
+[CoachesNamesWithContract].[title] AS [title]
+FROM [dbo].[CoachesNamesWithContract] AS [CoachesNamesWithContract]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="CurrServicePositionId" EntityType="Self.CurrServicePositionId" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [CurrServicePositionId].[sP_id] AS [sP_id], 
@@ -427,6 +462,7 @@ FROM [dbo].[ViewContractWithAddPayment] AS [ViewContractWithAddPayment]</Definin
     </EntitySet>
     <EntitySet Name="ViewGroupService" EntityType="Self.ViewGroupService" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[ViewGroupService].[id] AS [id], 
 [ViewGroupService].[title] AS [title], 
 [ViewGroupService].[price] AS [price], 
 [ViewGroupService].[room_num] AS [room_num], 
@@ -435,6 +471,7 @@ FROM [dbo].[ViewGroupService] AS [ViewGroupService]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewPersonalService" EntityType="Self.ViewPersonalService" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[ViewPersonalService].[id] AS [id], 
 [ViewPersonalService].[title] AS [title], 
 [ViewPersonalService].[sum price] AS [sum price], 
 [ViewPersonalService].[surname] AS [surname]
@@ -448,6 +485,14 @@ FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
 [ViewServicePosition].[count] AS [count], 
 [ViewServicePosition].[price] AS [price]
 FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewServices" EntityType="Self.ViewServices" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ViewServices].[title] AS [title], 
+[ViewServices].[description] AS [description], 
+[ViewServices].[Price] AS [Price], 
+[ViewServices].[count_coaches] AS [count_coaches]
+FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="fk_abonement" Association="Self.fk_abonement">
       <End Role="Abonement" EntitySet="Abonement" />

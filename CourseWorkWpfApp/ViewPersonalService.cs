@@ -17,5 +17,6 @@ namespace CourseWorkWpfApp
         public string title { get; set; }
         public double sum_price { get; set; }
         public string surname { get; set; }
+        public int id { get; set; }
     }
 }

@@ -101,6 +101,9 @@
     <Compile Include="CoachesNames.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CoachesNamesWithContract.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contract.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -170,6 +173,9 @@
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewServicePosition.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewServices.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="viewServiceWindow.xaml.cs">

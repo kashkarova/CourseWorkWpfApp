@@ -25,20 +25,42 @@ namespace CourseWorkWpfApp
             
         }
 
+        private void RefreshContractDataGrid()
+        {
+            contractDataGrid.Items.Refresh();
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    int i = Db.CoachesNames.FirstOrDefault(n => n.name == (string)coachComboBox.SelectedValue).id;
+
+                    var result = Db.ViewContractWithAddPayment.Where(x => x.coach_id == i).Select(x => x).ToList();
+
+                    contractDataGrid.ItemsSource = result;
+                }
+
+                contractDataGrid.Items.Refresh();
+            }
+            catch (Exception)
+            {
+            }      
+        }
+
         private void coachComboBox_Loaded(object sender, RoutedEventArgs e)
         {
 
-          //  try
-           // {
+            try
+            {
                 using (var Db = new DatabaseContext())
                 {
                     coachComboBox.ItemsSource = Db.CoachesNames.Select(i => i.name).ToList();
                 }
-         //   }
-         //   catch (Exception)
-          //  {
-          //      MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-          //  }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void coachComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -124,6 +146,51 @@ namespace CourseWorkWpfApp
 
                     contractDataGrid.ItemsSource = result;
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void addContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            addContractWindow addContractWindow = new addContractWindow();
+            addContractWindow.Show();
+        }
+
+        private void saveContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshContractDataGrid();
+        }
+
+        private void editContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            Contract contract = new Contract();
+
+            int row = contractDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((contractDataGrid.Columns[0].GetCellContent(contractDataGrid.Items[row]) as TextBlock).Text);
+
+            MessageBox.Show(id.ToString());
+
+
+            addContractWindow addContractWindow = new addContractWindow(contract);
+            addContractWindow.Show();
+        }
+
+        private void deleteContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            int row = contractDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((contractDataGrid.Columns[0].GetCellContent(contractDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    Db.Contract.Remove(Db.Contract.FirstOrDefault(c => c.id == id));
+                    Db.SaveChanges();
+                }
+
+                MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception)
             {

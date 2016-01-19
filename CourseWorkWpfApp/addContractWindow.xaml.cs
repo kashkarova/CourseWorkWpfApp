@@ -20,9 +20,24 @@ namespace CourseWorkWpfApp
     /// </summary>
     public partial class addContractWindow : Window
     {
+        private bool isAdd = true;
+        private Contract contract_g;
+
         public addContractWindow()
         {
             InitializeComponent();
+
+            
+        }
+
+        public addContractWindow(Contract contract)
+        {
+            InitializeComponent();
+
+            isAdd = false;
+            contract_g = contract;
+
+            this.Title = "Редактирование контракта";
         }
 
         private void coachComboBox_Loaded(object sender, RoutedEventArgs e)
@@ -31,7 +46,7 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    coachComboBox.ItemsSource = Db.CoachesNames.Select(i => i.name).ToList();
+                    coachComboBox.ItemsSource = Db.CoachesNamesWithContract.Select(i => i.name).ToList();
                 }
             }
             catch (Exception)
@@ -48,9 +63,9 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    int i= Db.CoachesNames.FirstOrDefault(n =>n.name == (string)coachComboBox.SelectedValue).id;
+                    int i= Db.CoachesNamesWithContract.FirstOrDefault(n =>n.name == (string)coachComboBox.SelectedValue).id;
 
-                    var result = Db.CoachesNames.Where(x => x.id == i).Select(x => x.title).ToList<string>();
+                    var result = Db.CoachesNamesWithContract.Where(x => x.id == i).Select(x => x.title).ToList<string>();
 
                     foreach (string s in result)
                     {
@@ -111,38 +126,68 @@ namespace CourseWorkWpfApp
 
         private void saveContractButton_Click(object sender, RoutedEventArgs e)
         {
-            Contract contract = new Contract();
+            if (isAdd == true)
+            {
+                Contract contract = new Contract();
 
-            contract.salary = Convert.ToDouble(salaryTextBox.Text);
+                contract.salary = Convert.ToDouble(salaryTextBox.Text);
 
-            if (AddDefend.AddContract(contract.salary) == true)
+                if (AddDefend.AddContract(contract.salary) == true)
+                {
+                    try
+                    {
+                        using (var Db = new DatabaseContext())
+                        {
+                            contract.coach_id = Db.CoachesNamesWithContract.FirstOrDefault(n => n.name == (string)coachComboBox.SelectedValue).id;
+
+                            contract.service_id = Db.Service.FirstOrDefault(n => n.title == (string)titleServiceComboBox.SelectedValue).id;
+
+                            Db.Contract.Add(contract);
+                            Db.SaveChanges();
+
+                            MessageBox.Show("Данные о контракте добавлены успешно!", "Добавление данных", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Возможно, были введены некорректные данные! Поробуйте ещё раз.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                    addContractButton_Click(sender, e);
+                }
+            }
+            else
             {
                 try
                 {
                     using (var Db = new DatabaseContext())
                     {
-                        contract.coach_id = Db.CoachesNames.FirstOrDefault(n => n.name == (string)coachComboBox.SelectedValue).id;
+                        Db.Contract.Find(contract_g.id).coach_id = Db.CoachesNamesWithContract.FirstOrDefault(p => p.name == (string)coachComboBox.SelectedValue).id;
+                        Db.Contract.Find(contract_g.id).service_id = Db.Service.FirstOrDefault(s => s.title == (string)titleServiceComboBox.SelectedValue).id;
+                        Db.Contract.Find(contract_g.id).salary = Convert.ToDouble(salaryTextBox.Text);
+                        
 
-                        contract.service_id = Db.Service.FirstOrDefault(n => n.title == (string)titleServiceComboBox.SelectedValue).id;
-
-                        Db.Contract.Add(contract);
-                        Db.SaveChanges();
-
-                        MessageBox.Show("Данные о контракте добавлены успешно!", "Добавление данных", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                        if (AddDefend.AddContract(Db.Contract.Find(contract_g.id).salary) == true)
+                        {
+                            Db.SaveChanges();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Возможно, были введены некорректные данные! Попробуйте ещё раз.", "Ошибка изменения данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
+
+                    MessageBox.Show("Данные о контракте изменены успешно!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Возможно, были введены некорректные данные! Попробуйте ещё раз.", "Ошибка изменения данных", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Возможно, были введены некорректные данные! Поробуйте ещё раз.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
-                addContractButton_Click(sender, e);
-            }
-            
+            }          
         }
     }
 }

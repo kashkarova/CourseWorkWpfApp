@@ -50,6 +50,7 @@ namespace CourseWorkWpfApp
             passportTextBox.Text = coach.passp_num;
             addressTextBox.Text = coach.address;
             telephoneTextBox.Text = coach.telephone;
+
             postComboBox.SelectedIndex = coach.post;
 
             isAdd = false;

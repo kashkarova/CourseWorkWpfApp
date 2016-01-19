@@ -288,6 +288,8 @@
     <EntitySet Name="ViewServicePosition" EntityType="DbModel.ViewServicePosition" />
     <EntitySet Name="CurrServicePositionId" EntityType="DbModel.CurrServicePositionId" />
     <EntitySet Name="ViewClients" EntityType="DbModel.ViewClients" />
+    <EntitySet Name="CoachesNamesWithContract" EntityType="DbModel.CoachesNamesWithContract" />
+    <EntitySet Name="ViewServices" EntityType="DbModel.ViewServices" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -315,21 +317,25 @@
       <PropertyRef Name="price" />
       <PropertyRef Name="room_num" />
       <PropertyRef Name="surname" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="room_num" Type="Int32" Nullable="false" />
     <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="ViewPersonalService">
     <Key>
       <PropertyRef Name="title" />
       <PropertyRef Name="sum_price" />
       <PropertyRef Name="surname" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="sum_price" Type="Double" Nullable="false" />
     <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="CoachesNames">
     <Key>
@@ -397,5 +403,25 @@
     <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="CoachesNamesWithContract">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ViewServices">
+    <Key>
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="count_coaches" Type="Int32" />
   </EntityType>
 </Schema>
