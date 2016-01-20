@@ -8,19 +8,19 @@
         Title="Новый тренер" Height="475.022" Width="405.846">
     <Grid>
         <Label x:Name="label" Content="Фамилия" HorizontalAlignment="Left" Margin="58,30,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="133,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="surnameTextBox" HorizontalAlignment="Left" Height="23" Margin="133,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="3" MaxLength="20"/>
         <Label x:Name="label1" Content="Имя, отчество" HorizontalAlignment="Left" Margin="30,77,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="23" Margin="133,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="23" Margin="133,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="3" MaxLength="40"/>
         <Label x:Name="label2" Content="Пол" HorizontalAlignment="Left" Margin="86,117,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="maleRadioButton" Content="м" HorizontalAlignment="Left" Margin="133,123,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="femaleRadioButton" Content="ж" HorizontalAlignment="Left" Margin="197,123,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3" Content="№ паспорта" HorizontalAlignment="Left" Margin="41,160,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="passportTextBox" HorizontalAlignment="Left" Height="23" Margin="133,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passportTextBox" HorizontalAlignment="Left" Height="23" Margin="133,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="8" MaxLines="1"/>
         <Label x:Name="label4" Content="Адрес" HorizontalAlignment="Left" Margin="75,207,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="addressTextBox" HorizontalAlignment="Left" Height="54" Margin="133,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="addressTextBox" HorizontalAlignment="Left" Height="54" Margin="133,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="5" MaxLength="50"/>
         <Label x:Name="label5" Content="Телефон" HorizontalAlignment="Left" Margin="61,285,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label6" Content="Должность" HorizontalAlignment="Left" Margin="47,331,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="telephoneTextBox" HorizontalAlignment="Left" Height="23" Margin="133,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="telephoneTextBox" HorizontalAlignment="Left" Height="23" Margin="133,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="1" MaxLength="7"/>
         <ComboBox x:Name="postComboBox" HorizontalAlignment="Left" Margin="133,335,0,0" VerticalAlignment="Top" Width="120" Loaded="postComboBox_Loaded"/>
         <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="47,387,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="addButton_Click"/>
         <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="156,387,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="saveButton_Click"/>

@@ -95,11 +95,6 @@ namespace CourseWorkWpfApp
             searchPriceCheckBox.Width = 48;
         }
 
-        private void searchServiceTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void viewServiceComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             viewServiceComboBox.ItemsSource = new List<string>() { "Групповые", "Персональные", "Все" };
@@ -184,7 +179,7 @@ namespace CourseWorkWpfApp
                     service = Db.Service.FirstOrDefault(c => c.id == id);
                     try { group_id = Db.GroupService.Find(service.id).service_id; } catch { group_id = 0; }
 
-                try { personal_id = Db.PersonalService.Find(service.id).service_id; } catch { personal_id = 0; }
+                    try { personal_id = Db.PersonalService.Find(service.id).service_id; } catch { personal_id = 0; }
 
                     if (group_id == 0)
                     {
@@ -202,9 +197,9 @@ namespace CourseWorkWpfApp
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Возможно, были введены некорректные данные! Пожалуйста, попробуйте ещё раз.", "Ошибка ввода данных", MessageBoxButton.OK, MessageBoxImage.Error);
             }          
             
         }
@@ -222,7 +217,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -238,11 +233,11 @@ namespace CourseWorkWpfApp
                     Db.SaveChanges();
                 }
 
-                MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Запись успешно удалена!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -277,7 +272,8 @@ namespace CourseWorkWpfApp
                 }
                 catch (Exception)
                 {
-
+                    MessageBox.Show("Некорректный параметр поиска!", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                    searchServiceTextBox.Clear();
                 }
             }
             if (searchPriceCheckBox.IsChecked == true)
@@ -290,8 +286,6 @@ namespace CourseWorkWpfApp
                         using (var Db = new DatabaseContext())
                         {
                             double i = Convert.ToDouble(parameter);
-
-                            MessageBox.Show(i.ToString());
 
                             var result = Db.ViewServices.Where(s => s.Price == i).Select(s => s);
 
@@ -309,7 +303,8 @@ namespace CourseWorkWpfApp
                     }
                     catch (Exception)
                     {
-
+                        MessageBox.Show("Некорректный параметр поиска!", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                        searchServiceTextBox.Clear();
                     }
                 }
                 else

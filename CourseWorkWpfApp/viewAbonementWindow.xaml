@@ -42,7 +42,7 @@
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="searchAbonementTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchAbonementTextBox_GotFocus" />
+        <TextBox x:Name="searchAbonementTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchAbonementTextBox_GotFocus" MaxLines="1" MaxLength="25" />
         <Button x:Name="searchAbonementButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchAbonementButton_Click"/>
         <Label x:Name="searchToolsLabel" Content="Инструменты поиска" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="searchClientSurnameCheckBox" Content="Клиент" HorizontalAlignment="Left" Margin="150,62,0,0" VerticalAlignment="Top" Checked="searchClientSurnameCheckBox_Checked" Unchecked="searchClientSurnameCheckBox_Unchecked"/>

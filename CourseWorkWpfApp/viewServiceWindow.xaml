@@ -15,7 +15,7 @@
                 <DataGridTextColumn Binding="{Binding Path=Price}" Header="Цена за 1 занятие, грн" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="searchServiceTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchServiceTextBox_GotFocus" LostFocus="searchServiceTextBox_LostFocus"/>
+        <TextBox x:Name="searchServiceTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchServiceTextBox_GotFocus" MaxLines="1" MaxLength="25"/>
         <Button x:Name="searchServiceButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchServiceButton_Click"/>
         <Button x:Name="addServiceButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,42" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Добавить услугу" Click="addServiceButton_Click"/>
         <Button x:Name="editServiceButton" Content="Изменить" HorizontalAlignment="Left" Margin="90,0,0,42" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Изменить услугу" Click="editServiceButton_Click"/>

@@ -18,7 +18,7 @@
         <ComboBox x:Name="typeServiceComboBox" HorizontalAlignment="Left" Margin="139,136,0,0" VerticalAlignment="Top" Width="120" Loaded="typeServiceComboBox_Loaded" SelectionChanged="typeServiceComboBox_SelectionChanged"/>
         <Label x:Name="label3" Content="Услуга" HorizontalAlignment="Left" Margin="296,132,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="titleServiceComboBox" HorizontalAlignment="Left" Margin="346,136,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="salaryTextBox" HorizontalAlignment="Left" Height="23" Margin="139,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="salaryTextBox" HorizontalAlignment="Left" Height="23" Margin="139,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="1" MaxLength="6"/>
         <Label x:Name="label4" Content="Оплата" HorizontalAlignment="Left" Margin="67,197,0,0" VerticalAlignment="Top" Width="51"/>
         <Button x:Name="addContractButton" Content="Добавить" HorizontalAlignment="Left" Margin="43,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="addContractButton_Click"/>
         <Button x:Name="saveContractButton" Content="Сохранить" HorizontalAlignment="Left" Margin="139,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="saveContractButton_Click"/>
