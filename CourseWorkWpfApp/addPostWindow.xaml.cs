@@ -76,10 +76,12 @@ namespace CourseWorkWpfApp
                 this.Title = "Добавить должность";
 
                 Post post = new Post();
-                post.title = postTitleTextBox.Text;
+                
 
-                if (AddDefend.AddPostTitle(post.title) == true)
+                if (AddDefend.AddPostTitle(postTitleTextBox.Text) == true)
                 {
+                    post.title = postTitleTextBox.Text;
+
                     try
                     {
                         using (var Db = new DatabaseContext())

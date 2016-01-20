@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
@@ -266,6 +267,19 @@ namespace CourseWorkWpfApp
             addPostWindow.Show();
         }
 
-        
+        private void menuHelpSpravkaButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process SysInfo = new Process();
+                SysInfo.StartInfo.ErrorDialog = true;
+                SysInfo.StartInfo.FileName = "Help.chm";
+                SysInfo.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

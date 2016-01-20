@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Новый контракт" Height="378.602" Width="508.901">
+        Title="Новый контракт" Height="357.602" Width="508.901">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

@@ -74,7 +74,7 @@ namespace CourseWorkWpfApp.DefendClasses
 
         public static bool AddPostTitle(string title)
         {
-            if(title.Equals(null))return false;
+            if(title.Equals(null)) return false;
 
             return true;
         }

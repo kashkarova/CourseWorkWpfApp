@@ -35,7 +35,6 @@
                 <MenuItem x:Name="menuViewCoach" Header="Тренеры" Click="menuViewCoach_Click"/>
                 <MenuItem x:Name="menuViewService" Header="Услуги" Click="menuViewService_Click"/>
             </MenuItem>
-            <MenuItem Header="Поиск" ToolTip="Поиск"/>
             <MenuItem Header="Настройки" ToolTip="Настройки">
                 <MenuItem Header="Сменить пользователя">
                     <MenuItem x:Name="menuSettingChangeUserIsAdmin" Header="Администратор" IsCheckable="True"/>
@@ -46,7 +45,7 @@
                 <MenuItem x:Name="menuSettingsAddPost" Header="Добавить должность" Click="menuSettingsAddPost_Click"/>
             </MenuItem>
             <MenuItem Header="Помощь" ToolTip="Помощь">
-                <MenuItem Header="Справка"/>
+                <MenuItem x:Name="menuHelpSpravkaButton" Header="Справка" Click="menuHelpSpravkaButton_Click"/>
                 <Separator/>
                 <MenuItem x:Name="menuAbout" Header="О программе" Click="menuAbout_Click"/>
             </MenuItem>

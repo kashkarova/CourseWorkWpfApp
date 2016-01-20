@@ -116,7 +116,48 @@ namespace CourseWorkWpfApp
 
         private void editServiceButton_Click(object sender, RoutedEventArgs e)
         {
+            Service service = new Service();
+            PersonalService pr_service = new PersonalService();
+            GroupService gr_service = new GroupService();
 
+            int row = serviceDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((serviceDataGrid.Columns[0].GetCellContent(serviceDataGrid.Items[row]) as TextBlock).Text);
+
+            int group_id = 0;
+            int personal_id = 0;
+
+            addServiceWindow addServiceWindow;
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    service = Db.Service.FirstOrDefault(c => c.id == id);
+                    try { group_id = Db.GroupService.Find(service.id).service_id; } catch { group_id = 0; }
+
+                try { personal_id = Db.PersonalService.Find(service.id).service_id; } catch { personal_id = 0; }
+
+                    if (group_id == 0)
+                    {
+                        pr_service = Db.PersonalService.FirstOrDefault(s => s.service_id == id);
+
+                        addServiceWindow = new addServiceWindow(service, pr_service);
+                        addServiceWindow.Show();
+                    }
+                    if (personal_id == 0)
+                    {
+                        gr_service = Db.GroupService.FirstOrDefault(s => s.service_id == id);
+
+                        addServiceWindow = new addServiceWindow(service, gr_service);
+                        addServiceWindow.Show();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }          
+            
         }
 
         private void saveServiceButton_Click(object sender, RoutedEventArgs e)
@@ -138,7 +179,22 @@ namespace CourseWorkWpfApp
 
         private void deleteServiceButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            int row = serviceDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((serviceDataGrid.Columns[0].GetCellContent(serviceDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    Db.Service.Remove(Db.Service.FirstOrDefault(c => c.id == id));
+                    Db.SaveChanges();
+                }
+
+                MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void searchServiceButton_Click(object sender, RoutedEventArgs e)

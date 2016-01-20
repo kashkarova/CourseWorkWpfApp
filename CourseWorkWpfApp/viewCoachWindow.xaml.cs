@@ -100,7 +100,7 @@ namespace CourseWorkWpfApp
             int row = coachDataGrid.SelectedIndex;
             int id = Convert.ToInt32((coachDataGrid.Columns[0].GetCellContent(coachDataGrid.Items[row]) as TextBlock).Text);
 
-            MessageBox.Show(id.ToString());
+            //MessageBox.Show(id.ToString());
             
 
             try

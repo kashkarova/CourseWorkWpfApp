@@ -22,6 +22,9 @@ namespace CourseWorkWpfApp
         public viewAbonementWindow()
         {
             InitializeComponent();
+
+            searchAbonementTextBox.Clear();
+            searchAbonementTextBox.Text = "Найти...";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,6 +44,9 @@ namespace CourseWorkWpfApp
 
         private void ascSortAbonementButton_Click(object sender, RoutedEventArgs e)
         {
+            searchAbonementTextBox.Clear();
+            searchAbonementTextBox.Text = "Найти...";
+
             try
             {
                 using (var Db = new DatabaseContext())
@@ -56,6 +62,9 @@ namespace CourseWorkWpfApp
 
         private void descSortAbonementButton_Click(object sender, RoutedEventArgs e)
         {
+            searchAbonementTextBox.Clear();
+            searchAbonementTextBox.Text = "Найти...";
+
             try
             {
                 using (var Db = new DatabaseContext())
@@ -68,6 +77,106 @@ namespace CourseWorkWpfApp
             {
                 MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void searchClientSurnameCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            searchServiceTitleCheckBox.IsChecked = false;
+            searchServiceTitleCheckBox.IsEnabled = false;
+        }
+
+        private void searchClientSurnameCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            searchServiceTitleCheckBox.IsChecked = false;
+            searchServiceTitleCheckBox.IsEnabled = true;
+        }
+
+        private void searchServiceTitleCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            searchClientSurnameCheckBox.IsChecked = false;
+            searchClientSurnameCheckBox.IsEnabled = false;
+        }
+
+        private void searchServiceTitleCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            searchClientSurnameCheckBox.IsChecked = false;
+            searchClientSurnameCheckBox.IsEnabled = true;
+        }
+
+        private void beginDateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.Where(a => (a.date_begin == beginDateDatePicker.SelectedDate)).Select(a => a).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void endDateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.Where(a => a.date_end == endDateDatePicker.SelectedDate).Select(a => a).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void searchAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+            string parameter = searchAbonementTextBox.Text;
+
+            if (searchServiceTitleCheckBox.IsChecked == true)
+            {
+                try
+                {
+                    using (var Db = new DatabaseContext())
+                    {
+                        var result = Db.ViewAbonements.Where(a => a.title.Contains(parameter)).Select(a => a);
+
+                        abonementDataGrid.ItemsSource = result.ToList();
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            if (searchClientSurnameCheckBox.IsChecked == true)
+            {
+                try
+                {
+                    using (var Db = new DatabaseContext())
+                    {
+                        var result = Db.ViewAbonements.Where(a => a.surname.Contains(parameter)).Select(a => a);
+
+                        abonementDataGrid.ItemsSource = result.ToList();
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        private void searchAbonementTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            searchAbonementTextBox.Clear();
+        }
+
+        private void addAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
