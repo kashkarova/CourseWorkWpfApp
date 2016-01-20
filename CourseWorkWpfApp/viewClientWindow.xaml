@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Клиенты" Height="466.462" Width="576.154" Loaded="Window_Loaded">
+        Title="Клиенты" Height="507.062" Width="576.154" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="clientDataGrid" Margin="10,34,10,85" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid x:Name="clientDataGrid" Margin="10,65,10,85" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=id}" Header="Код клиента" />
                 <DataGridTextColumn Binding="{Binding Path=surname}" Header="Фамилия" />
@@ -18,8 +18,8 @@
                 <DataGridTextColumn Binding="{Binding Path=telephone}" Header="Телефон" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="addClientButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,24" Width="113" Click="addClientButton_Click" Height="41" VerticalAlignment="Bottom"/>
-        <Button x:Name="deleteClientButton" Content="Удалить" HorizontalAlignment="Left" Margin="259,0,0,24" Width="112" Click="deleteClientButton_Click" Height="41" VerticalAlignment="Bottom" Background="#FFDDDDDD"/>
+        <Button x:Name="addClientButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,39" Width="75" Click="addClientButton_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="deleteClientButton" Content="Удалить" HorizontalAlignment="Left" Margin="250,0,0,38" Width="75" Click="deleteClientButton_Click" Height="20" VerticalAlignment="Bottom" Background="#FFDDDDDD"/>
         <Button x:Name="ascSortClientButton" Margin="0,0,71,24" Click="ascSortClientButton_Click" HorizontalAlignment="Right" Width="57" Height="41" VerticalAlignment="Bottom" IsHitTestVisible="True" BorderBrush="{x:Null}" ToolTip="Сортировка по возрастанию">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
@@ -31,8 +31,10 @@
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="135,0,0,44" Width="113" Click="saveButton_Click" Height="21" VerticalAlignment="Bottom"/>
-        <Button x:Name="editButton" Content="Изменить" HorizontalAlignment="Left" Margin="135,0,0,18" Width="113" Height="21" VerticalAlignment="Bottom" Click="editButton_Click"/>
+        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,38" Width="75" Click="saveButton_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="editButton" Content="Изменить" HorizontalAlignment="Left" Margin="170,0,0,38" Width="75" Height="20" VerticalAlignment="Bottom" Click="editButton_Click"/>
+        <TextBox x:Name="searchClientTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchClientTextBox_GotFocus"/>
+        <Button x:Name="searchClientButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchClientButton_Click"/>
 
     </Grid>
 </Window>

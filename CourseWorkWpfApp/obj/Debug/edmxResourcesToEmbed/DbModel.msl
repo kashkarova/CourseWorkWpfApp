@@ -130,27 +130,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ViewGroupService">
-      <EntityTypeMapping TypeName="DbModel.ViewGroupService">
-        <MappingFragment StoreEntitySet="ViewGroupService">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="surname" ColumnName="surname" />
-          <ScalarProperty Name="room_num" ColumnName="room_num" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="title" ColumnName="title" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ViewPersonalService">
-      <EntityTypeMapping TypeName="DbModel.ViewPersonalService">
-        <MappingFragment StoreEntitySet="ViewPersonalService">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="surname" ColumnName="surname" />
-          <ScalarProperty Name="sum_price" ColumnName="sum price" />
-          <ScalarProperty Name="title" ColumnName="title" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CoachesNames">
       <EntityTypeMapping TypeName="DbModel.CoachesNames">
         <MappingFragment StoreEntitySet="CoachesNames">
@@ -222,10 +201,30 @@
     <EntitySetMapping Name="ViewServices">
       <EntityTypeMapping TypeName="DbModel.ViewServices">
         <MappingFragment StoreEntitySet="ViewServices">
-          <ScalarProperty Name="count_coaches" ColumnName="count_coaches" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewGroupServices">
+      <EntityTypeMapping TypeName="DbModel.ViewGroupServices">
+        <MappingFragment StoreEntitySet="ViewGroupServices">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewPersonalServices">
+      <EntityTypeMapping TypeName="DbModel.ViewPersonalServices">
+        <MappingFragment StoreEntitySet="ViewPersonalServices">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

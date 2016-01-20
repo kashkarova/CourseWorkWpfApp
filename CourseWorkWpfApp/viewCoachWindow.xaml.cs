@@ -22,6 +22,10 @@ namespace CourseWorkWpfApp
         public viewCoachWindow()
         {
             InitializeComponent();
+
+            searchToolsLabel.Width = 0;
+            searchSurnameCheckBox.Width = 0;
+            searchPostCheckBox.Width = 0;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -43,6 +47,9 @@ namespace CourseWorkWpfApp
 
         private void ascSortCoachButton_Click(object sender, RoutedEventArgs e)
         {
+            searchCoachTextBox.Clear();
+            searchCoachTextBox.Text = "Найти...";
+
             try
             {
                 using (var Db = new DatabaseContext())
@@ -58,6 +65,9 @@ namespace CourseWorkWpfApp
 
         private void descSortCoachButton_Click(object sender, RoutedEventArgs e)
         {
+            searchCoachTextBox.Clear();
+            searchCoachTextBox.Text = "Найти...";
+
             try
             {
                 using (var Db = new DatabaseContext())
@@ -126,6 +136,78 @@ namespace CourseWorkWpfApp
             catch (Exception)
             {
                 MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void searchCoachTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            searchCoachTextBox.Clear();
+
+            searchToolsLabel.Width = 126;
+            searchSurnameCheckBox.Width = 70;
+            searchPostCheckBox.Width = 81;
+        }
+
+        private void searchSurnameCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            searchPostCheckBox.IsChecked = false;
+            searchPostCheckBox.IsEnabled = false;
+        }
+
+        private void searchSurnameCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            searchPostCheckBox.IsChecked = false;
+            searchPostCheckBox.IsEnabled = true;
+        }
+
+        private void searchPostCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            searchSurnameCheckBox.IsChecked = false;
+            searchSurnameCheckBox.IsEnabled = false;
+        }
+
+        private void searchPostCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            searchSurnameCheckBox.IsChecked = false;
+            searchSurnameCheckBox.IsEnabled = true;
+        }
+
+        private void searchCoachButton_Click(object sender, RoutedEventArgs e)
+        {
+            string parameter = searchCoachTextBox.Text;
+
+            if (searchSurnameCheckBox.IsChecked == true)
+            {
+                try
+                {
+                    using (var Db = new DatabaseContext())
+                    {
+                        var result = Db.ViewCoaches.Where(c => c.surname.Contains(parameter)).Select(c => c);
+
+                        coachDataGrid.ItemsSource = result.ToList();
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+            if (searchPostCheckBox.IsChecked == true)
+            {
+                try
+                {
+                    using (var Db = new DatabaseContext())
+                    {
+                        var result = Db.ViewCoaches.Where(c => c.title.Contains(parameter)).Select(c => c);
+
+                        coachDataGrid.ItemsSource = result.ToList();
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
     }

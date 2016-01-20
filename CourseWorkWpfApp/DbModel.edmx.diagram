@@ -25,8 +25,6 @@
         <AssociationConnector Association="DbModel.fk_grserv_parent" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.fk_pserv_parent" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.fk_service" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DbModel.ViewGroupService" Width="1.5" PointX="8.375" PointY="4.75" />
-        <EntityTypeShape EntityType="DbModel.ViewPersonalService" Width="1.5" PointX="5.375" PointY="8.75" />
         <EntityTypeShape EntityType="DbModel.CoachesNames" Width="1.5" PointX="8.625" PointY="8.25" />
         <EntityTypeShape EntityType="DbModel.ViewContractWithAddPayment" Width="1.5" PointX="7.375" PointY="10.75" />
         <EntityTypeShape EntityType="DbModel.ClientsNames" Width="1.5" PointX="9.375" PointY="0.75" />
@@ -34,7 +32,9 @@
         <EntityTypeShape EntityType="DbModel.CurrServicePositionId" Width="1.5" PointX="11.5" PointY="9.5" />
         <EntityTypeShape EntityType="DbModel.ViewClients" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.CoachesNamesWithContract" Width="1.5" PointX="11.375" PointY="6.75" />
-        <EntityTypeShape EntityType="DbModel.ViewServices" Width="1.5" PointX="9.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DbModel.ViewServices" Width="1.75" PointX="10.5" PointY="11.875" />
+        <EntityTypeShape EntityType="DbModel.ViewGroupServices" Width="1.5" PointX="4.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DbModel.ViewPersonalServices" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

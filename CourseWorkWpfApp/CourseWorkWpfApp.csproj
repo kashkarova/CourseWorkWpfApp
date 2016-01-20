@@ -166,10 +166,10 @@
     <Compile Include="ViewContractWithAddPayment.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewGroupService.cs">
+    <Compile Include="ViewGroupServices.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewPersonalService.cs">
+    <Compile Include="ViewPersonalServices.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewServicePosition.cs">

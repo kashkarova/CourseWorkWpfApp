@@ -76,15 +76,19 @@ namespace CourseWorkWpfApp
             {
                 Client client = new Client();
 
-                client.surname = surnameTextBox.Text;
-                client.name = nameTextBox.Text;
-                client.sex = (maleRadioButton.IsChecked == true ? 0 : 1);
-                client.passp_num = passportTextBox.Text;
-                client.address = addressTextBox.Text;
-                client.telephone = telephoneTextBox.Text;
+                int i;
 
-                if (AddDefend.AddClientDefend(client.surname, client.name, client.sex, client.passp_num, client.address) == true)
+                i= (maleRadioButton.IsChecked == true ? 0 : 1);
+
+                if (AddDefend.AddClientDefend(surnameTextBox.Text, nameTextBox.Text, i, passportTextBox.Text, addressTextBox.Text, telephoneTextBox.Text) == true)
                 {
+                    client.surname = surnameTextBox.Text;
+                    client.name = nameTextBox.Text;
+                    client.sex = i;
+                    client.passp_num = passportTextBox.Text;
+                    client.address = addressTextBox.Text;
+                    client.telephone = telephoneTextBox.Text;
+
                     try
                     {
                         using (var Db = new DatabaseContext())
@@ -118,7 +122,7 @@ namespace CourseWorkWpfApp
                             Db.Client.Find(client_g.id).address = addressTextBox.Text;
                             Db.Client.Find(client_g.id).telephone = telephoneTextBox.Text;
 
-                            if (AddDefend.AddClientDefend(Db.Client.Find(client_g.id).surname, Db.Client.Find(client_g.id).name, Db.Client.Find(client_g.id).sex, Db.Client.Find(client_g.id).passp_num, Db.Client.Find(client_g.id).address) == true)
+                            if (AddDefend.AddClientDefend(Db.Client.Find(client_g.id).surname, Db.Client.Find(client_g.id).name, Db.Client.Find(client_g.id).sex, Db.Client.Find(client_g.id).passp_num, Db.Client.Find(client_g.id).address, Db.Client.Find(client_g.id).telephone) == true)
                             {
 
                                 Db.SaveChanges();

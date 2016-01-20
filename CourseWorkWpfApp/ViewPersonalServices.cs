@@ -12,12 +12,11 @@ namespace CourseWorkWpfApp
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewGroupService
+    public partial class ViewPersonalServices
     {
-        public string title { get; set; }
-        public double price { get; set; }
-        public int room_num { get; set; }
-        public string surname { get; set; }
         public int id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public double Price { get; set; }
     }
 }

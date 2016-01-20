@@ -65,17 +65,19 @@ namespace CourseWorkWpfApp
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             Service service = new Service();
-            service.title = titleTextBox.Text;
-            service.description = descriptionTextBox.Text;
-            service.price = Convert.ToDouble(priceTextBox.Text);
+            
 
             if (typeServiceComboBox.SelectedIndex.Equals(0))
             {
                 GroupService groupService = new GroupService();
-                groupService.room_num = Convert.ToInt32(roomNumTextBox.Text);
+                
 
-                if (AddDefend.AddGroupService(service.title, service.price, groupService.room_num) == true)
+                if (AddDefend.AddGroupService(titleTextBox.Text, priceTextBox.Text, roomNumTextBox.Text) == true)
                 {
+                    service.title = titleTextBox.Text;
+                    service.description = descriptionTextBox.Text;
+                    service.price = Convert.ToDouble(priceTextBox.Text);
+                    groupService.room_num = Convert.ToInt32(roomNumTextBox.Text);
                     try
                     {
                         using (var Db = new DatabaseContext())
@@ -105,10 +107,15 @@ namespace CourseWorkWpfApp
             else
             {
                 PersonalService personalService = new PersonalService();
-                personalService.additional_payment = Convert.ToDouble(additionalPaymentTextBox.Text);
+                
 
-                if (AddDefend.AddPersonalServiceDefend(service.title, service.price, personalService.additional_payment) == true)
+                if (AddDefend.AddPersonalServiceDefend(titleTextBox.Text, priceTextBox.Text, additionalPaymentTextBox.Text) == true)
                 {
+                    service.title = titleTextBox.Text;
+                    service.description = descriptionTextBox.Text;
+                    service.price = Convert.ToDouble(priceTextBox.Text);
+                    personalService.additional_payment = Convert.ToDouble(additionalPaymentTextBox.Text);
+
                     try
                     {
                         using (var Db = new DatabaseContext())
@@ -138,7 +145,7 @@ namespace CourseWorkWpfApp
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

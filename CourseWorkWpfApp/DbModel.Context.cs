@@ -37,8 +37,6 @@ namespace CourseWorkWpfApp
         public DbSet<User> User { get; set; }
         public DbSet<ViewCoaches> ViewCoaches { get; set; }
         public DbSet<ViewAbonements> ViewAbonements { get; set; }
-        public DbSet<ViewGroupService> ViewGroupService { get; set; }
-        public DbSet<ViewPersonalService> ViewPersonalService { get; set; }
         public DbSet<CoachesNames> CoachesNames { get; set; }
         public DbSet<ViewContractWithAddPayment> ViewContractWithAddPayment { get; set; }
         public DbSet<ClientsNames> ClientsNames { get; set; }
@@ -47,5 +45,7 @@ namespace CourseWorkWpfApp
         public DbSet<ViewClients> ViewClients { get; set; }
         public DbSet<CoachesNamesWithContract> CoachesNamesWithContract { get; set; }
         public DbSet<ViewServices> ViewServices { get; set; }
+        public DbSet<ViewGroupServices> ViewGroupServices { get; set; }
+        public DbSet<ViewPersonalServices> ViewPersonalServices { get; set; }
     }
 }

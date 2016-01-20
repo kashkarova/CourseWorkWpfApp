@@ -280,8 +280,6 @@
       <End Role="ServicePosition" EntitySet="ServicePosition" />
     </AssociationSet>
     <EntitySet Name="ViewAbonements" EntityType="DbModel.ViewAbonements" />
-    <EntitySet Name="ViewGroupService" EntityType="DbModel.ViewGroupService" />
-    <EntitySet Name="ViewPersonalService" EntityType="DbModel.ViewPersonalService" />
     <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
     <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
     <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
@@ -290,6 +288,8 @@
     <EntitySet Name="ViewClients" EntityType="DbModel.ViewClients" />
     <EntitySet Name="CoachesNamesWithContract" EntityType="DbModel.CoachesNamesWithContract" />
     <EntitySet Name="ViewServices" EntityType="DbModel.ViewServices" />
+    <EntitySet Name="ViewGroupServices" EntityType="DbModel.ViewGroupServices" />
+    <EntitySet Name="ViewPersonalServices" EntityType="DbModel.ViewPersonalServices" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -309,32 +309,6 @@
     <Property Name="count" Type="Int32" Nullable="false" />
     <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="cost" Type="Double" Nullable="false" />
-    <Property Name="id" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ViewGroupService">
-    <Key>
-      <PropertyRef Name="title" />
-      <PropertyRef Name="price" />
-      <PropertyRef Name="room_num" />
-      <PropertyRef Name="surname" />
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="price" Type="Double" Nullable="false" />
-    <Property Name="room_num" Type="Int32" Nullable="false" />
-    <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="id" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ViewPersonalService">
-    <Key>
-      <PropertyRef Name="title" />
-      <PropertyRef Name="sum_price" />
-      <PropertyRef Name="surname" />
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="sum_price" Type="Double" Nullable="false" />
-    <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="CoachesNames">
@@ -416,12 +390,35 @@
   </EntityType>
   <EntityType Name="ViewServices">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="title" />
       <PropertyRef Name="Price" />
     </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Price" Type="Double" Nullable="false" />
-    <Property Name="count_coaches" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ViewGroupServices">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ViewPersonalServices">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
   </EntityType>
 </Schema>

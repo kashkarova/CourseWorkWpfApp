@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Новая услуга" Height="455.132" Width="520.912">
+        Title="Новая услуга" Height="413.132" Width="395.912">
     <Grid>
-        <Label x:Name="label" Content="Название" HorizontalAlignment="Left" Margin="96,31,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Описание" HorizontalAlignment="Left" Margin="94,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.184,0.077"/>
-        <Label x:Name="label2" Content="Цена" HorizontalAlignment="Left" Margin="121,158,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.974,0.346"/>
-        <Label x:Name="label3" Content="Тип" HorizontalAlignment="Left" Margin="129,205,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Height="23" Margin="195,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Height="64" Margin="195,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="23" Margin="195,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="typeServiceComboBox" HorizontalAlignment="Left" Margin="195,205,0,0" VerticalAlignment="Top" Width="120" Loaded="typeComboBox_Loaded" SelectionChanged="typeServiceComboBox_SelectionChanged"/>
-        <Label x:Name="roomNumLabel" Content="№ комнаты" HorizontalAlignment="Left" Margin="84,252,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="roomNumTextBox" HorizontalAlignment="Left" Height="23" Margin="195,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="additionalPaymentTextBox" HorizontalAlignment="Left" Height="23" Margin="195,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="additionalPaymentLabel" Content="Доп. стоимость" HorizontalAlignment="Left" Margin="64,252,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="64,337,0,0" VerticalAlignment="Top" Width="78" Height="32" Click="addButton_Click"/>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="184,337,0,0" VerticalAlignment="Top" Width="79" Height="32" Click="saveButton_Click"/>
-        <Button x:Name="cancelButton" Content="Отмена" HorizontalAlignment="Left" Margin="301,337,0,0" VerticalAlignment="Top" Width="78" Height="32" Click="cancelButton_Click"/>
+        <Label x:Name="label" Content="Название" HorizontalAlignment="Left" Margin="72,31,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Описание" HorizontalAlignment="Left" Margin="70,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.184,0.077"/>
+        <Label x:Name="label2" Content="Цена" HorizontalAlignment="Left" Margin="97,158,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.974,0.346"/>
+        <Label x:Name="label3" Content="Тип" HorizontalAlignment="Left" Margin="105,205,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Height="23" Margin="171,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Height="64" Margin="171,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="23" Margin="171,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="typeServiceComboBox" HorizontalAlignment="Left" Margin="171,205,0,0" VerticalAlignment="Top" Width="120" Loaded="typeComboBox_Loaded" SelectionChanged="typeServiceComboBox_SelectionChanged"/>
+        <Label x:Name="roomNumLabel" Content="№ комнаты" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="roomNumTextBox" HorizontalAlignment="Left" Height="23" Margin="171,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="additionalPaymentTextBox" HorizontalAlignment="Left" Height="23" Margin="171,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="additionalPaymentLabel" Content="Доп. стоимость" HorizontalAlignment="Left" Margin="40,252,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="addButton" Content="Добавить" HorizontalAlignment="Left" Margin="57,316,0,0" VerticalAlignment="Top" Width="78" Height="32" Click="addButton_Click"/>
+        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="140,316,0,0" VerticalAlignment="Top" Width="79" Height="32" Click="saveButton_Click"/>
+        <Button x:Name="cancelButton" Content="Отмена" HorizontalAlignment="Left" Margin="227,316,0,0" VerticalAlignment="Top" Width="78" Height="32" Click="cancelButton_Click"/>
     </Grid>
 </Window>

@@ -5,11 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="viewServiceWindow" Height="445.943" Width="473.847" Loaded="Window_Loaded">
+        Title="Услуги" Height="396.943" Width="572.847" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="serviceDataGrid" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Height="121" Width="382"/>
-        <ComboBox x:Name="changeServiceComboBox" HorizontalAlignment="Left" Margin="272,166,0,0" VerticalAlignment="Top" Width="120" Loaded="changeServiceComboBox_Loaded" SelectionChanged="changeServiceComboBox_SelectionChanged"/>
-        <DataGrid x:Name="changeServiceDataGrid" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="382" Height="193"/>
+        <DataGrid x:Name="serviceDataGrid" Margin="10,96,10,82" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=id}" Header="Код услуги" />
+                <DataGridTextColumn Binding="{Binding Path=title}" Header="Название" />
+                <DataGridTextColumn Binding="{Binding Path=description}" Header="Описание" />
+                <DataGridTextColumn Binding="{Binding Path=Price}" Header="Цена за 1 занятие, грн" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="searchServiceTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchServiceTextBox_GotFocus" LostFocus="searchServiceTextBox_LostFocus"/>
+        <Button x:Name="searchServiceButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchServiceButton_Click"/>
+        <Button x:Name="addServiceButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,42" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Добавить услугу" Click="addServiceButton_Click"/>
+        <Button x:Name="editServiceButton" Content="Изменить" HorizontalAlignment="Left" Margin="90,0,0,42" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Изменить услугу" Click="editServiceButton_Click"/>
+        <Button x:Name="saveServiceButton" Content="Сохранить" HorizontalAlignment="Left" Margin="170,0,0,42" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Сохранить изменения" Click="saveServiceButton_Click"/>
+        <Button x:Name="deleteServiceButton" Content="Удалить" HorizontalAlignment="Left" Margin="250,0,0,42" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Удалить услугу" Click="deleteServiceButton_Click"/>
+        <ComboBox x:Name="viewServiceComboBox" HorizontalAlignment="Left" Margin="435,0,0,40" Width="120" Loaded="viewServiceComboBox_Loaded" SelectionChanged="viewServiceComboBox_SelectionChanged" Height="22" VerticalAlignment="Bottom"/>
+        <Label x:Name="label" Content="Показать" HorizontalAlignment="Left" Margin="375,0,0,39" Height="26" VerticalAlignment="Bottom"/>
+        <Label x:Name="searchToolsLabel" Content="Инструменты поиска" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="searchTitleCheckBox" Content="Название" HorizontalAlignment="Left" Margin="150,62,0,0" VerticalAlignment="Top" Checked="searchTitleCheckBox_Checked" Unchecked="searchTitleCheckBox_Unchecked"/>
+        <CheckBox x:Name="searchPriceCheckBox" Content="Цена" HorizontalAlignment="Left" Margin="240,62,0,0" VerticalAlignment="Top" Checked="searchPriceCheckBox_Checked" Unchecked="searchPriceCheckBox_Unchecked"/>
 
     </Grid>
 </Window>

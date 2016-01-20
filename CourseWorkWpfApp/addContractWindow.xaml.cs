@@ -93,7 +93,7 @@ namespace CourseWorkWpfApp
                 {
                     using (var Db = new DatabaseContext())
                     {
-                        titleServiceComboBox.ItemsSource = Db.ViewGroupService.Select(x => x.title).ToList();
+                        titleServiceComboBox.ItemsSource = Db.ViewGroupServices.Select(x => x.title).ToList();
                     }
                 }
                 catch (Exception)
@@ -107,7 +107,7 @@ namespace CourseWorkWpfApp
                 {
                     using (var Db = new DatabaseContext())
                     {
-                        titleServiceComboBox.ItemsSource = Db.ViewPersonalService.Select(x => x.title).ToList();
+                        titleServiceComboBox.ItemsSource = Db.ViewPersonalServices.Select(x => x.title).ToList();
                     }
                 }
                 catch (Exception)
@@ -130,10 +130,12 @@ namespace CourseWorkWpfApp
             {
                 Contract contract = new Contract();
 
-                contract.salary = Convert.ToDouble(salaryTextBox.Text);
+                
 
-                if (AddDefend.AddContract(contract.salary) == true)
+                if (AddDefend.AddContract(salaryTextBox.Text) == true)
                 {
+                    contract.salary = Convert.ToDouble(salaryTextBox.Text);
+
                     try
                     {
                         using (var Db = new DatabaseContext())
@@ -171,7 +173,7 @@ namespace CourseWorkWpfApp
                         Db.Contract.Find(contract_g.id).salary = Convert.ToDouble(salaryTextBox.Text);
                         
 
-                        if (AddDefend.AddContract(Db.Contract.Find(contract_g.id).salary) == true)
+                        if (AddDefend.AddContract((Db.Contract.Find(contract_g.id).salary).ToString()) == true)
                         {
                             Db.SaveChanges();
                         }
@@ -188,6 +190,11 @@ namespace CourseWorkWpfApp
                     MessageBox.Show("Возможно, были введены некорректные данные! Попробуйте ещё раз.", "Ошибка изменения данных", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }          
+        }
+
+        private void cancelContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

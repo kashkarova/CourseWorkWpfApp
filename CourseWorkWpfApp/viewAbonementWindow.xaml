@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Абонементы" Height="415.385" Width="619.231" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="abonementDataGrid" Margin="10,37,10,86" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid x:Name="abonementDataGrid" Margin="10,37,10,86" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id}" Header="Код клиента" />
                 <DataGridTextColumn Binding="{Binding surname}" Header="Фамилия" />

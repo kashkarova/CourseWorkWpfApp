@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="Тренеры" Height="458" Width="576" Loaded="Window_Loaded">
+        Title="Тренеры" Height="493" Width="576" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="coachDataGrid" Margin="10,34,10,73" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid x:Name="coachDataGrid" Margin="10,98,10,71" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=id}" Header="Код тренера" />
                 <DataGridTextColumn Binding="{Binding Path=surname}" Header="Фамилия" />
@@ -20,8 +20,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="addCoachButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,16" Width="113" Height="41" VerticalAlignment="Bottom" Click="addCoachButton_Click"/>
-        <Button x:Name="deleteCoachtButton" Content="Удалить" HorizontalAlignment="Left" Margin="259,0,0,16" VerticalAlignment="Bottom" Width="112" Height="41" Click="deleteCoachtButton_Click"/>
+        <Button x:Name="addCoachButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,16" Width="75" Height="20" VerticalAlignment="Bottom" Click="addCoachButton_Click"/>
+        <Button x:Name="deleteCoachtButton" Content="Удалить" HorizontalAlignment="Left" Margin="250,0,0,16" VerticalAlignment="Bottom" Width="75" Height="20" Click="deleteCoachtButton_Click"/>
         <Button x:Name="ascSortCoachButton" Margin="0,0,73,16" HorizontalAlignment="Right" Width="55" Click="ascSortCoachButton_Click" Height="41" VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию" BorderBrush="{x:Null}" >
             <Button.Background>
                 <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
@@ -32,8 +32,13 @@
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="135,0,0,37" Width="113" Height="22" VerticalAlignment="Bottom" Click="saveButton_Click"/>
-        <Button x:Name="editCoachButton" Content="Изменить" HorizontalAlignment="Left" Margin="135,0,0,13" Width="113" Click="editCoachButton_Click" Height="19" VerticalAlignment="Bottom"/>
+        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="170,0,0,16" Width="75" Height="20" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+        <Button x:Name="editCoachButton" Content="Изменить" HorizontalAlignment="Left" Margin="90,0,0,16" Width="75" Click="editCoachButton_Click" Height="20" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="searchCoachTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchCoachTextBox_GotFocus"/>
+        <Button x:Name="searchCoachButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchCoachButton_Click"/>
+        <Label x:Name="searchToolsLabel" Content="Инструменты поиска" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="searchSurnameCheckBox" Content="Фамилия" HorizontalAlignment="Left" Margin="150,62,0,0" VerticalAlignment="Top" Checked="searchSurnameCheckBox_Checked" Unchecked="searchSurnameCheckBox_Unchecked"/>
+        <CheckBox x:Name="searchPostCheckBox" Content="Должность" HorizontalAlignment="Left" Margin="240,62,0,0" VerticalAlignment="Top" Checked="searchPostCheckBox_Checked" Unchecked="searchPostCheckBox_Unchecked"/>
 
     </Grid>
 </Window>

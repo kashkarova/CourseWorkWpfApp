@@ -59,6 +59,9 @@ namespace CourseWorkWpfApp
 
         private void ascSortClientButton_Click(object sender, RoutedEventArgs e)
         {
+            searchClientTextBox.Clear();
+            searchClientTextBox.Text = "Найти...";
+
             try
             {
                 using (var Db = new DatabaseContext())
@@ -74,6 +77,9 @@ namespace CourseWorkWpfApp
 
         private void descSortClientButton_Click(object sender, RoutedEventArgs e)
         {
+            searchClientTextBox.Clear();
+            searchClientTextBox.Text = "Найти...";
+
             try
             {
                 using (var Db = new DatabaseContext())
@@ -138,6 +144,31 @@ namespace CourseWorkWpfApp
 
             addClientWindow addClientWindow = new addClientWindow(cl);
             addClientWindow.Show();
+        }
+
+        private void searchClientTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            searchClientTextBox.Clear();
+        }
+
+        private void searchClientButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string parameter = searchClientTextBox.Text;
+
+                using (var Db = new DatabaseContext())
+                {
+                    var result = Db.ViewClients.Where(c => c.surname.Contains(parameter)).Select(c => c);
+
+                    clientDataGrid.ItemsSource = result.ToList();
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

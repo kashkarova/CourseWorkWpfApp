@@ -210,34 +210,30 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewContractWithAddPayment' do
     <Property Name="additional_payment" Type="float" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewGroupService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="ViewGroupService">
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewGroupServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewGroupServices">
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="title" />
-      <PropertyRef Name="price" />
-      <PropertyRef Name="room_num" />
-      <PropertyRef Name="surname" />
+      <PropertyRef Name="Price" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="price" Type="float" Nullable="false" />
-    <Property Name="room_num" Type="int" Nullable="false" />
-    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+    <Property Name="Price" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalService' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="ViewPersonalService">
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewPersonalServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewPersonalServices">
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="title" />
-      <PropertyRef Name="sum price" />
-      <PropertyRef Name="surname" />
+      <PropertyRef Name="Price" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="sum price" Type="float" Nullable="false" />
-    <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+    <Property Name="Price" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -258,13 +254,14 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not 
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewServices">
     <Key>
+      <PropertyRef Name="id" />
       <PropertyRef Name="title" />
       <PropertyRef Name="Price" />
     </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="description" Type="varchar" MaxLength="100" />
     <Property Name="Price" Type="float" Nullable="false" />
-    <Property Name="count_coaches" Type="int" />
   </EntityType>
   <Association Name="fk_abonement">
     <End Role="Abonement" Type="Self.Abonement" Multiplicity="1">
@@ -460,22 +457,21 @@ FROM [dbo].[ViewCoaches] AS [ViewCoaches]</DefiningQuery>
 [ViewContractWithAddPayment].[additional_payment] AS [additional_payment]
 FROM [dbo].[ViewContractWithAddPayment] AS [ViewContractWithAddPayment]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="ViewGroupService" EntityType="Self.ViewGroupService" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="ViewGroupServices" EntityType="Self.ViewGroupServices" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[ViewGroupService].[id] AS [id], 
-[ViewGroupService].[title] AS [title], 
-[ViewGroupService].[price] AS [price], 
-[ViewGroupService].[room_num] AS [room_num], 
-[ViewGroupService].[surname] AS [surname]
-FROM [dbo].[ViewGroupService] AS [ViewGroupService]</DefiningQuery>
+[ViewGroupServices].[id] AS [id], 
+[ViewGroupServices].[title] AS [title], 
+[ViewGroupServices].[description] AS [description], 
+[ViewGroupServices].[Price] AS [Price]
+FROM [dbo].[ViewGroupServices] AS [ViewGroupServices]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="ViewPersonalService" EntityType="Self.ViewPersonalService" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="ViewPersonalServices" EntityType="Self.ViewPersonalServices" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[ViewPersonalService].[id] AS [id], 
-[ViewPersonalService].[title] AS [title], 
-[ViewPersonalService].[sum price] AS [sum price], 
-[ViewPersonalService].[surname] AS [surname]
-FROM [dbo].[ViewPersonalService] AS [ViewPersonalService]</DefiningQuery>
+[ViewPersonalServices].[id] AS [id], 
+[ViewPersonalServices].[title] AS [title], 
+[ViewPersonalServices].[description] AS [description], 
+[ViewPersonalServices].[Price] AS [Price]
+FROM [dbo].[ViewPersonalServices] AS [ViewPersonalServices]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewServicePosition" EntityType="Self.ViewServicePosition" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -488,10 +484,10 @@ FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewServices" EntityType="Self.ViewServices" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[ViewServices].[id] AS [id], 
 [ViewServices].[title] AS [title], 
 [ViewServices].[description] AS [description], 
-[ViewServices].[Price] AS [Price], 
-[ViewServices].[count_coaches] AS [count_coaches]
+[ViewServices].[Price] AS [Price]
 FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="fk_abonement" Association="Self.fk_abonement">

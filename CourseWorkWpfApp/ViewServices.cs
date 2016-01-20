@@ -14,9 +14,9 @@ namespace CourseWorkWpfApp
     
     public partial class ViewServices
     {
+        public int id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
         public double Price { get; set; }
-        public Nullable<int> count_coaches { get; set; }
     }
 }

@@ -15,10 +15,8 @@
                     <MenuItem x:Name="menuAddCoach" Header="Добавить тренера" Click="menuAddCoach_Click"/>
                     <MenuItem x:Name="menuAddService" Header="Добавить услугу" Click="menuAddService_Click"/>
                 </MenuItem>
-                <MenuItem x:Name="menuFileOpen" Header="Открыть" Click="menuFileOpen_Click"/>
                 <Separator/>
                 <MenuItem x:Name="menuFileSave" Header="Сохранить" Click="menuFileSave_Click"/>
-                <MenuItem x:Name="menuFileSaveAs" Header="Сохранить как"/>
                 <Separator/>
                 <MenuItem x:Name="menuFilePrint" Header="Печать" Click="menuFilePrint_Click"/>
                 <Separator/>
@@ -38,7 +36,6 @@
                 <MenuItem x:Name="menuViewService" Header="Услуги" Click="menuViewService_Click"/>
             </MenuItem>
             <MenuItem Header="Поиск" ToolTip="Поиск"/>
-            <MenuItem Header="Отчёт" ToolTip="Отчёт"/>
             <MenuItem Header="Настройки" ToolTip="Настройки">
                 <MenuItem Header="Сменить пользователя">
                     <MenuItem x:Name="menuSettingChangeUserIsAdmin" Header="Администратор" IsCheckable="True"/>
@@ -59,7 +56,7 @@
         <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,59,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="Фамилия клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded" SelectionChanged="clientComboBox_SelectionChanged"/>
         <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="401,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.343,-0.308"/>
         <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,59,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
-        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,76" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid x:Name="servicePositionDataGrid" Margin="10,123,10,76" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding title}" Header="Название услуги" />
                 <DataGridTemplateColumn Header="Дата окончания абонемента">
@@ -87,7 +84,6 @@
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="218,86,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

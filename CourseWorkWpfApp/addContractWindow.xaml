@@ -22,7 +22,7 @@
         <Label x:Name="label4" Content="Оплата" HorizontalAlignment="Left" Margin="67,197,0,0" VerticalAlignment="Top" Width="51"/>
         <Button x:Name="addContractButton" Content="Добавить" HorizontalAlignment="Left" Margin="43,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="addContractButton_Click"/>
         <Button x:Name="saveContractButton" Content="Сохранить" HorizontalAlignment="Left" Margin="139,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="saveContractButton_Click"/>
-        <Button x:Name="cancelContractButton" Content="Отмена" HorizontalAlignment="Left" Margin="234,265,0,0" VerticalAlignment="Top" Width="75" Height="32"/>
+        <Button x:Name="cancelContractButton" Content="Отмена" HorizontalAlignment="Left" Margin="234,265,0,0" VerticalAlignment="Top" Width="75" Height="32" Click="cancelContractButton_Click"/>
 
     </Grid>
 </Window>
