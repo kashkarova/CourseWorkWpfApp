@@ -90,5 +90,11 @@ namespace CourseWorkWpfApp.DefendClasses
             return true;
         }
 
+        public static bool ChangePassword(string new_passw, string repeat_new_passw)
+        {
+            if (!new_passw.Equals(repeat_new_passw)) return false;
+
+            return true;
+        }
     }
 }

@@ -279,5 +279,11 @@ namespace CourseWorkWpfApp
 
             AdminMode();
         }
+
+        private void menuSettingChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            changePasswordWindow changePasswordWindow = new changePasswordWindow();
+            changePasswordWindow.Show();
+        }
     }
 }

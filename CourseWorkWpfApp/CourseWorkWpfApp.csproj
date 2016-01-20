@@ -89,6 +89,9 @@
     <Compile Include="addServiceWindow.xaml.cs">
       <DependentUpon>addServiceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="changePasswordWindow.xaml.cs">
+      <DependentUpon>changePasswordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -120,7 +123,6 @@
     </Compile>
     <Compile Include="DefendClasses\AddDefend.cs" />
     <Compile Include="DefendClasses\AuthorizationDefend.cs" />
-    <Compile Include="DefendClasses\RegistrationDefend.cs" />
     <Compile Include="GroupService.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -201,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="addServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="changePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

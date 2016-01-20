@@ -40,3 +40,6 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.csproj.GenerateResource.Cache
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.exe
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.pdb
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.csprojResolveAssemblyReference.cache
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\changePasswordWindow.g.cs
+E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\changePasswordWindow.baml

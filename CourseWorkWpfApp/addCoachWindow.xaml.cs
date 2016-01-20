@@ -80,9 +80,6 @@ namespace CourseWorkWpfApp
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             
-
-
-
             if (isAdd == true)
             {
                 Coach coach = new Coach();

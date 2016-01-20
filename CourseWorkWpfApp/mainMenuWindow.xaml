@@ -40,7 +40,7 @@
                     <MenuItem x:Name="menuSettingChangeUserIsAdmin" Header="Администратор" IsCheckable="True" Checked="menuSettingChangeUserIsAdmin_Checked" Unchecked="menuSettingChangeUserIsAdmin_Unchecked"/>
                     <MenuItem x:Name="menuSettingChangeUserIsUser" Header="Пользователь" IsCheckable="True" Checked="menuSettingChangeUserIsUser_Checked" Unchecked="menuSettingChangeUserIsUser_Unchecked"/>
                 </MenuItem>
-                <MenuItem x:Name="menuSettingChangePassword" Header="Сменить пароль"/>
+                <MenuItem x:Name="menuSettingChangePassword" Header="Сменить пароль" Click="menuSettingChangePassword_Click"/>
                 <Separator/>
                 <MenuItem x:Name="menuSettingsAddPost" Header="Добавить должность" Click="menuSettingsAddPost_Click"/>
             </MenuItem>

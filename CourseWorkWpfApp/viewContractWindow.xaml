@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWorkWpfApp"
         mc:Ignorable="d"
-        Title="viewContractWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="Контракты" Height="636.885" Width="652.459">
+    <Grid Height="606" VerticalAlignment="Top">
+        <ComboBox x:Name="coachComboBox" HorizontalAlignment="Left" Margin="100,32,0,0" VerticalAlignment="Top" Width="300" IsEditable="True" Loaded="coachComboBox_Loaded" SelectionChanged="coachComboBox_SelectionChanged"/>
+        <Label x:Name="label" Content="ФИО тренера" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="contractDataGrid" Margin="10,80,10,181" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+            
+        </DataGrid>
+        <Label x:Name="label1" Content="Ставка" HorizontalAlignment="Left" Margin="70,0,0,143" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="minSalaryTextBox" HorizontalAlignment="Left" Height="23" Margin="137,0,0,143" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" AllowDrop="False" IsReadOnly="True" Background="Gainsboro"/>
+        <TextBox x:Name="sumServicePaymentTextBox" HorizontalAlignment="Left" Height="23" Margin="137,0,0,105" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" IsReadOnly="True" AllowDrop="False" Background="Gainsboro"/>
+        <Label x:Name="label2" Content="Оплата за услуги" HorizontalAlignment="Left" Margin="14,0,0,103" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="salaryTextBox" HorizontalAlignment="Left" Height="23" Margin="137,0,0,68" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" IsReadOnly="True" AllowDrop="False" Background="Gainsboro"/>
+        <Label x:Name="label3" Content="Зарплата" HorizontalAlignment="Left" Margin="57,0,0,66" Height="26" VerticalAlignment="Bottom"/>
+        <Button x:Name="ascSortContractButton"  Margin="0,0,77,83" VerticalAlignment="Bottom" Height="46" Click="ascSortContractButton_Click" HorizontalAlignment="Right" Width="62" BorderBrush="{x:Null}" ToolTip="Сортировкая по возрастанию">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="descSortContractButton" Margin="0,0,10,83" Click="descSortContractButton_Click" HorizontalAlignment="Right" Width="62" Height="46" VerticalAlignment="Bottom" BorderBrush="{x:Null}" ToolTip="Сортировка по убыванию">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="addContractButton" Content="Добавить" HorizontalAlignment="Left" Margin="22,563,0,0" VerticalAlignment="Top" Width="75" Height="20" ToolTip="Добавить контракт" Click="addContractButton_Click"/>
+        <Button x:Name="saveContractButton" Content="Сохранить" HorizontalAlignment="Left" Margin="106,563,0,0" VerticalAlignment="Top" Width="75" Height="20" ToolTip="Сохранить контракт" Click="saveContractButton_Click"/>
+        <Button x:Name="editContractButton" Content="Изменить" HorizontalAlignment="Left" Margin="190,563,0,0" VerticalAlignment="Top" Width="75" Height="20" ToolTip="Изменить контракт" Click="editContractButton_Click"/>
+        <Button x:Name="deleteContractButton" Content="Удалить" HorizontalAlignment="Left" Margin="274,563,0,0" VerticalAlignment="Top" Width="75" Height="20" ToolTip="Удалить контракт" Click="deleteContractButton_Click"/>
+
     </Grid>
 </Window>
