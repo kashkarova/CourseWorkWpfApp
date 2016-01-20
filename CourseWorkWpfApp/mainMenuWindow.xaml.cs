@@ -41,6 +41,10 @@ namespace CourseWorkWpfApp
 
             menuViewContract.IsEnabled = false;
 
+            menuSettingChangeUserIsAdmin.IsEnabled = false;
+            menuSettingChangeUserIsAdmin.IsCheckable = false;
+            menuSettingChangeUserIsUser.IsChecked = true;
+
             this.Title = "";
             this.Title = "Пользователь: Главное меню";
 
@@ -256,7 +260,8 @@ namespace CourseWorkWpfApp
         {
             menuSettingChangeUserIsUser.IsChecked = false;
 
-            AdminMode();
+            if(this.IsEnabled==true)
+                AdminMode();
         }
 
         private void menuSettingChangeUserIsAdmin_Unchecked(object sender, RoutedEventArgs e)
@@ -275,15 +280,13 @@ namespace CourseWorkWpfApp
 
         private void menuSettingChangeUserIsUser_Unchecked(object sender, RoutedEventArgs e)
         {
-            menuSettingChangeUserIsAdmin.IsChecked = true;
-
-            AdminMode();
+            UserMode();
         }
 
         private void menuSettingChangePassword_Click(object sender, RoutedEventArgs e)
         {
             changePasswordWindow changePasswordWindow = new changePasswordWindow();
-            changePasswordWindow.Show();
+            changePasswordWindow.Show();    
         }
     }
 }
