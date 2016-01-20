@@ -290,6 +290,8 @@
     <EntitySet Name="ViewServices" EntityType="DbModel.ViewServices" />
     <EntitySet Name="ViewGroupServices" EntityType="DbModel.ViewGroupServices" />
     <EntitySet Name="ViewPersonalServices" EntityType="DbModel.ViewPersonalServices" />
+    <EntitySet Name="ClientsNamesWithoutAbonement" EntityType="DbModel.ClientsNamesWithoutAbonement" />
+    <EntitySet Name="ViewClientsWithoutAbonements" EntityType="DbModel.ViewClientsWithoutAbonements" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -326,11 +328,13 @@
       <PropertyRef Name="coach_id" />
       <PropertyRef Name="title" />
       <PropertyRef Name="payment" />
+      <PropertyRef Name="id" />
     </Key>
     <Property Name="coach_id" Type="Int32" Nullable="false" />
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="payment" Type="Double" Nullable="false" />
     <Property Name="additional_payment" Type="Double" />
+    <Property Name="id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientsNames">
     <Key>
@@ -420,5 +424,21 @@
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Price" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientsNamesWithoutAbonement">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ViewClientsWithoutAbonements">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

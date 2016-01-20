@@ -142,6 +142,7 @@
     <EntitySetMapping Name="ViewContractWithAddPayment">
       <EntityTypeMapping TypeName="DbModel.ViewContractWithAddPayment">
         <MappingFragment StoreEntitySet="ViewContractWithAddPayment">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
           <ScalarProperty Name="payment" ColumnName="payment" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -224,6 +225,22 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientsNamesWithoutAbonement">
+      <EntityTypeMapping TypeName="DbModel.ClientsNamesWithoutAbonement">
+        <MappingFragment StoreEntitySet="ClientsNamesWithoutAbonement">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewClientsWithoutAbonements">
+      <EntityTypeMapping TypeName="DbModel.ViewClientsWithoutAbonements">
+        <MappingFragment StoreEntitySet="ViewClientsWithoutAbonements">
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

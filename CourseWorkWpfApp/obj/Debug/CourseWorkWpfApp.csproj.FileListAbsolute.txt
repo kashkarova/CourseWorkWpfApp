@@ -13,7 +13,6 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\addServiceWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\mainMenuWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\MainWindow.g.cs
-E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\registrationWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\viewAbonementWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\viewClientWindow.g.cs
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\viewCoachWindow.g.cs
@@ -30,7 +29,6 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\addServiceWindow.baml
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\mainMenuWindow.baml
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\MainWindow.baml
-E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\registrationWindow.baml
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\viewAbonementWindow.baml
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\viewClientWindow.baml
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\viewCoachWindow.baml
@@ -42,4 +40,3 @@ E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программ�
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.csproj.GenerateResource.Cache
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.exe
 E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.pdb
-E:\НТУ ХПИ\3 курс\БД\Курсовая работа\Программа\CourseWorkWPFApp\CourseWorkWpfApp\obj\Debug\CourseWorkWpfApp.csprojResolveAssemblyReference.cache

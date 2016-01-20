@@ -28,6 +28,43 @@ namespace CourseWorkWpfApp
             searchPostCheckBox.Width = 0;
         }
 
+        public viewCoachWindow(string mainMenuFormTitle)
+        {
+            InitializeComponent();
+
+            if (mainMenuFormTitle.Contains("Администратор"))
+            {
+                AdminMode();
+            }
+            else
+            {
+                UserMode();
+            }
+
+        }
+
+        private void AdminMode()
+        {
+            addCoachButton.IsEnabled = true;
+            editCoachButton.IsEnabled = true;
+            saveCoachButton.IsEnabled = true;
+            deleteCoachtButton.IsEnabled = true;
+
+            this.Title = "";
+            this.Title = "Администратор: Тренеры";
+        }
+
+        private void UserMode()
+        {
+            addCoachButton.IsEnabled = false;
+            editCoachButton.IsEnabled = false;
+            saveCoachButton.IsEnabled = false;
+            deleteCoachtButton.IsEnabled = false;
+
+            this.Title = "";
+            this.Title = "Пользователь: Тренеры";
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try

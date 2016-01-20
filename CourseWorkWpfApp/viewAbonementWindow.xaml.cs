@@ -24,7 +24,34 @@ namespace CourseWorkWpfApp
             InitializeComponent();
 
             searchAbonementTextBox.Clear();
-            searchAbonementTextBox.Text = "Найти...";
+            searchAbonementTextBox.Text = "Найти...";        
+        }
+
+        public viewAbonementWindow(string mainMenuFormTitle)
+        {
+            InitializeComponent();
+
+            if (mainMenuFormTitle.Contains("Администратор"))
+            {
+                AdminMode();
+            }
+            else
+            {
+                UserMode();
+            }
+
+        }
+
+        private void AdminMode()
+        {
+            this.Title = "";
+            this.Title = "Администратор: Абонементы";
+        }
+
+        private void UserMode()
+        {
+            this.Title = "";
+            this.Title = "Пользователь: Абонементы";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

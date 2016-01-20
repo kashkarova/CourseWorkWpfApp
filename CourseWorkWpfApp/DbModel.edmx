@@ -106,6 +106,16 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ClientsNames' does not have a 
           <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ClientsNamesWithoutAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ClientsNamesWithoutAbonement">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CoachesNames">
           <Key>
@@ -181,6 +191,16 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a p
           <Property Name="telephone" Type="varchar" MaxLength="7" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClientsWithoutAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewClientsWithoutAbonements">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewCoaches">
           <Key>
@@ -205,10 +225,12 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a p
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewContractWithAddPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewContractWithAddPayment">
           <Key>
+            <PropertyRef Name="id" />
             <PropertyRef Name="coach_id" />
             <PropertyRef Name="title" />
             <PropertyRef Name="payment" />
           </Key>
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="coach_id" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="payment" Type="float" Nullable="false" />
@@ -398,6 +420,12 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServices' does not have a 
 [ClientsNames].[name] AS [name]
 FROM [dbo].[ClientsNames] AS [ClientsNames]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="ClientsNamesWithoutAbonement" EntityType="Self.ClientsNamesWithoutAbonement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ClientsNamesWithoutAbonement].[id] AS [id], 
+[ClientsNamesWithoutAbonement].[name] AS [name]
+FROM [dbo].[ClientsNamesWithoutAbonement] AS [ClientsNamesWithoutAbonement]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="CoachesNames" EntityType="Self.CoachesNames" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [CoachesNames].[id] AS [id], 
@@ -442,6 +470,12 @@ FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
 [ViewClients].[telephone] AS [telephone]
 FROM [dbo].[ViewClients] AS [ViewClients]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="ViewClientsWithoutAbonements" EntityType="Self.ViewClientsWithoutAbonements" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ViewClientsWithoutAbonements].[id] AS [id], 
+[ViewClientsWithoutAbonements].[name] AS [name]
+FROM [dbo].[ViewClientsWithoutAbonements] AS [ViewClientsWithoutAbonements]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ViewCoaches" EntityType="Self.ViewCoaches" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [ViewCoaches].[id] AS [id], 
@@ -456,6 +490,7 @@ FROM [dbo].[ViewCoaches] AS [ViewCoaches]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewContractWithAddPayment" EntityType="Self.ViewContractWithAddPayment" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+[ViewContractWithAddPayment].[id] AS [id], 
 [ViewContractWithAddPayment].[coach_id] AS [coach_id], 
 [ViewContractWithAddPayment].[title] AS [title], 
 [ViewContractWithAddPayment].[payment] AS [payment], 
@@ -822,6 +857,8 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <EntitySet Name="ViewServices" EntityType="DbModel.ViewServices" />
           <EntitySet Name="ViewGroupServices" EntityType="DbModel.ViewGroupServices" />
           <EntitySet Name="ViewPersonalServices" EntityType="DbModel.ViewPersonalServices" />
+          <EntitySet Name="ClientsNamesWithoutAbonement" EntityType="DbModel.ClientsNamesWithoutAbonement" />
+          <EntitySet Name="ViewClientsWithoutAbonements" EntityType="DbModel.ViewClientsWithoutAbonements" />
         </EntityContainer>
         <EntityType Name="ViewAbonements">
           <Key>
@@ -858,11 +895,13 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
             <PropertyRef Name="coach_id" />
             <PropertyRef Name="title" />
             <PropertyRef Name="payment" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="coach_id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="payment" Type="Double" Nullable="false" />
           <Property Name="additional_payment" Type="Double" />
+          <Property Name="id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ClientsNames">
           <Key>
@@ -952,6 +991,22 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientsNamesWithoutAbonement">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewClientsWithoutAbonements">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1100,6 +1155,7 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <EntitySetMapping Name="ViewContractWithAddPayment">
             <EntityTypeMapping TypeName="DbModel.ViewContractWithAddPayment">
               <MappingFragment StoreEntitySet="ViewContractWithAddPayment">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
                 <ScalarProperty Name="payment" ColumnName="payment" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -1182,6 +1238,22 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientsNamesWithoutAbonement">
+            <EntityTypeMapping TypeName="DbModel.ClientsNamesWithoutAbonement">
+              <MappingFragment StoreEntitySet="ClientsNamesWithoutAbonement">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewClientsWithoutAbonements">
+            <EntityTypeMapping TypeName="DbModel.ViewClientsWithoutAbonements">
+              <MappingFragment StoreEntitySet="ViewClientsWithoutAbonements">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

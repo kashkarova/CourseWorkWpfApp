@@ -38,11 +38,31 @@ namespace CourseWorkWpfApp
             menuAddService.IsEnabled = false;
             menuSettingChangePassword.IsEnabled = false;
             menuSettingsAddPost.IsEnabled = false;
+
+            menuViewContract.IsEnabled = false;
+
+            this.Title = "";
+            this.Title = "Пользователь: Главное меню";
+
+        }
+
+        private void AdminMode()
+        {
+            menuAddContract.IsEnabled = true;
+            menuAddCoach.IsEnabled = true;
+            menuAddService.IsEnabled = true;
+            menuSettingChangePassword.IsEnabled = true;
+            menuSettingsAddPost.IsEnabled = true;
+
+            menuViewContract.IsEnabled = true;
+
+            this.Title = "";
+            this.Title = "Администратор: Главное меню";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (this.Title.Length > 12)
+            if (this.Title.Contains("Администратор")==true)
             {
                 menuSettingChangeUserIsAdmin.IsChecked = true;
             }
@@ -134,25 +154,25 @@ namespace CourseWorkWpfApp
 
         private void menuViewClient_Click(object sender, RoutedEventArgs e)
         {
-            viewClientWindow viewClientWindow = new viewClientWindow();
+            viewClientWindow viewClientWindow = new viewClientWindow(this.Title);
             viewClientWindow.Show();
         }
 
         private void menuViewAbonement_Click(object sender, RoutedEventArgs e)
         {
-            viewAbonementWindow viewAbonementWindow = new viewAbonementWindow();
+            viewAbonementWindow viewAbonementWindow = new viewAbonementWindow(this.Title);
             viewAbonementWindow.Show();
         }
 
         private void menuViewService_Click(object sender, RoutedEventArgs e)
         {
-            viewServiceWindow viewServiceWindow = new viewServiceWindow();
+            viewServiceWindow viewServiceWindow = new viewServiceWindow(this.Title);
             viewServiceWindow.Show();
         }
 
         private void menuViewCoach_Click(object sender, RoutedEventArgs e)
         {
-            viewCoachWindow viewCoachWindow = new viewCoachWindow();
+            viewCoachWindow viewCoachWindow = new viewCoachWindow(this.Title);
             viewCoachWindow.Show();
         }
 
@@ -172,7 +192,7 @@ namespace CourseWorkWpfApp
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void menuExit_Click(object sender, RoutedEventArgs e)
@@ -189,76 +209,14 @@ namespace CourseWorkWpfApp
 
         private void clientComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using (var Db = new DatabaseContext())
-                {
-                    clientComboBox.ItemsSource = Db.ClientsNames.Select(x => x.name).ToList();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+           
         }
 
-        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-
-                using (var Db = new DatabaseContext())
-                {
-                    int i = Db.ClientsNames.FirstOrDefault(n => n.name == (string)clientComboBox.SelectedValue).id;
-
-                    var result = Db.CurrServicePositionId.Where(x => x.client_id == i && x.sP_id != null).Select(y => y.sP_id).ToList();
-
-                    int id = 0;
-                    string date_begin="";
-
-                    foreach (int temp_id in result)
-                    {
-                        id = temp_id;
-                    }
-
-                    var dateBegin_result = Db.ViewAbonements.Where(x => x.id == i && x.date_begin != null).Select(x => x.date_begin).ToList();
-
-                    bool flag = true;
-
-                    foreach (DateTime date in dateBegin_result)
-                    {
-                        date_begin = date.ToString();
-                    }
-
-                    dateBeginDatePicker.IsEnabled = flag;
-
-                    dateBeginDatePicker.Text = date_begin;         
-
-                    servicePositionDataGrid.ItemsSource = Db.ViewServicePosition.Where(j => j.id == id).Select(j => j).ToList();
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        
+       
 
         private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using (var Db = new DatabaseContext())
-                {
-                   
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            
         }
 
         private void menuSettingsAddPost_Click(object sender, RoutedEventArgs e)
@@ -280,6 +238,46 @@ namespace CourseWorkWpfApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void menuSettingChangeUserIsAdmin_Checked(object sender, RoutedEventArgs e)
+        {
+            menuSettingChangeUserIsUser.IsChecked = false;
+
+            AdminMode();
+        }
+
+        private void menuSettingChangeUserIsAdmin_Unchecked(object sender, RoutedEventArgs e)
+        {
+            menuSettingChangeUserIsUser.IsChecked = true;
+            
+            UserMode();
+        }
+
+        private void menuSettingChangeUserIsUser_Checked(object sender, RoutedEventArgs e)
+        {
+            menuSettingChangeUserIsAdmin.IsChecked = false;
+
+            UserMode();
+        }
+
+        private void menuSettingChangeUserIsUser_Unchecked(object sender, RoutedEventArgs e)
+        {
+            menuSettingChangeUserIsAdmin.IsChecked = true;
+
+            AdminMode();
         }
     }
 }

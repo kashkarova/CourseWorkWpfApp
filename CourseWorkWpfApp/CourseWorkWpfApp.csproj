@@ -95,6 +95,9 @@
     <Compile Include="ClientsNames.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClientsNamesWithoutAbonement.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Coach.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -130,9 +133,6 @@
     <Compile Include="Post.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="registrationWindow.xaml.cs">
-      <DependentUpon>registrationWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Service.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -149,6 +149,9 @@
       <DependentUpon>viewAbonementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewClients.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewClientsWithoutAbonements.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="viewClientWindow.xaml.cs">
@@ -227,10 +230,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="registrationWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="viewAbonementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

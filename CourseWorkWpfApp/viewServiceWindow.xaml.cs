@@ -30,12 +30,61 @@ namespace CourseWorkWpfApp
 
         }
 
+        public viewServiceWindow(string mainMenuFormTitle)
+        {
+            InitializeComponent();
+
+            searchToolsLabel.Width = 0;
+            searchTitleCheckBox.Width = 0;
+            searchPriceCheckBox.Width = 0;
+
+            if (mainMenuFormTitle.Contains("Администратор"))
+            {
+                AdminMode();
+            }
+            else
+            {
+                UserMode();
+            }
+
+        }
+
+        private void AdminMode()
+        {
+            addServiceButton.IsEnabled = true;
+            editServiceButton.IsEnabled = true;
+            saveServiceButton.IsEnabled = true;
+            deleteServiceButton.IsEnabled = true;
+
+            this.Title = "";
+            this.Title = "Администратор: Услуги";
+        }
+
+        private void UserMode()
+        {
+            addServiceButton.IsEnabled = false;
+            editServiceButton.IsEnabled = false;
+            saveServiceButton.IsEnabled = false;
+            deleteServiceButton.IsEnabled = false;
+
+            this.Title = "";
+            this.Title = "Пользователь: Услуги";
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (var Db = new DatabaseContext())
+            
+            try
             {
-                serviceDataGrid.ItemsSource = Db.Service.ToList();
+                using (var Db = new DatabaseContext())
+                {
+                    serviceDataGrid.ItemsSource = Db.Service.ToList();
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }         
         }
 
         private void searchServiceTextBox_GotFocus(object sender, RoutedEventArgs e)

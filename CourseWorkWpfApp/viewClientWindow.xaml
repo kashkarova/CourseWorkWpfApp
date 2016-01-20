@@ -31,8 +31,8 @@
                 <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,38" Width="75" Click="saveButton_Click" Height="20" VerticalAlignment="Bottom"/>
-        <Button x:Name="editButton" Content="Изменить" HorizontalAlignment="Left" Margin="170,0,0,38" Width="75" Height="20" VerticalAlignment="Bottom" Click="editButton_Click"/>
+        <Button x:Name="saveClientButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,38" Width="75" Click="saveButton_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="ediClienttButton" Content="Изменить" HorizontalAlignment="Left" Margin="170,0,0,38" Width="75" Height="20" VerticalAlignment="Bottom" Click="editButton_Click"/>
         <TextBox x:Name="searchClientTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchClientTextBox_GotFocus"/>
         <Button x:Name="searchClientButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchClientButton_Click"/>
 

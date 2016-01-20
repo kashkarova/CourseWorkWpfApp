@@ -22,7 +22,10 @@ namespace CourseWorkWpfApp
         public viewContractWindow()
         {
             InitializeComponent();
-            
+
+            this.Title = "";
+            this.Title = "Администратор: Контракты";
+
         }
 
         private void RefreshContractDataGrid()
@@ -111,7 +114,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Тренер не найден!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -46,7 +46,7 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    coachComboBox.ItemsSource = Db.CoachesNamesWithContract.Select(i => i.name).ToList();
+                    coachComboBox.ItemsSource = Db.CoachesNames.Select(i => i.name).ToList();
                 }
             }
             catch (Exception)
@@ -63,9 +63,9 @@ namespace CourseWorkWpfApp
             {
                 using (var Db = new DatabaseContext())
                 {
-                    int i= Db.CoachesNamesWithContract.FirstOrDefault(n =>n.name == (string)coachComboBox.SelectedValue).id;
+                    int i= Db.CoachesNames.FirstOrDefault(n =>n.name == (string)coachComboBox.SelectedValue).id;
 
-                    var result = Db.CoachesNamesWithContract.Where(x => x.id == i).Select(x => x.title).ToList<string>();
+                    var result = Db.CoachesNames.Where(x => x.id == i).Select(x => x.title).ToList<string>();
 
                     foreach (string s in result)
                     {
@@ -140,7 +140,7 @@ namespace CourseWorkWpfApp
                     {
                         using (var Db = new DatabaseContext())
                         {
-                            contract.coach_id = Db.CoachesNamesWithContract.FirstOrDefault(n => n.name == (string)coachComboBox.SelectedValue).id;
+                            contract.coach_id = Db.CoachesNames.FirstOrDefault(n => n.name == (string)coachComboBox.SelectedValue).id;
 
                             contract.service_id = Db.Service.FirstOrDefault(n => n.title == (string)titleServiceComboBox.SelectedValue).id;
 
@@ -168,7 +168,7 @@ namespace CourseWorkWpfApp
                 {
                     using (var Db = new DatabaseContext())
                     {
-                        Db.Contract.Find(contract_g.id).coach_id = Db.CoachesNamesWithContract.FirstOrDefault(p => p.name == (string)coachComboBox.SelectedValue).id;
+                        Db.Contract.Find(contract_g.id).coach_id = Db.CoachesNames.FirstOrDefault(p => p.name == (string)coachComboBox.SelectedValue).id;
                         Db.Contract.Find(contract_g.id).service_id = Db.Service.FirstOrDefault(s => s.title == (string)titleServiceComboBox.SelectedValue).id;
                         Db.Contract.Find(contract_g.id).salary = Convert.ToDouble(salaryTextBox.Text);
                         

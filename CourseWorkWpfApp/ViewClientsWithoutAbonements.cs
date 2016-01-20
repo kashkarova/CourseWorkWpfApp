@@ -12,12 +12,9 @@ namespace CourseWorkWpfApp
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewContractWithAddPayment
+    public partial class ViewClientsWithoutAbonements
     {
-        public int coach_id { get; set; }
-        public string title { get; set; }
-        public double payment { get; set; }
-        public Nullable<double> additional_payment { get; set; }
         public int id { get; set; }
+        public string name { get; set; }
     }
 }

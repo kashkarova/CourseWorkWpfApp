@@ -24,6 +24,43 @@ namespace CourseWorkWpfApp
             InitializeComponent();
         }
 
+        public viewClientWindow(string mainMenuFormTitle)
+        {
+            InitializeComponent();
+
+            if (mainMenuFormTitle.Contains("Администратор"))
+            {
+                AdminMode();
+            }
+            else
+            {
+                UserMode();
+            }
+
+        }
+
+        private void AdminMode()
+        {
+            addClientButton.IsEnabled = true;
+            ediClienttButton.IsEnabled = true;
+            saveClientButton.IsEnabled = true;
+            deleteClientButton.IsEnabled = true;
+
+            this.Title = "";
+            this.Title = "Администратор: Клиенты";
+        }
+
+        private void UserMode()
+        {
+            addClientButton.IsEnabled = false;
+            ediClienttButton.IsEnabled = false;
+            saveClientButton.IsEnabled = false;
+            deleteClientButton.IsEnabled = false;
+
+            this.Title = "";
+            this.Title = "Пользователь: Клиенты";
+        }
+
         private void RefreshClientDataGrid()
         {
             clientDataGrid.Items.Refresh();

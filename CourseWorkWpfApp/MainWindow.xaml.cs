@@ -51,7 +51,7 @@ namespace CourseWorkWpfApp
 
                 if (loginComboBox.SelectedIndex == 0)
                 {
-                    mainMenuWindow.Title = mainMenuWindow.Title + ": Администратор";
+                    mainMenuWindow.Title = "Главное меню: Администратор";
                 }
                 
                 mainMenuWindow.Show();
