@@ -128,11 +128,11 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNamesWithContract' does
 warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CurrServicePositionId">
     <Key>
-      <PropertyRef Name="sP_id" />
-      <PropertyRef Name="client_id" />
+      <PropertyRef Name="sp_id" />
+      <PropertyRef Name="abonement_id" />
     </Key>
-    <Property Name="sP_id" Type="int" Nullable="false" />
-    <Property Name="client_id" Type="int" Nullable="false" />
+    <Property Name="sp_id" Type="int" Nullable="false" />
+    <Property Name="abonement_id" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.GroupServicesForAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -284,12 +284,14 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not 
   <EntityType Name="ViewServicePosition">
     <Key>
       <PropertyRef Name="id" />
+      <PropertyRef Name="abonement_id" />
       <PropertyRef Name="title" />
       <PropertyRef Name="count" />
       <PropertyRef Name="price" />
       <PropertyRef Name="cost" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="abonement_id" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="date_end" Type="date" Nullable="false" />
     <Property Name="count" Type="int" Nullable="false" />
@@ -455,8 +457,8 @@ FROM [dbo].[CoachesNamesWithContract] AS [CoachesNamesWithContract]</DefiningQue
     </EntitySet>
     <EntitySet Name="CurrServicePositionId" EntityType="Self.CurrServicePositionId" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[CurrServicePositionId].[sP_id] AS [sP_id], 
-[CurrServicePositionId].[client_id] AS [client_id]
+[CurrServicePositionId].[sp_id] AS [sp_id], 
+[CurrServicePositionId].[abonement_id] AS [abonement_id]
 FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="GroupServicesForAbonement" EntityType="Self.GroupServicesForAbonement" store:Type="Views" store:Schema="dbo">
@@ -547,6 +549,7 @@ FROM [dbo].[ViewPersonalServices] AS [ViewPersonalServices]</DefiningQuery>
     <EntitySet Name="ViewServicePosition" EntityType="Self.ViewServicePosition" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [ViewServicePosition].[id] AS [id], 
+[ViewServicePosition].[abonement_id] AS [abonement_id], 
 [ViewServicePosition].[title] AS [title], 
 [ViewServicePosition].[date_end] AS [date_end], 
 [ViewServicePosition].[count] AS [count], 

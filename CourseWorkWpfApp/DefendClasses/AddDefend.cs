@@ -96,5 +96,28 @@ namespace CourseWorkWpfApp.DefendClasses
 
             return true;
         }
+
+        public static bool AddAbonementDefend(string client, DateTime date)
+        {
+            if ((client.Equals(null)) || (date.Equals(null)))return false;
+
+            return true;
+        }
+
+        public static bool AddServicePositionDefendPersonal(string type, string title, string coach)
+        {
+            if ((type.Equals(null)) || (title.Equals(null)) || (coach.Equals(null))) return false;
+
+            return true;
+        }
+
+        public static bool AddServicePositionDefendGroup(string type, string title, string roomnum)
+        {
+            if ((type.Equals(null)) || (title.Equals(null)) || (roomnum.Equals(null))) return false;
+
+            try { Convert.ToInt32(roomnum); } catch { return false; }
+
+            return true;
+        }
     }
 }

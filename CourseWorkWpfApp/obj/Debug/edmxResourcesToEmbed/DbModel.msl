@@ -161,6 +161,7 @@
     <EntitySetMapping Name="ViewServicePosition">
       <EntityTypeMapping TypeName="DbModel.ViewServicePosition">
         <MappingFragment StoreEntitySet="ViewServicePosition">
+          <ScalarProperty Name="abonement_id" ColumnName="abonement_id" />
           <ScalarProperty Name="cost" ColumnName="cost" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="count" ColumnName="count" />
@@ -173,8 +174,8 @@
     <EntitySetMapping Name="CurrServicePositionId">
       <EntityTypeMapping TypeName="DbModel.CurrServicePositionId">
         <MappingFragment StoreEntitySet="CurrServicePositionId">
-          <ScalarProperty Name="client_id" ColumnName="client_id" />
-          <ScalarProperty Name="sP_id" ColumnName="sP_id" />
+          <ScalarProperty Name="abonement_id" ColumnName="abonement_id" />
+          <ScalarProperty Name="sp_id" ColumnName="sp_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

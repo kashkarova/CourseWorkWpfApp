@@ -14,7 +14,7 @@ namespace CourseWorkWpfApp
     
     public partial class CurrServicePositionId
     {
-        public int sP_id { get; set; }
-        public int client_id { get; set; }
+        public int sp_id { get; set; }
+        public int abonement_id { get; set; }
     }
 }

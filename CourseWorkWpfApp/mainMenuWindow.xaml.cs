@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWorkWpfApp.DefendClasses;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Printing;
@@ -24,6 +25,9 @@ namespace CourseWorkWpfApp
     {
         Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
 
+        private bool isAbonement = true;
+        private int abonement_id_g = 0;
+
         public mainMenuWindow()
         {
             InitializeComponent();
@@ -35,7 +39,65 @@ namespace CourseWorkWpfApp
             roomNumTextBox.Width = 0;
             coachComboBox.Width = 0;
             coachLabel.Width = 0;
+
+            InsertToAbonement();
         }
+
+        private void InsertToAbonement()
+        {
+            clientComboBox.IsEditable = true;
+
+            serviceTypeComboBox.IsEnabled = false;
+            serviceTitleComboBox.IsEnabled = false;
+            countTimesServiceComboBox.IsEnabled = false;
+
+            addServiceToAbonementButton.IsEnabled = false;
+            deleteServiceFromAbonementButton.IsEnabled = false;
+            saveServiceOnAbonementButton.IsEnabled = false;
+
+            servicePositionDataGrid.IsEnabled = false;
+
+            dateendDatePicker.IsEnabled = false;
+            additionalPaymentTextBox.IsEnabled = false;
+            generalSumTextBox.IsEnabled = false;
+
+        }
+
+        private void InsertToServicePosition()
+        {
+            clientComboBox.IsEnabled = false;
+
+            serviceTypeComboBox.IsEnabled = true;
+            serviceTitleComboBox.IsEnabled = true;
+            countTimesServiceComboBox.IsEnabled = true;
+
+            addServiceToAbonementButton.IsEnabled = true;
+            deleteServiceFromAbonementButton.IsEnabled = true;
+            saveServiceOnAbonementButton.IsEnabled = true;
+
+            servicePositionDataGrid.IsEnabled = true;
+
+            dateendDatePicker.IsEnabled = true;
+            additionalPaymentTextBox.IsEnabled = true;
+            generalSumTextBox.IsEnabled = true;
+        }
+
+        private void ItemsSourseToTable()
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    servicePositionDataGrid.ItemsSource = Db.ViewServicePosition.Where(sp => sp.abonement_id == abonement_id_g).Select(sp => sp).ToList();
+                    servicePositionDataGrid.Items.Refresh();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
         #region Modes
 
@@ -410,7 +472,47 @@ namespace CourseWorkWpfApp
 
         private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
         {
+            if (isAbonement == true)
+            {
+                try
+                {
+                    if (AddDefend.AddAbonementDefend((string)clientComboBox.SelectedValue, Convert.ToDateTime(dateBeginDatePicker.SelectedDate)) == true)
+                    {
+                        using (var Db = new DatabaseContext())
+                        {
+                            Abonement abonement = new Abonement();
 
+                            abonement.client_id=Db.ClientsNames.FirstOrDefault(c=>c.name == (string)clientComboBox.SelectedValue).id;
+
+                            abonement.date_begin = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
+
+                            Db.Abonement.Add(abonement);
+                            Db.SaveChanges();
+
+                            abonement_id_g = abonement.id;
+                        }
+
+                        isAbonement = false;
+                        InsertToServicePosition();
+                        dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Возможно, были введены некорректные данные!", "Ошибка ввода данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                }
+                catch (Exception)
+                {
+                     MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                }         
+            }
+            else
+            {
+                InsertToServicePosition();
+
+                dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
+            }
         }
 
         private void addServiceToAbonementButton_Click(object sender, RoutedEventArgs e)
@@ -425,7 +527,145 @@ namespace CourseWorkWpfApp
 
         private void saveServiceOnAbonementButton_Click(object sender, RoutedEventArgs e)
         {
+            if (serviceTypeComboBox.SelectedIndex == 0)
+            {
+                if(AddDefend.AddServicePositionDefendGroup((string)serviceTypeComboBox.SelectedValue, (string)serviceTitleComboBox.SelectedValue, roomNumTextBox.Text) == true)
+                {
+                    try
+                    {
+                        using (var Db = new DatabaseContext())
+                        {
+                            ServicePosition serviceposition = new ServicePosition();
 
+                            serviceposition.abonement_id = abonement_id_g;
+                            serviceposition.service_id= Db.GroupServicesForAbonement.FirstOrDefault(gs => gs.title == (string)serviceTitleComboBox.SelectedValue).id;
+                            
+                            int i=countTimesServiceComboBox.SelectedIndex;
+
+                            switch (i)
+                            {
+                                case 1:
+                                    serviceposition.count = 8;                         
+
+                                    serviceposition.date_end = Convert.ToDateTime(dateendDatePicker.SelectedDate);
+
+                                    break;
+
+                                case 2:
+                                    serviceposition.count = 12;
+
+                                    serviceposition.date_end = Convert.ToDateTime(dateendDatePicker.SelectedDate);
+
+                                    break;
+
+                                default:
+                                    serviceposition.count = 1;
+
+                                   // dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
+
+                                    serviceposition.date_end = Convert.ToDateTime(dateendDatePicker.SelectedDate);
+
+                                    break;
+                            }
+
+                            Db.ServicePosition.Add(serviceposition);
+                            Db.SaveChanges();
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Возможно, были введены некорректные данные!", "Ошибка ввода данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            if (serviceTypeComboBox.SelectedIndex == 1)
+            {
+                if(AddDefend.AddServicePositionDefendPersonal((string)serviceTypeComboBox.SelectedValue, (string)serviceTitleComboBox.SelectedValue, (string)coachComboBox.SelectedValue) == true)
+                {
+                    try
+                    {
+                        using (var Db = new DatabaseContext())
+                        {
+                            ServicePosition serviceposition = new ServicePosition();
+
+                            serviceposition.abonement_id = abonement_id_g;
+                            serviceposition.service_id = Db.PersonalServicesForAbonement.FirstOrDefault(ps => ps.title == (string)serviceTitleComboBox.SelectedValue).id;
+
+                            int i = countTimesServiceComboBox.SelectedIndex;
+
+                            switch (i)
+                            {
+                                case 1:
+                                    serviceposition.count = 8;
+
+                                    serviceposition.date_end = Convert.ToDateTime(dateendDatePicker.SelectedDate);
+
+                                    break;
+
+                                case 2:
+                                    serviceposition.count = 12;                        
+
+                                    serviceposition.date_end = Convert.ToDateTime(dateendDatePicker.SelectedDate);
+
+                                    break;
+
+                                default:
+                                    serviceposition.count = 1;
+
+                                    serviceposition.date_end = Convert.ToDateTime(dateendDatePicker.SelectedDate);
+
+                                    break;
+                            }
+
+
+                            Db.ServicePosition.Add(serviceposition);
+                            Db.SaveChanges();
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Возможно, были введены некорректные данные!", "Ошибка ввода данных", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            ItemsSourseToTable();
+
+        }
+
+        private void countTimesServiceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int i = countTimesServiceComboBox.SelectedIndex;
+
+            switch (i)
+            {
+                case 1:
+
+                    dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate).AddMonths(1);
+                    break;
+
+                case 2:
+
+                    dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate).AddMonths(1);
+                    break;
+
+                default:
+
+                    dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
+
+                    break;
+            }
         }
     }
 }

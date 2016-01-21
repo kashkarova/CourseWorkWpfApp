@@ -85,8 +85,7 @@
         <Label x:Name="label6" Content="Общая сумма" HorizontalAlignment="Left" Margin="350,468,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="serviceTypeComboBox" HorizontalAlignment="Left" Margin="26,133,0,0" VerticalAlignment="Top" Width="120" Loaded="serviceTypeComboBox_Loaded" SelectionChanged="serviceTypeComboBox_SelectionChanged"/>
         <Label x:Name="label7" Content="Тип услуги" HorizontalAlignment="Left" Margin="26,103,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="countTimesServiceComboBox" HorizontalAlignment="Left" Margin="336,133,0,0" VerticalAlignment="Top" Width="57" Loaded="countTimesServiceComboBox_Loaded"/>
-        <WrapPanel HorizontalAlignment="Left" Height="100" Margin="84,162,0,0" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="countTimesServiceComboBox" HorizontalAlignment="Left" Margin="336,133,0,0" VerticalAlignment="Top" Width="57" Loaded="countTimesServiceComboBox_Loaded" SelectionChanged="countTimesServiceComboBox_SelectionChanged"/>
 
     </Grid>
 </Window>

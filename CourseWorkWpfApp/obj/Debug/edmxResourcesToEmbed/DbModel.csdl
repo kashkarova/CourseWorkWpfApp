@@ -352,6 +352,7 @@
       <PropertyRef Name="count" />
       <PropertyRef Name="price" />
       <PropertyRef Name="cost" />
+      <PropertyRef Name="abonement_id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -359,14 +360,15 @@
     <Property Name="count" Type="Int32" Nullable="false" />
     <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="cost" Type="Double" Nullable="false" />
+    <Property Name="abonement_id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="CurrServicePositionId">
     <Key>
-      <PropertyRef Name="sP_id" />
-      <PropertyRef Name="client_id" />
+      <PropertyRef Name="sp_id" />
+      <PropertyRef Name="abonement_id" />
     </Key>
-    <Property Name="sP_id" Type="Int32" Nullable="false" />
-    <Property Name="client_id" Type="Int32" Nullable="false" />
+    <Property Name="sp_id" Type="Int32" Nullable="false" />
+    <Property Name="abonement_id" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="ViewClients">
     <Key>
