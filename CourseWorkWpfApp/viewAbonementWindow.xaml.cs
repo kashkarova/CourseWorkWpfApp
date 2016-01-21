@@ -56,17 +56,17 @@ namespace CourseWorkWpfApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
+          //  try
+           // {
                 using (var Db = new DatabaseContext())
                 {
                     abonementDataGrid.ItemsSource = Db.ViewAbonements.ToList();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+          //  }
+         //   catch (Exception)
+          //  {
+              //  MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+          //  }
         }
 
         private void searchClientSurnameCheckBox_Checked(object sender, RoutedEventArgs e)
