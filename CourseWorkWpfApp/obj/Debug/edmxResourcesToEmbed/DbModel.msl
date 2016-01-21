@@ -161,6 +161,7 @@
     <EntitySetMapping Name="ViewServicePosition">
       <EntityTypeMapping TypeName="DbModel.ViewServicePosition">
         <MappingFragment StoreEntitySet="ViewServicePosition">
+          <ScalarProperty Name="cost" ColumnName="cost" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="count" ColumnName="count" />
           <ScalarProperty Name="date_end" ColumnName="date_end" />

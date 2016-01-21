@@ -301,6 +301,12 @@ namespace CourseWorkWpfApp
             serviceTypeComboBox.SelectedIndex = -1;
         }
 
+        private void countTimesServiceComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            countTimesServiceComboBox.ItemsSource = new List<string>() { "1", "8", "12"};
+            countTimesServiceComboBox.SelectedIndex = 0;
+        }
+
         private void serviceTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int i = 0;
@@ -353,36 +359,6 @@ namespace CourseWorkWpfApp
             }
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        
-
-        
-
-       
-
-        private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-
-
-        private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         private void serviceTitleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -401,7 +377,7 @@ namespace CourseWorkWpfApp
 
         }
 
-        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void coachComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -414,6 +390,42 @@ namespace CourseWorkWpfApp
             {
                 MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void addServiceToAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteServiceFromAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void saveServiceOnAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -287,12 +287,14 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServicePosition' does not 
       <PropertyRef Name="title" />
       <PropertyRef Name="count" />
       <PropertyRef Name="price" />
+      <PropertyRef Name="cost" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="date_end" Type="date" />
+    <Property Name="date_end" Type="date" Nullable="false" />
     <Property Name="count" Type="int" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="cost" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -548,7 +550,8 @@ FROM [dbo].[ViewPersonalServices] AS [ViewPersonalServices]</DefiningQuery>
 [ViewServicePosition].[title] AS [title], 
 [ViewServicePosition].[date_end] AS [date_end], 
 [ViewServicePosition].[count] AS [count], 
-[ViewServicePosition].[price] AS [price]
+[ViewServicePosition].[price] AS [price], 
+[ViewServicePosition].[cost] AS [cost]
 FROM [dbo].[ViewServicePosition] AS [ViewServicePosition]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewServices" EntityType="Self.ViewServices" store:Type="Views" store:Schema="dbo">

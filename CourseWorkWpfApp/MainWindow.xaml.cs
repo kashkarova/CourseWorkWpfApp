@@ -37,7 +37,7 @@ namespace CourseWorkWpfApp
             if (AuthorizationDefend.EntranceToSystem(login, password) == false)
             {
                 MessageBoxResult result = new MessageBoxResult();
-                result=MessageBox.Show("Ошибка авторизации! Неверный ввод логина и/или пароля.", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
+                result=MessageBox.Show("Ошибка авторизации! Неверный ввод пароля.", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 if (result == MessageBoxResult.OK)
                 {
@@ -51,7 +51,11 @@ namespace CourseWorkWpfApp
 
                 if (loginComboBox.SelectedIndex == 0)
                 {
-                    mainMenuWindow.Title = "Главное меню: Администратор";
+                    mainMenuWindow.Title = "Администратор: Главное меню";
+                }
+                else
+                {
+                    mainMenuWindow.Title = "Пользователь: Главное меню";
                 }
                 
                 mainMenuWindow.Show();

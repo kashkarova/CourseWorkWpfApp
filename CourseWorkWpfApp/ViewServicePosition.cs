@@ -16,8 +16,9 @@ namespace CourseWorkWpfApp
     {
         public int id { get; set; }
         public string title { get; set; }
-        public Nullable<System.DateTime> date_end { get; set; }
+        public System.DateTime date_end { get; set; }
         public int count { get; set; }
         public double price { get; set; }
+        public double cost { get; set; }
     }
 }

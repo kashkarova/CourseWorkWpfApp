@@ -12,13 +12,12 @@ namespace CourseWorkWpfApp.DefendClasses
         public static bool EntranceToSystem(string login, string password)
         {
             if ((login.Length > 10) || (password.Length > 4)) return false;
-
+            
             try
             {
                 using (var DB = new DatabaseContext())
                 {
-                    if((DB.User.Where(x => x.login.Equals(login)).Count()!=1)||
-                    (DB.User.Where(y => y.password.Equals(password)).Count()!=1))
+                    if((DB.User.Where(y => y.password.Equals(password)).Count()!=1))
                         return false;
                 }
             }
