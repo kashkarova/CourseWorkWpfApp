@@ -40,6 +40,9 @@ namespace CourseWorkWpfApp
             coachComboBox.Width = 0;
             coachLabel.Width = 0;
 
+            additionalPaymentTextBox.Text = "0";
+            
+
             InsertToAbonement();
         }
 
@@ -104,6 +107,73 @@ namespace CourseWorkWpfApp
                 MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void GroupServiceSum()
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    additionalPaymentTextBox.Text = "0";
+
+                    double d = 0;
+
+                    var result = Db.ViewServicePosition.Where(a => a.abonement_id == abonement_id_g).Select(a => a.cost).ToList();
+
+                    foreach (double s in result)
+                    {
+                        d += s;
+                    }
+
+                    generalSumTextBox.Text = d.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void PersonalServiceSum()
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    double d = 0;
+
+                    var result = Db.ViewServicePosition.Where(a => a.abonement_id == abonement_id_g).Select(a => a.cost).ToList();
+
+                    foreach (double s in result)
+                    {
+                        d += s;
+                    }
+
+                    double add_p = 0;
+
+                    var add_payment = Db.PersonalServiceInAbonement.Where(ab => ab.abonement == abonement_id_g).Select(ab => ab.additional_payment).ToList();
+
+                    foreach (double add_s in add_payment)
+                    {
+                        add_p += add_s;
+                    }
+
+                    
+                    additionalPaymentTextBox.Text = add_p.ToString();
+
+                    double sum = 0;
+
+                    sum = d + add_p;
+
+                    generalSumTextBox.Text = sum.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
 
         #region Modes
@@ -402,6 +472,8 @@ namespace CourseWorkWpfApp
                     roomNumLabel.Width = 75;
                     roomNumTextBox.Width = 120;
 
+                    additionalPaymentTextBox.Text = "0";
+
                     break;
 
                 case 1:
@@ -437,6 +509,8 @@ namespace CourseWorkWpfApp
                     int id = Db.PersonalServiceCoaches.FirstOrDefault(p => p.title == (string)serviceTitleComboBox.SelectedValue).id;
 
                     coachComboBox.ItemsSource = Db.PersonalServiceCoaches.Where(c => c.service_id == id).Select(c => c.name).ToList();
+
+
                 }
             }
             catch (Exception)
@@ -554,11 +628,17 @@ namespace CourseWorkWpfApp
                 MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
                 ItemsSourseToTable();
 
+                if (serviceTypeComboBox.SelectedIndex == 0) { GroupServiceSum(); }
+
+                if (serviceTypeComboBox.SelectedIndex == 1) { PersonalServiceSum(); }
+
             }
             catch (Exception)
             {
                 MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            
         }
 
         private void saveServiceOnAbonementButton_Click(object sender, RoutedEventArgs e)
@@ -607,6 +687,9 @@ namespace CourseWorkWpfApp
                             Db.ServicePosition.Add(serviceposition);
                             Db.SaveChanges();
 
+                            additionalPaymentTextBox.Text = "0";
+
+                            GroupServiceSum();
                         }
                     }
                     catch (Exception)
@@ -662,6 +745,8 @@ namespace CourseWorkWpfApp
 
                             Db.ServicePosition.Add(serviceposition);
                             Db.SaveChanges();
+
+                            PersonalServiceSum();
 
                         }
                     }

@@ -38,6 +38,8 @@
         <EntityTypeShape EntityType="DbModel.GroupServicesForAbonement" Width="1.5" PointX="13.375" PointY="3.75" />
         <EntityTypeShape EntityType="DbModel.PersonalServicesForAbonement" Width="1.5" PointX="13.375" PointY="6.75" />
         <EntityTypeShape EntityType="DbModel.PersonalServiceCoaches" Width="1.5" PointX="6.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DbModel.GeneralSumOfAbonement" Width="1.5" PointX="13.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DbModel.PersonalServiceInAbonement" Width="1.5" PointX="8.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

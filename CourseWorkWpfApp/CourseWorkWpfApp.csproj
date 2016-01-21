@@ -120,6 +120,9 @@
     </Compile>
     <Compile Include="DefendClasses\AddDefend.cs" />
     <Compile Include="DefendClasses\AuthorizationDefend.cs" />
+    <Compile Include="GeneralSumOfAbonement.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GroupService.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -133,6 +136,9 @@
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PersonalServiceCoaches.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalServiceInAbonement.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PersonalServicesForAbonement.cs">

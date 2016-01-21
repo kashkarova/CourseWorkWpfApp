@@ -140,6 +140,15 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does no
           <Property Name="abonement_id" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.GeneralSumOfAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GeneralSumOfAbonement">
+          <Key>
+            <PropertyRef Name="abonement" />
+          </Key>
+          <Property Name="abonement" Type="int" Nullable="false" />
+          <Property Name="cost" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.GroupServicesForAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GroupServicesForAbonement">
           <Key>
@@ -161,11 +170,29 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.PersonalServiceCoaches' does n
             <PropertyRef Name="service_id" />
             <PropertyRef Name="name" />
             <PropertyRef Name="title" />
+            <PropertyRef Name="additional_payment" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="service_id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="additional_payment" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.PersonalServiceInAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PersonalServiceInAbonement">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="abonement" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="additional_payment" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="abonement" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="additional_payment" Type="float" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.PersonalServicesForAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -467,6 +494,12 @@ FROM [dbo].[CoachesNamesWithContract] AS [CoachesNamesWithContract]</DefiningQue
 [CurrServicePositionId].[abonement_id] AS [abonement_id]
 FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="GeneralSumOfAbonement" EntityType="Self.GeneralSumOfAbonement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[GeneralSumOfAbonement].[abonement] AS [abonement], 
+[GeneralSumOfAbonement].[cost] AS [cost]
+FROM [dbo].[GeneralSumOfAbonement] AS [GeneralSumOfAbonement]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="GroupServicesForAbonement" EntityType="Self.GroupServicesForAbonement" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [GroupServicesForAbonement].[id] AS [id], 
@@ -480,8 +513,18 @@ FROM [dbo].[GroupServicesForAbonement] AS [GroupServicesForAbonement]</DefiningQ
 [PersonalServiceCoaches].[id] AS [id], 
 [PersonalServiceCoaches].[service_id] AS [service_id], 
 [PersonalServiceCoaches].[name] AS [name], 
-[PersonalServiceCoaches].[title] AS [title]
+[PersonalServiceCoaches].[title] AS [title], 
+[PersonalServiceCoaches].[additional_payment] AS [additional_payment]
 FROM [dbo].[PersonalServiceCoaches] AS [PersonalServiceCoaches]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PersonalServiceInAbonement" EntityType="Self.PersonalServiceInAbonement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[PersonalServiceInAbonement].[id] AS [id], 
+[PersonalServiceInAbonement].[abonement] AS [abonement], 
+[PersonalServiceInAbonement].[title] AS [title], 
+[PersonalServiceInAbonement].[Price] AS [Price], 
+[PersonalServiceInAbonement].[additional_payment] AS [additional_payment]
+FROM [dbo].[PersonalServiceInAbonement] AS [PersonalServiceInAbonement]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="PersonalServicesForAbonement" EntityType="Self.PersonalServicesForAbonement" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -901,6 +944,8 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <EntitySet Name="GroupServicesForAbonement" EntityType="DbModel.GroupServicesForAbonement" />
           <EntitySet Name="PersonalServicesForAbonement" EntityType="DbModel.PersonalServicesForAbonement" />
           <EntitySet Name="PersonalServiceCoaches" EntityType="DbModel.PersonalServiceCoaches" />
+          <EntitySet Name="GeneralSumOfAbonement" EntityType="DbModel.GeneralSumOfAbonement" />
+          <EntitySet Name="PersonalServiceInAbonement" EntityType="DbModel.PersonalServiceInAbonement" />
         </EntityContainer>
         <EntityType Name="ViewAbonements">
           <Key>
@@ -1068,11 +1113,34 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
             <PropertyRef Name="name" />
             <PropertyRef Name="service_id" />
             <PropertyRef Name="title" />
+            <PropertyRef Name="additional_payment" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
           <Property Name="service_id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="additional_payment" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeneralSumOfAbonement">
+          <Key>
+            <PropertyRef Name="abonement" />
+          </Key>
+          <Property Name="abonement" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Double" />
+        </EntityType>
+        <EntityType Name="PersonalServiceInAbonement">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="abonement" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="additional_payment" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="abonement" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="additional_payment" Type="Double" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1333,9 +1401,29 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <EntitySetMapping Name="PersonalServiceCoaches">
             <EntityTypeMapping TypeName="DbModel.PersonalServiceCoaches">
               <MappingFragment StoreEntitySet="PersonalServiceCoaches">
+                <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="service_id" ColumnName="service_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralSumOfAbonement">
+            <EntityTypeMapping TypeName="DbModel.GeneralSumOfAbonement">
+              <MappingFragment StoreEntitySet="GeneralSumOfAbonement">
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="abonement" ColumnName="abonement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalServiceInAbonement">
+            <EntityTypeMapping TypeName="DbModel.PersonalServiceInAbonement">
+              <MappingFragment StoreEntitySet="PersonalServiceInAbonement">
+                <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="abonement" ColumnName="abonement" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -254,9 +254,29 @@
     <EntitySetMapping Name="PersonalServiceCoaches">
       <EntityTypeMapping TypeName="DbModel.PersonalServiceCoaches">
         <MappingFragment StoreEntitySet="PersonalServiceCoaches">
+          <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="service_id" ColumnName="service_id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralSumOfAbonement">
+      <EntityTypeMapping TypeName="DbModel.GeneralSumOfAbonement">
+        <MappingFragment StoreEntitySet="GeneralSumOfAbonement">
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="abonement" ColumnName="abonement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalServiceInAbonement">
+      <EntityTypeMapping TypeName="DbModel.PersonalServiceInAbonement">
+        <MappingFragment StoreEntitySet="PersonalServiceInAbonement">
+          <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="abonement" ColumnName="abonement" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

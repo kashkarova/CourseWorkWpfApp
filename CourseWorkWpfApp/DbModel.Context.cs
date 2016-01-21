@@ -50,5 +50,7 @@ namespace CourseWorkWpfApp
         public DbSet<GroupServicesForAbonement> GroupServicesForAbonement { get; set; }
         public DbSet<PersonalServicesForAbonement> PersonalServicesForAbonement { get; set; }
         public DbSet<PersonalServiceCoaches> PersonalServiceCoaches { get; set; }
+        public DbSet<GeneralSumOfAbonement> GeneralSumOfAbonement { get; set; }
+        public DbSet<PersonalServiceInAbonement> PersonalServiceInAbonement { get; set; }
     }
 }

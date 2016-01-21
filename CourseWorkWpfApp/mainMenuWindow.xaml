@@ -52,41 +52,40 @@
             <MenuItem x:Name="menuExit" Header="Выход" ToolTip="Выход" Click="menuExit_Click"/>
         </Menu>
         <Label x:Name="label" Content="Клиент" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,44,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="Фамилия клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded"/>
+        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,44,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="ФИО клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded"/>
         <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="401,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.343,-0.308"/>
-        <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,44,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
-        <DataGrid x:Name="servicePositionDataGrid" Margin="11,235,9,182" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,44,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата продажи абонемента"/>
+        <DataGrid x:Name="servicePositionDataGrid" Margin="11,235,9,0" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" ToolTip="Список услуг в абонементе" Height="198" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id}" Header="Код" />
                 <DataGridTextColumn Binding="{Binding title}" Header="Название услуги" />
                 <DataGridTextColumn Binding="{Binding date_end}" Header="Дата окончания абонемента" />
-                <DataGridTextColumn Binding="{Binding Path=count}" Header="Колическтво занятий" />
+                <DataGridTextColumn Binding="{Binding Path=count}" Header="Количество занятий" />
                 <DataGridTextColumn Binding="{Binding Path=price}" Header="Цена за 1 занятие" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="addMain_MenuButton" Content="Добавить" HorizontalAlignment="Left" Margin="14,0,0,19" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom"/>
-        <Button x:Name="saveMain_MenuButton" Content="Сохранить" HorizontalAlignment="Left" Margin="94,0,0,19" VerticalAlignment="Bottom" Width="75" Click="saveMain_MenuButton_Click"/>
-        <Button x:Name="deleteMain_MenuButton" Content="Удалить" HorizontalAlignment="Left" Margin="174,0,0,19" VerticalAlignment="Bottom" Width="75" Click="deleteMain_MenuButton_Click"/>
-        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="254,0,0,19" VerticalAlignment="Bottom" Width="75"/>
-        <ComboBox x:Name="serviceTitleComboBox" HorizontalAlignment="Left" Margin="335,100,0,0" VerticalAlignment="Top" Width="227" IsEditable="True" SelectionChanged="serviceTitleComboBox_SelectionChanged"/>
+        <Button x:Name="addMain_MenuButton" Content="Добавить" HorizontalAlignment="Left" Margin="14,0,0,19" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom" ToolTip="Добавить абонемент"/>
+        <Button x:Name="saveMain_MenuButton" Content="Сохранить" HorizontalAlignment="Left" Margin="94,0,0,19" VerticalAlignment="Bottom" Width="75" Click="saveMain_MenuButton_Click" ToolTip="Сохранить изменения"/>
+        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="174,0,0,19" VerticalAlignment="Bottom" Width="75" ToolTip="Печать абонемента"/>
+        <ComboBox x:Name="serviceTitleComboBox" HorizontalAlignment="Left" Margin="335,100,0,0" VerticalAlignment="Top" Width="227" IsEditable="True" SelectionChanged="serviceTitleComboBox_SelectionChanged" ToolTip="Название услуги"/>
         <Label x:Name="label2" Content="Название услуги" HorizontalAlignment="Left" Margin="229,97,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addServiceToAbonementButton" Content="+" HorizontalAlignment="Left" Margin="466,209,0,0" VerticalAlignment="Top" Width="33" Height="24" Click="addServiceToAbonementButton_Click"/>
-        <Button x:Name="deleteServiceFromAbonementButton" Content="-" HorizontalAlignment="Left" Margin="501,209,0,0" VerticalAlignment="Top" Width="32" Height="24" Click="deleteServiceFromAbonementButton_Click"/>
-        <Button x:Name="saveServiceOnAbonementButton" Content="ОК" HorizontalAlignment="Left" Margin="535,209,0,0" VerticalAlignment="Top" Width="31" Height="24" Click="saveServiceOnAbonementButton_Click"/>
+        <Button x:Name="addServiceToAbonementButton" Content="+" Margin="0,209,76,0" VerticalAlignment="Top" Height="24" Click="addServiceToAbonementButton_Click" ToolTip="Добавить новую услугу в абонемент" HorizontalAlignment="Right" Width="33"/>
+        <Button x:Name="deleteServiceFromAbonementButton" Content="-" Margin="0,209,42,0" VerticalAlignment="Top" Height="24" Click="deleteServiceFromAbonementButton_Click" ToolTip="Удалить услугу из абонемента" HorizontalAlignment="Right" Width="32"/>
+        <Button x:Name="saveServiceOnAbonementButton" Content="ОК" HorizontalAlignment="Right" Margin="0,209,9,0" VerticalAlignment="Top" Width="31" Height="24" Click="saveServiceOnAbonementButton_Click" ToolTip="Сохранить изменения"/>
         <Label x:Name="label3" Content="Количество занятий" HorizontalAlignment="Left" Margin="209,129,0,0" VerticalAlignment="Top"/>
         <Label x:Name="roomNumLabel" Content="№ комнаты" HorizontalAlignment="Left" Margin="254,162,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="roomNumTextBox" HorizontalAlignment="Left" Height="23" Margin="336,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="roomNumTextBox" HorizontalAlignment="Left" Height="23" Margin="336,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="1" MaxLength="2" ToolTip="№ комнаты"/>
         <Label x:Name="coachLabel" Content="Тренер" HorizontalAlignment="Left" Margin="279,162,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.7,0.615"/>
-        <ComboBox x:Name="coachComboBox" HorizontalAlignment="Left" Margin="336,165,0,0" VerticalAlignment="Top" Width="226" IsEditable="True" SelectionChanged="coachComboBox_SelectionChanged"/>
-        <Label x:Name="label4" Content="Срок действия, до" HorizontalAlignment="Left" Margin="11,419,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dateendDatePicker" HorizontalAlignment="Left" Margin="126,421,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday"/>
-        <Label x:Name="label5" Content="Доп. стоимость" HorizontalAlignment="Left" Margin="346,421,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="additionalPaymentTextBox" HorizontalAlignment="Left" Height="23" Margin="446,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="generalSumTextBox" HorizontalAlignment="Left" Height="23" Margin="446,468,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label6" Content="Общая сумма" HorizontalAlignment="Left" Margin="350,468,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="serviceTypeComboBox" HorizontalAlignment="Left" Margin="26,133,0,0" VerticalAlignment="Top" Width="120" Loaded="serviceTypeComboBox_Loaded" SelectionChanged="serviceTypeComboBox_SelectionChanged"/>
-        <Label x:Name="label7" Content="Тип услуги" HorizontalAlignment="Left" Margin="26,103,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="countTimesServiceComboBox" HorizontalAlignment="Left" Margin="336,133,0,0" VerticalAlignment="Top" Width="57" Loaded="countTimesServiceComboBox_Loaded" SelectionChanged="countTimesServiceComboBox_SelectionChanged"/>
+        <ComboBox x:Name="coachComboBox" HorizontalAlignment="Left" Margin="336,165,0,0" VerticalAlignment="Top" Width="226" IsEditable="True" SelectionChanged="coachComboBox_SelectionChanged" ToolTip="ФИО тренера"/>
+        <Label x:Name="label4" Content="Срок действия, до" HorizontalAlignment="Left" Margin="11,0,0,104" Height="26" VerticalAlignment="Bottom"/>
+        <DatePicker x:Name="dateendDatePicker" HorizontalAlignment="Left" Margin="126,0,0,104" FirstDayOfWeek="Monday" ToolTip="Дата окончания срока действия абонемента" Height="24" VerticalAlignment="Bottom"/>
+        <Label x:Name="label5" Content="Доп. стоимость, грн" Margin="0,0,139,104" HorizontalAlignment="Right" Width="119" Height="26" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="additionalPaymentTextBox" HorizontalAlignment="Right" Margin="0,0,9,105" TextWrapping="Wrap" Width="120" ToolTip="Дополнительная стоимость" Height="23" VerticalAlignment="Bottom" IsReadOnly="True"/>
+        <TextBox x:Name="generalSumTextBox" HorizontalAlignment="Right" Margin="0,0,9,58" TextWrapping="Wrap" Width="120" ToolTip="Стоимость абонемента" IsReadOnly="True" Background="#FFF3EFEF" FontSize="18" Height="37" VerticalAlignment="Bottom"/>
+        <Label x:Name="label6" Content="Общая сумма, грн" Margin="0,0,139,58" FontSize="18" HorizontalAlignment="Right" Width="160" Height="34" VerticalAlignment="Bottom"/>
+        <ComboBox x:Name="serviceTypeComboBox" HorizontalAlignment="Left" Margin="24,129,0,0" VerticalAlignment="Top" Width="120" Loaded="serviceTypeComboBox_Loaded" SelectionChanged="serviceTypeComboBox_SelectionChanged" ToolTip="Тип услуги"/>
+        <Label x:Name="label7" Content="Тип услуги" HorizontalAlignment="Left" Margin="24,99,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="countTimesServiceComboBox" HorizontalAlignment="Left" Margin="336,133,0,0" VerticalAlignment="Top" Width="57" Loaded="countTimesServiceComboBox_Loaded" SelectionChanged="countTimesServiceComboBox_SelectionChanged" ToolTip="Количество занятий"/>
 
     </Grid>
 </Window>
