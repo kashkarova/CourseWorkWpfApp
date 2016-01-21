@@ -118,7 +118,7 @@ namespace CourseWorkWpfApp
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Ошибка соединения с  базой данных!","", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ошибка соединения с  сервером!","Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     break;
 
@@ -132,7 +132,7 @@ namespace CourseWorkWpfApp
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Ошибка соединения с  базой данных!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     break;
 
@@ -146,7 +146,7 @@ namespace CourseWorkWpfApp
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Ошибка соединения с  базой данных!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     break;
             }

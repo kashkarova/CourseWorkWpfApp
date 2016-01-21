@@ -107,7 +107,7 @@ namespace CourseWorkWpfApp
                     }
                     catch (Exception )
                     {
-                          MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                          MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
@@ -158,9 +158,9 @@ namespace CourseWorkWpfApp
                     postComboBox.ItemsSource = Db.Post.Select(x => x.title).ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "");
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }    
         }
     }

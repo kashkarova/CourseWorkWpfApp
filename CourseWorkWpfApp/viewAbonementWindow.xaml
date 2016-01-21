@@ -9,27 +9,24 @@
     <Grid>
         <DataGrid x:Name="abonementDataGrid" Margin="10,113,10,57" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id}" Header="Код клиента" />
+                <DataGridTextColumn Binding="{Binding id}" Header="Код" />
                 <DataGridTextColumn Binding="{Binding surname}" Header="Фамилия" />
                 <DataGridTextColumn Binding="{Binding name}" Header="Имя, отчество" />
                 <DataGridTextColumn Binding="{Binding title}" Header="Услуга" />
-                <DataGridTemplateColumn Header="Дата начала">
+                <DataGridTemplateColumn Header="Дата продажи">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding date_begin}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Дата окончания">
+                <DataGridTemplateColumn Header="Срок действия, до">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding date_end}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding count}" Header="Количество занятий" />
-                <DataGridTextColumn Binding="{Binding price}" Header="Цена за 1, грн" />
-                <DataGridTextColumn Binding="{Binding cost}" Header="Стоимость, грн" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="searchAbonementTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchAbonementTextBox_GotFocus" MaxLines="1" MaxLength="25" />
@@ -45,15 +42,18 @@
         <Label Content="Дата продажи" HorizontalAlignment="Left" Margin="390,19,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="Срок действия, до" HorizontalAlignment="Left" Margin="368,59,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="endDateDatePicker" HorizontalAlignment="Left" Margin="483,61,0,0" VerticalAlignment="Top" SelectedDateChanged="endDateDatePicker_SelectedDateChanged" FirstDayOfWeek="Monday"/>
-        <Button x:Name="descSortingAbonementsButton" HorizontalAlignment="Right" Margin="0,0,12,19" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по убыванию">
+        <Button x:Name="descSortingAbonementsButton" HorizontalAlignment="Right" Margin="0,0,12,19" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по убыванию" Click="descSortingAbonementsButton_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="Resources/view-sort-descending-5888817974.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ascSortingAbonementsButton"  HorizontalAlignment="Right" Margin="0,0,60,19" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию">
+        <Button x:Name="ascSortingAbonementsButton"  HorizontalAlignment="Right" Margin="0,0,60,19" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию" Click="ascSortingAbonementsButton_Click">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="Resources/view-sort-ascending-2398317907.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="addAbonementButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,19" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Добавить новый абонемент" Click="addAbonementButton_Click"/>
+        <Button x:Name="saveChangesAbonementButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,19" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Сохранить изменения" Click="saveChangesAbonementButton_Click"/>
+        <Button x:Name="deleteAbonementButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,19" Width="75" Height="20" VerticalAlignment="Bottom" ToolTip="Удалить" Click="deleteAbonementButton_Click"/>
     </Grid>
 </Window>

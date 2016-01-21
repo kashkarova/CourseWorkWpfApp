@@ -22,20 +22,24 @@
         </DataGrid>
         <Button x:Name="addCoachButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,16" Width="75" Height="20" VerticalAlignment="Bottom" Click="addCoachButton_Click"/>
         <Button x:Name="deleteCoachtButton" Content="Удалить" HorizontalAlignment="Left" Margin="250,0,0,16" VerticalAlignment="Bottom" Width="75" Height="20" Click="deleteCoachtButton_Click"/>
-        <Button x:Name="ascSortCoachButton" Margin="0,0,73,16" HorizontalAlignment="Right" Width="55" Click="ascSortCoachButton_Click" Height="41" VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию" BorderBrush="{x:Null}" >
+        <Button x:Name="ascSortCoachButton" Margin="0,0,60,33" HorizontalAlignment="Right" Width="45" Height="33" Click="ascSortCoachButton_Click"  VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию" >
             <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
+                <ImageBrush ImageSource="Resources/view-sort-ascending-2398317907.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="descSortCoachButton" Margin="0,0,10,16" Click="descSortCoachButton_Click" Height="41" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="57" ToolTip="Сортировка по убыванию" BorderBrush="{x:Null}" >
+        <Button x:Name="descSortCoachButton" Margin="0,0,10,33" Click="descSortCoachButton_Click" Width="45" Height="33" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Сортировка по убыванию" >
             <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
+                <ImageBrush ImageSource="Resources/view-sort-descending-5888817974.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button x:Name="saveCoachButton" Content="Сохранить" HorizontalAlignment="Left" Margin="170,0,0,16" Width="75" Height="20" VerticalAlignment="Bottom" Click="saveButton_Click"/>
         <Button x:Name="editCoachButton" Content="Изменить" HorizontalAlignment="Left" Margin="90,0,0,16" Width="75" Click="editCoachButton_Click" Height="20" VerticalAlignment="Bottom"/>
         <TextBox x:Name="searchCoachTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchCoachTextBox_GotFocus" MaxLines="1" MaxLength="25"/>
-        <Button x:Name="searchCoachButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchCoachButton_Click"/>
+        <Button x:Name="searchCoachButton" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="33" Height="23" Click="searchCoachButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/search.png"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="searchToolsLabel" Content="Инструменты поиска" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="searchSurnameCheckBox" Content="Фамилия" HorizontalAlignment="Left" Margin="150,62,0,0" VerticalAlignment="Top" Checked="searchSurnameCheckBox_Checked" Unchecked="searchSurnameCheckBox_Unchecked"/>
         <CheckBox x:Name="searchPostCheckBox" Content="Должность" HorizontalAlignment="Left" Margin="240,62,0,0" VerticalAlignment="Top" Checked="searchPostCheckBox_Checked" Unchecked="searchPostCheckBox_Unchecked"/>

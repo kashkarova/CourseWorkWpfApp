@@ -115,21 +115,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ViewAbonements">
-      <EntityTypeMapping TypeName="DbModel.ViewAbonements">
-        <MappingFragment StoreEntitySet="ViewAbonements">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="cost" ColumnName="cost" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="date_end" ColumnName="date_end" />
-          <ScalarProperty Name="date_begin" ColumnName="date_begin" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="surname" ColumnName="surname" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CoachesNames">
       <EntityTypeMapping TypeName="DbModel.CoachesNames">
         <MappingFragment StoreEntitySet="CoachesNames">
@@ -277,6 +262,18 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="abonement" ColumnName="abonement" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewAbonements">
+      <EntityTypeMapping TypeName="DbModel.ViewAbonements">
+        <MappingFragment StoreEntitySet="ViewAbonements">
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+          <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

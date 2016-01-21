@@ -9,8 +9,14 @@
     <Grid Height="606" VerticalAlignment="Top">
         <ComboBox x:Name="coachComboBox" HorizontalAlignment="Left" Margin="100,32,0,0" VerticalAlignment="Top" Width="300" IsEditable="True" Loaded="coachComboBox_Loaded" SelectionChanged="coachComboBox_SelectionChanged"/>
         <Label x:Name="label" Content="ФИО тренера" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="contractDataGrid" Margin="10,80,10,181" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
-            
+        <DataGrid x:Name="contractDataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,80,10,181" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=id}" Header="Код контракта" />
+                <DataGridTextColumn Binding="{Binding Path=coach_id}" Header="Код тренера" />
+                <DataGridTextColumn Binding="{Binding Path=title}" Header="Название услуги" />
+                <DataGridTextColumn Binding="{Binding Path=payment}" Header="Оплата" />
+                <DataGridTextColumn Binding="{Binding Path=additional_payment}" Header="Доп. оплата" />
+            </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="label1" Content="Ставка" HorizontalAlignment="Left" Margin="70,0,0,143" VerticalAlignment="Bottom"/>
         <TextBox x:Name="minSalaryTextBox" HorizontalAlignment="Left" Height="23" Margin="137,0,0,143" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" AllowDrop="False" IsReadOnly="True" Background="Gainsboro"/>
@@ -18,14 +24,14 @@
         <Label x:Name="label2" Content="Оплата за услуги" HorizontalAlignment="Left" Margin="14,0,0,103" VerticalAlignment="Bottom"/>
         <TextBox x:Name="salaryTextBox" HorizontalAlignment="Left" Height="23" Margin="137,0,0,68" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" IsReadOnly="True" AllowDrop="False" Background="Gainsboro"/>
         <Label x:Name="label3" Content="Зарплата" HorizontalAlignment="Left" Margin="57,0,0,66" Height="26" VerticalAlignment="Bottom"/>
-        <Button x:Name="ascSortContractButton"  Margin="0,0,77,83" VerticalAlignment="Bottom" Height="46" Click="ascSortContractButton_Click" HorizontalAlignment="Right" Width="62" BorderBrush="{x:Null}" ToolTip="Сортировкая по возрастанию">
+        <Button x:Name="ascSortContractButton"  Margin="0,0,60,133" VerticalAlignment="Bottom" Width="45" Height="33" Click="ascSortContractButton_Click" HorizontalAlignment="Right" ToolTip="Сортировкая по возрастанию">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
+                <ImageBrush ImageSource="Resources/view-sort-ascending-2398317907.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="descSortContractButton" Margin="0,0,10,83" Click="descSortContractButton_Click" HorizontalAlignment="Right" Width="62" Height="46" VerticalAlignment="Bottom" BorderBrush="{x:Null}" ToolTip="Сортировка по убыванию">
+        <Button x:Name="descSortContractButton" Margin="0,0,10,133" Click="descSortContractButton_Click" HorizontalAlignment="Right" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по убыванию">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
+                <ImageBrush ImageSource="Resources/view-sort-descending-5888817974.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button x:Name="addContractButton" Content="Добавить" HorizontalAlignment="Left" Margin="22,563,0,0" VerticalAlignment="Top" Width="75" Height="20" ToolTip="Добавить контракт" Click="addContractButton_Click"/>

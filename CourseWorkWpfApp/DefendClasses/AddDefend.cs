@@ -8,18 +8,9 @@ namespace CourseWorkWpfApp.DefendClasses
 {
     public static class AddDefend
     {
-        public static bool AddClientDefend(string surname, string name, int sex, string passport, string address, string telephone)
+        public static bool AddClientDefend(string surname, string name, int sex, string passport, string address)
         {
             if (surname.Equals(null) || (name.Equals(null)) || (sex.Equals(null)) || (passport.Equals(null)) || (address.Equals(null)))return false;
-
-            if (telephone.Equals(null)) return true;
-
-            double i = 0;
-            try
-            {
-                i = Convert.ToDouble(telephone);
-            }
-            catch { return false; }
 
             return true;
         }

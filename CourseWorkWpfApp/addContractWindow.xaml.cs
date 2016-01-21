@@ -51,7 +51,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             
@@ -75,7 +75,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -98,7 +98,7 @@ namespace CourseWorkWpfApp
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
@@ -112,7 +112,7 @@ namespace CourseWorkWpfApp
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -151,9 +151,9 @@ namespace CourseWorkWpfApp
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.Message, "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else

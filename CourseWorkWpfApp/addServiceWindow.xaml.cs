@@ -147,7 +147,7 @@ namespace CourseWorkWpfApp
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
@@ -185,7 +185,7 @@ namespace CourseWorkWpfApp
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
@@ -206,7 +206,6 @@ namespace CourseWorkWpfApp
                         {
                             Db.Service.Find(service_g.id).title = titleTextBox.Text;
                             Db.Service.Find(service_g.id).description = descriptionTextBox.Text;
-                            MessageBox.Show("trololo personal service");
 
                             if (AddDefend.AddPersonalServiceDefend(titleTextBox.Text, priceTextBox.Text, additionalPaymentTextBox.Text) == true)
                             {
@@ -239,7 +238,6 @@ namespace CourseWorkWpfApp
                         {
                             Db.Service.Find(service_g.id).title = titleTextBox.Text;
                             Db.Service.Find(service_g.id).description = descriptionTextBox.Text;
-                            MessageBox.Show("trololo group service");
 
                             if (AddDefend.AddGroupService(titleTextBox.Text, priceTextBox.Text, roomNumTextBox.Text) == true)
                             {

@@ -80,7 +80,7 @@ namespace CourseWorkWpfApp
 
                 i= (maleRadioButton.IsChecked == true ? 0 : 1);
 
-                if (AddDefend.AddClientDefend(surnameTextBox.Text, nameTextBox.Text, i, passportTextBox.Text, addressTextBox.Text, telephoneTextBox.Text) == true)
+                if (AddDefend.AddClientDefend(surnameTextBox.Text, nameTextBox.Text, i, passportTextBox.Text, addressTextBox.Text) == true)
                 {
                     client.surname = surnameTextBox.Text;
                     client.name = nameTextBox.Text;
@@ -99,9 +99,9 @@ namespace CourseWorkWpfApp
 
                         MessageBox.Show("Данные о клиенте успешно добавлены!", "", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
@@ -122,7 +122,7 @@ namespace CourseWorkWpfApp
                             Db.Client.Find(client_g.id).address = addressTextBox.Text;
                             Db.Client.Find(client_g.id).telephone = telephoneTextBox.Text;
 
-                            if (AddDefend.AddClientDefend(Db.Client.Find(client_g.id).surname, Db.Client.Find(client_g.id).name, Db.Client.Find(client_g.id).sex, Db.Client.Find(client_g.id).passp_num, Db.Client.Find(client_g.id).address, Db.Client.Find(client_g.id).telephone) == true)
+                            if (AddDefend.AddClientDefend(Db.Client.Find(client_g.id).surname, Db.Client.Find(client_g.id).name, Db.Client.Find(client_g.id).sex, Db.Client.Find(client_g.id).passp_num, Db.Client.Find(client_g.id).address) == true)
                             {
 
                                 Db.SaveChanges();
@@ -137,7 +137,7 @@ namespace CourseWorkWpfApp
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                
                 

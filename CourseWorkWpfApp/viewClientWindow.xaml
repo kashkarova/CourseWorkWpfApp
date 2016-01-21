@@ -20,21 +20,25 @@
         </DataGrid>
         <Button x:Name="addClientButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,39" Width="75" Click="addClientButton_Click" Height="20" VerticalAlignment="Bottom"/>
         <Button x:Name="deleteClientButton" Content="Удалить" HorizontalAlignment="Left" Margin="250,0,0,38" Width="75" Click="deleteClientButton_Click" Height="20" VerticalAlignment="Bottom" Background="#FFDDDDDD"/>
-        <Button x:Name="ascSortClientButton" Margin="0,0,71,24" Click="ascSortClientButton_Click" HorizontalAlignment="Right" Width="57" Height="41" VerticalAlignment="Bottom" IsHitTestVisible="True" BorderBrush="{x:Null}" ToolTip="Сортировка по возрастанию">
+        <Button x:Name="ascSortClientButton" Margin="0,0,60,47" Click="ascSortClientButton_Click" HorizontalAlignment="Right" Width="45" Height="33" VerticalAlignment="Bottom" IsHitTestVisible="True" ToolTip="Сортировка по возрастанию">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
+                <ImageBrush ImageSource="Resources/view-sort-ascending-2398317907.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>
-        <Button x:Name="descSortClientButton" HorizontalAlignment="Right" Margin="0,0,10,24" Width="57" Click="descSortClientButton_Click" Height="41" VerticalAlignment="Bottom" IsHitTestVisible="True" BorderBrush="{x:Null}" ToolTip="Сортировка по убыванию">
+        <Button x:Name="descSortClientButton" HorizontalAlignment="Right" Margin="0,0,10,47" Width="45" Height="33" Click="descSortClientButton_Click" VerticalAlignment="Bottom" IsHitTestVisible="True" ToolTip="Сортировка по убыванию">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
+                <ImageBrush ImageSource="Resources/view-sort-descending-5888817974.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button x:Name="saveClientButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,38" Width="75" Click="saveButton_Click" Height="20" VerticalAlignment="Bottom"/>
         <Button x:Name="ediClienttButton" Content="Изменить" HorizontalAlignment="Left" Margin="170,0,0,38" Width="75" Height="20" VerticalAlignment="Bottom" Click="editButton_Click"/>
         <TextBox x:Name="searchClientTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchClientTextBox_GotFocus" MaxLines="1" MaxLength="25"/>
-        <Button x:Name="searchClientButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchClientButton_Click"/>
+        <Button x:Name="searchClientButton" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="38" Height="23" Click="searchClientButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/search.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

@@ -62,7 +62,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -133,7 +133,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -152,7 +152,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -173,8 +173,6 @@ namespace CourseWorkWpfApp
 
             int row = contractDataGrid.SelectedIndex;
             int id = Convert.ToInt32((contractDataGrid.Columns[0].GetCellContent(contractDataGrid.Items[row]) as TextBlock).Text);
-
-            MessageBox.Show(id.ToString());
 
 
             addContractWindow addContractWindow = new addContractWindow(contract);
@@ -197,7 +195,7 @@ namespace CourseWorkWpfApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

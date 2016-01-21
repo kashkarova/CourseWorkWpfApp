@@ -69,43 +69,6 @@ namespace CourseWorkWpfApp
             }
         }
 
-        private void ascSortAbonementButton_Click(object sender, RoutedEventArgs e)
-        {
-            searchAbonementTextBox.Clear();
-            searchAbonementTextBox.Text = "Найти...";
-
-            try
-            {
-                using (var Db = new DatabaseContext())
-                {
-                    abonementDataGrid.ItemsSource = Db.ViewAbonements.OrderBy(x => x.surname).ToList();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void descSortAbonementButton_Click(object sender, RoutedEventArgs e)
-        {
-            searchAbonementTextBox.Clear();
-            searchAbonementTextBox.Text = "Найти...";
-
-            try
-            {
-                using (var Db = new DatabaseContext())
-                {
-                    abonementDataGrid.ItemsSource = Db.ViewAbonements.OrderByDescending(x => x.surname).ToList();
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void searchClientSurnameCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             searchServiceTitleCheckBox.IsChecked = false;
@@ -201,9 +164,84 @@ namespace CourseWorkWpfApp
             searchAbonementTextBox.Clear();
         }
 
+        private void ascSortingAbonementsButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchAbonementTextBox.Clear();
+            searchAbonementTextBox.Text = "Найти...";
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.OrderBy(x => x.surname).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void descSortingAbonementsButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchAbonementTextBox.Clear();
+            searchAbonementTextBox.Text = "Найти...";
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.OrderByDescending(x => x.surname).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void addAbonementButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void saveChangesAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+            abonementDataGrid.Items.Refresh();
+
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    abonementDataGrid.ItemsSource = Db.ViewAbonements.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void deleteAbonementButton_Click(object sender, RoutedEventArgs e)
+        {
+            int row = abonementDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((abonementDataGrid.Columns[0].GetCellContent(abonementDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    Db.Abonement.Remove(Db.Abonement.FirstOrDefault(c => c.id == id));
+                    Db.SaveChanges();
+                }
+
+                MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

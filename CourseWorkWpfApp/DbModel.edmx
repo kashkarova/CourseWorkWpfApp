@@ -216,19 +216,15 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have 
             <PropertyRef Name="surname" />
             <PropertyRef Name="name" />
             <PropertyRef Name="title" />
-            <PropertyRef Name="count" />
-            <PropertyRef Name="price" />
-            <PropertyRef Name="cost" />
+            <PropertyRef Name="date_begin" />
+            <PropertyRef Name="date_end" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="surname" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="date_begin" Type="date" />
-          <Property Name="date_end" Type="date" />
-          <Property Name="count" Type="int" Nullable="false" />
-          <Property Name="price" Type="float" Nullable="false" />
-          <Property Name="cost" Type="float" Nullable="false" />
+          <Property Name="date_begin" Type="date" Nullable="false" />
+          <Property Name="date_end" Type="date" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -541,10 +537,7 @@ FROM [dbo].[PersonalServicesForAbonement] AS [PersonalServicesForAbonement]</Def
 [ViewAbonements].[name] AS [name], 
 [ViewAbonements].[title] AS [title], 
 [ViewAbonements].[date_begin] AS [date_begin], 
-[ViewAbonements].[date_end] AS [date_end], 
-[ViewAbonements].[count] AS [count], 
-[ViewAbonements].[price] AS [price], 
-[ViewAbonements].[cost] AS [cost]
+[ViewAbonements].[date_end] AS [date_end]
 FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewClients" EntityType="Self.ViewClients" store:Type="Views" store:Schema="dbo">
@@ -930,7 +923,6 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
             <End Role="Service" EntitySet="Service" />
             <End Role="ServicePosition" EntitySet="ServicePosition" />
           </AssociationSet>
-          <EntitySet Name="ViewAbonements" EntityType="DbModel.ViewAbonements" />
           <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
           <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
           <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
@@ -946,27 +938,8 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <EntitySet Name="PersonalServiceCoaches" EntityType="DbModel.PersonalServiceCoaches" />
           <EntitySet Name="GeneralSumOfAbonement" EntityType="DbModel.GeneralSumOfAbonement" />
           <EntitySet Name="PersonalServiceInAbonement" EntityType="DbModel.PersonalServiceInAbonement" />
+          <EntitySet Name="ViewAbonements" EntityType="DbModel.ViewAbonements" />
         </EntityContainer>
-        <EntityType Name="ViewAbonements">
-          <Key>
-            <PropertyRef Name="surname" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="count" />
-            <PropertyRef Name="price" />
-            <PropertyRef Name="cost" />
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="date_begin" Type="DateTime" Precision="0" />
-          <Property Name="date_end" Type="DateTime" Precision="0" />
-          <Property Name="count" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="Double" Nullable="false" />
-          <Property Name="cost" Type="Double" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="CoachesNames">
           <Key>
             <PropertyRef Name="name" />
@@ -1142,6 +1115,22 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
           <Property Name="Price" Type="Double" Nullable="false" />
           <Property Name="additional_payment" Type="Double" Nullable="false" />
         </EntityType>
+        <EntityType Name="ViewAbonements">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="surname" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="date_begin" />
+            <PropertyRef Name="date_end" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date_begin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_end" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1259,21 +1248,6 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="telephone" ColumnName="telephone" />
                 <ScalarProperty Name="title" ColumnName="title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewAbonements">
-            <EntityTypeMapping TypeName="DbModel.ViewAbonements">
-              <MappingFragment StoreEntitySet="ViewAbonements">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="cost" ColumnName="cost" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="date_end" ColumnName="date_end" />
-                <ScalarProperty Name="date_begin" ColumnName="date_begin" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1424,6 +1398,18 @@ FROM [dbo].[ViewServices] AS [ViewServices]</DefiningQuery>
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="abonement" ColumnName="abonement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewAbonements">
+            <EntityTypeMapping TypeName="DbModel.ViewAbonements">
+              <MappingFragment StoreEntitySet="ViewAbonements">
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

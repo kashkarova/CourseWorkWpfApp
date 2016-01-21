@@ -279,7 +279,6 @@
       <End Role="Service" EntitySet="Service" />
       <End Role="ServicePosition" EntitySet="ServicePosition" />
     </AssociationSet>
-    <EntitySet Name="ViewAbonements" EntityType="DbModel.ViewAbonements" />
     <EntitySet Name="CoachesNames" EntityType="DbModel.CoachesNames" />
     <EntitySet Name="ViewContractWithAddPayment" EntityType="DbModel.ViewContractWithAddPayment" />
     <EntitySet Name="ClientsNames" EntityType="DbModel.ClientsNames" />
@@ -295,27 +294,8 @@
     <EntitySet Name="PersonalServiceCoaches" EntityType="DbModel.PersonalServiceCoaches" />
     <EntitySet Name="GeneralSumOfAbonement" EntityType="DbModel.GeneralSumOfAbonement" />
     <EntitySet Name="PersonalServiceInAbonement" EntityType="DbModel.PersonalServiceInAbonement" />
+    <EntitySet Name="ViewAbonements" EntityType="DbModel.ViewAbonements" />
   </EntityContainer>
-  <EntityType Name="ViewAbonements">
-    <Key>
-      <PropertyRef Name="surname" />
-      <PropertyRef Name="name" />
-      <PropertyRef Name="title" />
-      <PropertyRef Name="count" />
-      <PropertyRef Name="price" />
-      <PropertyRef Name="cost" />
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="date_begin" Type="DateTime" Precision="0" />
-    <Property Name="date_end" Type="DateTime" Precision="0" />
-    <Property Name="count" Type="Int32" Nullable="false" />
-    <Property Name="price" Type="Double" Nullable="false" />
-    <Property Name="cost" Type="Double" Nullable="false" />
-    <Property Name="id" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="CoachesNames">
     <Key>
       <PropertyRef Name="name" />
@@ -490,5 +470,21 @@
     <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Price" Type="Double" Nullable="false" />
     <Property Name="additional_payment" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ViewAbonements">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="surname" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="date_begin" />
+      <PropertyRef Name="date_end" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="date_begin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="date_end" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
 </Schema>

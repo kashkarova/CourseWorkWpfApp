@@ -255,6 +255,8 @@ namespace CourseWorkWpfApp
             }
 
             InsertToAbonement();
+
+            addButton_Click(sender, e);
         }
 
         private void menuFilePrint_Click(object sender, RoutedEventArgs e)
@@ -532,10 +534,7 @@ namespace CourseWorkWpfApp
 
         }
 
-        private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
 
         private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
@@ -777,6 +776,11 @@ namespace CourseWorkWpfApp
         private void printButton_Click(object sender, RoutedEventArgs e)
         {
             menuFilePrint_Click(sender, e);
+        }
+
+        private void menuEditDelete_Click(object sender, RoutedEventArgs e)
+        {
+            deleteServiceFromAbonementButton_Click(sender, e);
         }
     }
 }
