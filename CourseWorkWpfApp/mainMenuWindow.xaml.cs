@@ -454,11 +454,6 @@ namespace CourseWorkWpfApp
             }
         }
 
-        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -517,12 +512,32 @@ namespace CourseWorkWpfApp
 
         private void addServiceToAbonementButton_Click(object sender, RoutedEventArgs e)
         {
-
+            serviceTypeComboBox.SelectedIndex = -1;
+            countTimesServiceComboBox.SelectedIndex = 0;
+            roomNumTextBox.Clear();
         }
 
         private void deleteServiceFromAbonementButton_Click(object sender, RoutedEventArgs e)
         {
+            int row = servicePositionDataGrid.SelectedIndex;
+            int id = Convert.ToInt32((servicePositionDataGrid.Columns[0].GetCellContent(servicePositionDataGrid.Items[row]) as TextBlock).Text);
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
 
+                    Db.ServicePosition.Remove(Db.ServicePosition.FirstOrDefault(sp => sp.id == id));
+                    Db.SaveChanges();
+                }
+
+                MessageBox.Show("Запись удалена успешно!", "Удаление записи", MessageBoxButton.OK, MessageBoxImage.Information);
+                ItemsSourseToTable();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void saveServiceOnAbonementButton_Click(object sender, RoutedEventArgs e)

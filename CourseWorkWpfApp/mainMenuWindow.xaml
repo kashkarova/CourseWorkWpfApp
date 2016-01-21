@@ -52,11 +52,12 @@
             <MenuItem x:Name="menuExit" Header="Выход" ToolTip="Выход" Click="menuExit_Click"/>
         </Menu>
         <Label x:Name="label" Content="Клиент" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,44,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="Фамилия клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded" SelectionChanged="clientComboBox_SelectionChanged"/>
+        <ComboBox x:Name="clientComboBox" HorizontalAlignment="Left" Margin="63,44,0,0" VerticalAlignment="Top" Width="275" IsEditable="True" MaxWidth="275" ToolTip="Фамилия клиента" RenderTransformOrigin="0.5,0.5" Loaded="clientComboBox_Loaded"/>
         <Label x:Name="label1" Content="Дата" HorizontalAlignment="Left" Margin="401,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.343,-0.308"/>
         <DatePicker x:Name="dateBeginDatePicker" HorizontalAlignment="Left" Margin="442,44,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" MaxWidth="120" Width="120" ToolTip="Дата"/>
         <DataGrid x:Name="servicePositionDataGrid" Margin="11,235,9,182" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserResizeRows="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" Header="Код" />
                 <DataGridTextColumn Binding="{Binding title}" Header="Название услуги" />
                 <DataGridTextColumn Binding="{Binding date_end}" Header="Дата окончания абонемента" />
                 <DataGridTextColumn Binding="{Binding Path=count}" Header="Колическтво занятий" />
