@@ -45,7 +45,10 @@ namespace CourseWorkWpfApp
 
         private void InsertToAbonement()
         {
+            isAbonement = true;
+
             clientComboBox.IsEditable = true;
+            clientComboBox.IsEnabled = true;
 
             serviceTypeComboBox.IsEnabled = false;
             serviceTitleComboBox.IsEnabled = false;
@@ -61,10 +64,14 @@ namespace CourseWorkWpfApp
             additionalPaymentTextBox.IsEnabled = false;
             generalSumTextBox.IsEnabled = false;
 
+            servicePositionDataGrid.Items.Refresh();
+
         }
 
         private void InsertToServicePosition()
         {
+            isAbonement = false;
+
             clientComboBox.IsEnabled = false;
 
             serviceTypeComboBox.IsEnabled = true;
@@ -456,6 +463,13 @@ namespace CourseWorkWpfApp
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            addServiceToAbonementButton_Click(sender, e);
+
+            InsertToAbonement();
+
+            dateBeginDatePicker.SelectedDate = null;
+
+            clientComboBox.SelectedIndex = -1;
 
         }
 
@@ -484,11 +498,14 @@ namespace CourseWorkWpfApp
                             Db.Abonement.Add(abonement);
                             Db.SaveChanges();
 
+                            abonement_id_g = 0;
+
                             abonement_id_g = abonement.id;
                         }
 
-                        isAbonement = false;
+                        isAbonement = false;                  
                         InsertToServicePosition();
+                        
                         dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
                     }
                     else
@@ -500,7 +517,7 @@ namespace CourseWorkWpfApp
                 catch (Exception)
                 {
                      MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
-                }         
+                }   
             }
             else
             {
@@ -508,12 +525,16 @@ namespace CourseWorkWpfApp
 
                 dateendDatePicker.SelectedDate = Convert.ToDateTime(dateBeginDatePicker.SelectedDate);
             }
+
+            ItemsSourseToTable();
         }
 
         private void addServiceToAbonementButton_Click(object sender, RoutedEventArgs e)
         {
             serviceTypeComboBox.SelectedIndex = -1;
             countTimesServiceComboBox.SelectedIndex = 0;
+            coachComboBox.SelectedIndex = -1;
+            serviceTitleComboBox.SelectedIndex = -1;
             roomNumTextBox.Clear();
         }
 
