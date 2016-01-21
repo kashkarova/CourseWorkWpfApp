@@ -290,8 +290,9 @@
     <EntitySet Name="ViewServices" EntityType="DbModel.ViewServices" />
     <EntitySet Name="ViewGroupServices" EntityType="DbModel.ViewGroupServices" />
     <EntitySet Name="ViewPersonalServices" EntityType="DbModel.ViewPersonalServices" />
-    <EntitySet Name="ClientsNamesWithoutAbonement" EntityType="DbModel.ClientsNamesWithoutAbonement" />
-    <EntitySet Name="ViewClientsWithoutAbonements" EntityType="DbModel.ViewClientsWithoutAbonements" />
+    <EntitySet Name="GroupServicesForAbonement" EntityType="DbModel.GroupServicesForAbonement" />
+    <EntitySet Name="PersonalServicesForAbonement" EntityType="DbModel.PersonalServicesForAbonement" />
+    <EntitySet Name="PersonalServiceCoaches" EntityType="DbModel.PersonalServiceCoaches" />
   </EntityContainer>
   <EntityType Name="ViewAbonements">
     <Key>
@@ -425,20 +426,40 @@
     <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Price" Type="Double" Nullable="false" />
   </EntityType>
-  <EntityType Name="ClientsNamesWithoutAbonement">
+  <EntityType Name="GroupServicesForAbonement">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="room_num" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="room_num" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalServicesForAbonement">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="additional_payment" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="additional_payment" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalServiceCoaches">
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="name" />
+      <PropertyRef Name="service_id" />
+      <PropertyRef Name="title" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="ViewClientsWithoutAbonements">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="name" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+    <Property Name="service_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

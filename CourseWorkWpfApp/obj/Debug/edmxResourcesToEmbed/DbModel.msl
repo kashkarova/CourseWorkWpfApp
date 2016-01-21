@@ -229,17 +229,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ClientsNamesWithoutAbonement">
-      <EntityTypeMapping TypeName="DbModel.ClientsNamesWithoutAbonement">
-        <MappingFragment StoreEntitySet="ClientsNamesWithoutAbonement">
-          <ScalarProperty Name="name" ColumnName="name" />
+    <EntitySetMapping Name="GroupServicesForAbonement">
+      <EntityTypeMapping TypeName="DbModel.GroupServicesForAbonement">
+        <MappingFragment StoreEntitySet="GroupServicesForAbonement">
+          <ScalarProperty Name="room_num" ColumnName="room_num" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ViewClientsWithoutAbonements">
-      <EntityTypeMapping TypeName="DbModel.ViewClientsWithoutAbonements">
-        <MappingFragment StoreEntitySet="ViewClientsWithoutAbonements">
+    <EntitySetMapping Name="PersonalServicesForAbonement">
+      <EntityTypeMapping TypeName="DbModel.PersonalServicesForAbonement">
+        <MappingFragment StoreEntitySet="PersonalServicesForAbonement">
+          <ScalarProperty Name="additional_payment" ColumnName="additional_payment" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalServiceCoaches">
+      <EntityTypeMapping TypeName="DbModel.PersonalServiceCoaches">
+        <MappingFragment StoreEntitySet="PersonalServiceCoaches">
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

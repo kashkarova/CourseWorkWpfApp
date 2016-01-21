@@ -98,9 +98,6 @@
     <Compile Include="ClientsNames.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClientsNamesWithoutAbonement.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Coach.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -126,10 +123,19 @@
     <Compile Include="GroupService.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GroupServicesForAbonement.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="mainMenuWindow.xaml.cs">
       <DependentUpon>mainMenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PersonalService.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalServiceCoaches.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalServicesForAbonement.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Post.cs">
@@ -151,9 +157,6 @@
       <DependentUpon>viewAbonementWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewClients.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ViewClientsWithoutAbonements.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="viewClientWindow.xaml.cs">

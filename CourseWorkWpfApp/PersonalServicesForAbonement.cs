@@ -12,9 +12,11 @@ namespace CourseWorkWpfApp
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewClientsWithoutAbonements
+    public partial class PersonalServicesForAbonement
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public string title { get; set; }
+        public double Price { get; set; }
+        public double additional_payment { get; set; }
     }
 }

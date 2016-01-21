@@ -29,7 +29,15 @@ namespace CourseWorkWpfApp
             InitializeComponent();
 
             dateBeginDatePicker.DisplayDateStart = DateTime.Now;
+            dateendDatePicker.DisplayDateStart = DateTime.Now;
+
+            roomNumLabel.Width = 0;
+            roomNumTextBox.Width = 0;
+            coachComboBox.Width = 0;
+            coachLabel.Width = 0;
         }
+
+        #region Modes
 
         private void UserMode()
         {
@@ -64,21 +72,9 @@ namespace CourseWorkWpfApp
             this.Title = "Администратор: Главное меню";
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (this.Title.Contains("Администратор")==true)
-            {
-                menuSettingChangeUserIsAdmin.IsChecked = true;
-            }
-            else
-            {
-                menuSettingChangeUserIsUser.IsChecked = true;
+        #endregion
 
-                UserMode();
-            }
-        }
-
-        #region File
+        #region menu File
 
         private void menuAddClient_Click(object sender, RoutedEventArgs e)
         {
@@ -156,6 +152,8 @@ namespace CourseWorkWpfApp
 
         #endregion
 
+        #region menu View
+
         private void menuViewClient_Click(object sender, RoutedEventArgs e)
         {
             viewClientWindow viewClientWindow = new viewClientWindow(this.Title);
@@ -186,42 +184,9 @@ namespace CourseWorkWpfApp
             viewContractWindow.Show();
         }
 
-        private void menuAbout_Click(object sender, RoutedEventArgs e)
-        {
-            AboutAppWindow aboutAppWindow = new AboutAppWindow();
-            aboutAppWindow.Show();
-        }
+        #endregion
 
-
-
-        private void addButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void menuExit_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = new MessageBoxResult();
-            result = MessageBox.Show("Вы уверены, что хотите выйти из системы?", "Выход из системы", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                authorizationWindow authorizationWindow = new authorizationWindow();
-                authorizationWindow.Show();
-                this.Close();
-            }
-        }
-
-        private void clientComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-       
-
-        private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        #region menu Settings
 
         private void menuSettingsAddPost_Click(object sender, RoutedEventArgs e)
         {
@@ -229,45 +194,18 @@ namespace CourseWorkWpfApp
             addPostWindow.Show();
         }
 
-        private void menuHelpSpravkaButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Process SysInfo = new Process();
-                SysInfo.StartInfo.ErrorDialog = true;
-                SysInfo.StartInfo.FileName = "Help.chm";
-                SysInfo.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         private void menuSettingChangeUserIsAdmin_Checked(object sender, RoutedEventArgs e)
         {
             menuSettingChangeUserIsUser.IsChecked = false;
 
-            if(this.IsEnabled==true)
+            if (this.IsEnabled == true)
                 AdminMode();
         }
 
         private void menuSettingChangeUserIsAdmin_Unchecked(object sender, RoutedEventArgs e)
         {
             menuSettingChangeUserIsUser.IsChecked = true;
-            
+
             UserMode();
         }
 
@@ -286,7 +224,196 @@ namespace CourseWorkWpfApp
         private void menuSettingChangePassword_Click(object sender, RoutedEventArgs e)
         {
             changePasswordWindow changePasswordWindow = new changePasswordWindow();
-            changePasswordWindow.Show();    
+            changePasswordWindow.Show();
+        }
+
+        #endregion
+
+        #region menu Help
+
+        private void menuHelpSpravkaButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process SysInfo = new Process();
+                SysInfo.StartInfo.ErrorDialog = true;
+                SysInfo.StartInfo.FileName = "Help.chm";
+                SysInfo.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void menuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            AboutAppWindow aboutAppWindow = new AboutAppWindow();
+            aboutAppWindow.Show();
+        }
+
+        #endregion
+
+        private void menuExit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = new MessageBoxResult();
+            result = MessageBox.Show("Вы уверены, что хотите выйти из системы?", "Выход из системы", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                authorizationWindow authorizationWindow = new authorizationWindow();
+                authorizationWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.Title.Contains("Администратор") == true)
+            {
+                menuSettingChangeUserIsAdmin.IsChecked = true;
+            }
+            else
+            {
+                menuSettingChangeUserIsUser.IsChecked = true;
+
+                UserMode();
+            }
+        }
+
+        private void clientComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    clientComboBox.ItemsSource = Db.ClientsNames.Select(n => n.name).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void serviceTypeComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            serviceTypeComboBox.ItemsSource = new List<string>() { "Групповые", "Персональные"};
+            serviceTypeComboBox.SelectedIndex = -1;
+        }
+
+        private void serviceTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int i = 0;
+            i = serviceTypeComboBox.SelectedIndex;
+
+            switch (i)
+            {
+                case 0:
+                    try
+                    {
+                        using (var Db = new DatabaseContext())
+                        {
+                            serviceTitleComboBox.ItemsSource = Db.GroupServicesForAbonement.Select(gs => gs.title).ToList();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    coachComboBox.Width = 0;
+                    coachLabel.Width = 0;
+
+                    roomNumLabel.Width = 75;
+                    roomNumTextBox.Width = 120;
+
+                    break;
+
+                case 1:
+                    try
+                    {
+                        using (var Db = new DatabaseContext())
+                        {
+                            serviceTitleComboBox.ItemsSource = Db.PersonalServicesForAbonement.Select(ps => ps.title).ToList();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    roomNumLabel.Width = 0;
+                    roomNumTextBox.Width = 0;
+
+                    coachComboBox.Width = 226;
+                    coachLabel.Width = 50;
+
+                   
+                    break;
+            }
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
+
+        
+
+       
+
+        private void deleteMain_MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+
+
+        private void saveMain_MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void serviceTitleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    int id = Db.PersonalServiceCoaches.FirstOrDefault(p => p.title == (string)serviceTitleComboBox.SelectedValue).id;
+
+                    coachComboBox.ItemsSource = Db.PersonalServiceCoaches.Where(c => c.service_id == id).Select(c => c.name).ToList();
+                }
+            }
+            catch (Exception)
+            {
+               // MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                using (var Db = new DatabaseContext())
+                {
+                    int id = Db.PersonalServiceCoaches.FirstOrDefault(p => p.title == (string)serviceTitleComboBox.SelectedValue).id;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка соединения с сервером!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

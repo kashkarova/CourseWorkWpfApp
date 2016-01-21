@@ -101,16 +101,6 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ClientsNames' does not have a 
     <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'DB_FitnesCentre.dbo.ClientsNamesWithoutAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="ClientsNamesWithoutAbonement">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="name" />
-    </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
-  </EntityType>
-  <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.CoachesNames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CoachesNames">
     <Key>
@@ -143,6 +133,48 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.CurrServicePositionId' does no
     </Key>
     <Property Name="sP_id" Type="int" Nullable="false" />
     <Property Name="client_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.GroupServicesForAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GroupServicesForAbonement">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="room_num" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="room_num" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.PersonalServiceCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PersonalServiceCoaches">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="service_id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_FitnesCentre.dbo.PersonalServicesForAbonement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PersonalServicesForAbonement">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="additional_payment" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="additional_payment" Type="float" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -184,16 +216,6 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClients' does not have a p
     <Property Name="passp_num" Type="varchar" MaxLength="8" Nullable="false" />
     <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="telephone" Type="varchar" MaxLength="7" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewClientsWithoutAbonements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="ViewClientsWithoutAbonements">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="name" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="61" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewCoaches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -415,12 +437,6 @@ warning 6002: The table/view 'DB_FitnesCentre.dbo.ViewServices' does not have a 
 [ClientsNames].[name] AS [name]
 FROM [dbo].[ClientsNames] AS [ClientsNames]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="ClientsNamesWithoutAbonement" EntityType="Self.ClientsNamesWithoutAbonement" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[ClientsNamesWithoutAbonement].[id] AS [id], 
-[ClientsNamesWithoutAbonement].[name] AS [name]
-FROM [dbo].[ClientsNamesWithoutAbonement] AS [ClientsNamesWithoutAbonement]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="CoachesNames" EntityType="Self.CoachesNames" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [CoachesNames].[id] AS [id], 
@@ -440,6 +456,30 @@ FROM [dbo].[CoachesNamesWithContract] AS [CoachesNamesWithContract]</DefiningQue
 [CurrServicePositionId].[sP_id] AS [sP_id], 
 [CurrServicePositionId].[client_id] AS [client_id]
 FROM [dbo].[CurrServicePositionId] AS [CurrServicePositionId]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GroupServicesForAbonement" EntityType="Self.GroupServicesForAbonement" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[GroupServicesForAbonement].[id] AS [id], 
+[GroupServicesForAbonement].[title] AS [title], 
+[GroupServicesForAbonement].[Price] AS [Price], 
+[GroupServicesForAbonement].[room_num] AS [room_num]
+FROM [dbo].[GroupServicesForAbonement] AS [GroupServicesForAbonement]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PersonalServiceCoaches" EntityType="Self.PersonalServiceCoaches" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[PersonalServiceCoaches].[id] AS [id], 
+[PersonalServiceCoaches].[service_id] AS [service_id], 
+[PersonalServiceCoaches].[name] AS [name], 
+[PersonalServiceCoaches].[title] AS [title]
+FROM [dbo].[PersonalServiceCoaches] AS [PersonalServiceCoaches]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PersonalServicesForAbonement" EntityType="Self.PersonalServicesForAbonement" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[PersonalServicesForAbonement].[id] AS [id], 
+[PersonalServicesForAbonement].[title] AS [title], 
+[PersonalServicesForAbonement].[Price] AS [Price], 
+[PersonalServicesForAbonement].[additional_payment] AS [additional_payment]
+FROM [dbo].[PersonalServicesForAbonement] AS [PersonalServicesForAbonement]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewAbonements" EntityType="Self.ViewAbonements" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -464,12 +504,6 @@ FROM [dbo].[ViewAbonements] AS [ViewAbonements]</DefiningQuery>
 [ViewClients].[address] AS [address], 
 [ViewClients].[telephone] AS [telephone]
 FROM [dbo].[ViewClients] AS [ViewClients]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="ViewClientsWithoutAbonements" EntityType="Self.ViewClientsWithoutAbonements" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[ViewClientsWithoutAbonements].[id] AS [id], 
-[ViewClientsWithoutAbonements].[name] AS [name]
-FROM [dbo].[ViewClientsWithoutAbonements] AS [ViewClientsWithoutAbonements]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewCoaches" EntityType="Self.ViewCoaches" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

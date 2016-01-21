@@ -47,7 +47,8 @@ namespace CourseWorkWpfApp
         public DbSet<ViewServices> ViewServices { get; set; }
         public DbSet<ViewGroupServices> ViewGroupServices { get; set; }
         public DbSet<ViewPersonalServices> ViewPersonalServices { get; set; }
-        public DbSet<ClientsNamesWithoutAbonement> ClientsNamesWithoutAbonement { get; set; }
-        public DbSet<ViewClientsWithoutAbonements> ViewClientsWithoutAbonements { get; set; }
+        public DbSet<GroupServicesForAbonement> GroupServicesForAbonement { get; set; }
+        public DbSet<PersonalServicesForAbonement> PersonalServicesForAbonement { get; set; }
+        public DbSet<PersonalServiceCoaches> PersonalServiceCoaches { get; set; }
     }
 }

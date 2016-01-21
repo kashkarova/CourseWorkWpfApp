@@ -35,8 +35,9 @@
         <EntityTypeShape EntityType="DbModel.ViewServices" Width="1.75" PointX="10.5" PointY="11.875" />
         <EntityTypeShape EntityType="DbModel.ViewGroupServices" Width="1.5" PointX="4.375" PointY="12.75" />
         <EntityTypeShape EntityType="DbModel.ViewPersonalServices" Width="1.5" PointX="13.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DbModel.ClientsNamesWithoutAbonement" Width="1.5" PointX="13.375" PointY="3.75" />
-        <EntityTypeShape EntityType="DbModel.ViewClientsWithoutAbonements" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DbModel.GroupServicesForAbonement" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DbModel.PersonalServicesForAbonement" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DbModel.PersonalServiceCoaches" Width="1.5" PointX="6.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
