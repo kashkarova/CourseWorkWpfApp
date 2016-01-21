@@ -239,24 +239,7 @@ namespace CourseWorkWpfApp
             addContractWindow.Show();
         }
 
-        private void menuFileOpen_Click(object sender, RoutedEventArgs e)
-        {
-            openFileDialog.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
-            openFileDialog.DefaultExt = ".xml";
-            openFileDialog.Filter = "Файлы XML (*.xml)|*.xml|Все файлы (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                try
-                {
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка чтения из файла!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
-
+       
         private void menuFileSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -270,6 +253,8 @@ namespace CourseWorkWpfApp
             {
                 MessageBox.Show("Ошибка соединения с базой данных!", "Ошибка соединения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            InsertToAbonement();
         }
 
         private void menuFilePrint_Click(object sender, RoutedEventArgs e)
@@ -787,6 +772,11 @@ namespace CourseWorkWpfApp
 
                     break;
             }
+        }
+
+        private void printButton_Click(object sender, RoutedEventArgs e)
+        {
+            menuFilePrint_Click(sender, e);
         }
     }
 }

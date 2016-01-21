@@ -305,10 +305,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\gtk-sort-ascending.png" />
-    <Resource Include="Resources\gtk-sort-descending.png" />
-    <Resource Include="Resources\save.png" />
-    <Resource Include="Resources\back.png" />
     <Content Include="DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DbModel.edmx</DependentUpon>
@@ -319,7 +315,15 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\front.png" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\button_cancel-8155712790.png" />
+    <Resource Include="Resources\pen_write_edit-5530211568.png" />
+    <Resource Include="Resources\print-6886311591.png" />
+    <Resource Include="Resources\view-sort-ascending-2398317907.png" />
+    <Resource Include="Resources\view-sort-descending-5888817974.png" />
+    <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\plus_add_green.png" />
+    <Resource Include="Resources\save_accept.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

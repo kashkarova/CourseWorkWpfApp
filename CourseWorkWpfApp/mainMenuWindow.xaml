@@ -64,14 +64,27 @@
                 <DataGridTextColumn Binding="{Binding Path=price}" Header="Цена за 1 занятие" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="addMain_MenuButton" Content="Добавить" HorizontalAlignment="Left" Margin="14,0,0,19" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom" ToolTip="Добавить абонемент"/>
+        <Button x:Name="addMain_MenuButton" Content="Добавить" HorizontalAlignment="Left" Margin="14,0,0,19" Width="75" RenderTransformOrigin="-0.053,0.75" Click="addButton_Click" Height="20" VerticalAlignment="Bottom" ToolTip="Добавить абонемент">
+        </Button>
         <Button x:Name="saveMain_MenuButton" Content="Сохранить" HorizontalAlignment="Left" Margin="94,0,0,19" VerticalAlignment="Bottom" Width="75" Click="saveMain_MenuButton_Click" ToolTip="Сохранить изменения"/>
-        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="174,0,0,19" VerticalAlignment="Bottom" Width="75" ToolTip="Печать абонемента"/>
+        <Button x:Name="printButton" Content="Печать" HorizontalAlignment="Left" Margin="174,0,0,19" VerticalAlignment="Bottom" Width="75" ToolTip="Печать абонемента" Click="printButton_Click"/>
         <ComboBox x:Name="serviceTitleComboBox" HorizontalAlignment="Left" Margin="335,100,0,0" VerticalAlignment="Top" Width="227" IsEditable="True" SelectionChanged="serviceTitleComboBox_SelectionChanged" ToolTip="Название услуги"/>
         <Label x:Name="label2" Content="Название услуги" HorizontalAlignment="Left" Margin="229,97,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addServiceToAbonementButton" Content="+" Margin="0,209,76,0" VerticalAlignment="Top" Height="24" Click="addServiceToAbonementButton_Click" ToolTip="Добавить новую услугу в абонемент" HorizontalAlignment="Right" Width="33"/>
-        <Button x:Name="deleteServiceFromAbonementButton" Content="-" Margin="0,209,42,0" VerticalAlignment="Top" Height="24" Click="deleteServiceFromAbonementButton_Click" ToolTip="Удалить услугу из абонемента" HorizontalAlignment="Right" Width="32"/>
-        <Button x:Name="saveServiceOnAbonementButton" Content="ОК" HorizontalAlignment="Right" Margin="0,209,9,0" VerticalAlignment="Top" Width="31" Height="24" Click="saveServiceOnAbonementButton_Click" ToolTip="Сохранить изменения"/>
+        <Button x:Name="addServiceToAbonementButton" Content="" Margin="0,205,73,0" VerticalAlignment="Top" Height="27" Click="addServiceToAbonementButton_Click" ToolTip="Добавить новую услугу в абонемент" HorizontalAlignment="Right" Width="27">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/plus_add_green.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="deleteServiceFromAbonementButton" Content="" Margin="0,205,41,0" VerticalAlignment="Top" Height="27" Click="deleteServiceFromAbonementButton_Click" ToolTip="Удалить услугу из абонемента" HorizontalAlignment="Right" Width="27">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/delete.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="saveServiceOnAbonementButton" Content="" HorizontalAlignment="Right" Margin="0,205,9,0" VerticalAlignment="Top" Width="27" Height="27" Click="saveServiceOnAbonementButton_Click" ToolTip="Сохранить изменения">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/save_accept.png"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="label3" Content="Количество занятий" HorizontalAlignment="Left" Margin="209,129,0,0" VerticalAlignment="Top"/>
         <Label x:Name="roomNumLabel" Content="№ комнаты" HorizontalAlignment="Left" Margin="254,162,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="roomNumTextBox" HorizontalAlignment="Left" Height="23" Margin="336,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="1" MaxLength="2" ToolTip="№ комнаты"/>

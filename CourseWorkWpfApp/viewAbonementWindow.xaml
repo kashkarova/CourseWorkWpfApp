@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Абонементы" Height="508.385" Width="619.231" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="abonementDataGrid" Margin="10,113,10,86" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <DataGrid x:Name="abonementDataGrid" Margin="10,113,10,57" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id}" Header="Код клиента" />
                 <DataGridTextColumn Binding="{Binding surname}" Header="Фамилия" />
@@ -32,27 +32,28 @@
                 <DataGridTextColumn Binding="{Binding cost}" Header="Стоимость, грн" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="ascSortAbonementButton"  Margin="0,0,73,16" HorizontalAlignment="Right" Width="55" Height="41" VerticalAlignment="Bottom" Click="ascSortAbonementButton_Click" BorderBrush="{x:Null}" ToolTip="Сортировка по возрастанию" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-ascending.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="descSortAbonementButton"  Margin="0,0,10,16" Height="41" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="57" Click="descSortAbonementButton_Click" BorderBrush="{x:Null}" ToolTip="Сортировка по убыванию" >
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/gtk-sort-descending.png"/>
-            </Button.Background>
-        </Button>
         <TextBox x:Name="searchAbonementTextBox" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="Найти..." VerticalAlignment="Top" Width="215" GotFocus="searchAbonementTextBox_GotFocus" MaxLines="1" MaxLength="25" />
-        <Button x:Name="searchAbonementButton" Content="Найти" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="searchAbonementButton_Click"/>
+        <Button x:Name="searchAbonementButton" HorizontalAlignment="Left" Margin="230,20,0,0" VerticalAlignment="Top" Width="38" Height="23" Click="searchAbonementButton_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/search.png"/>
+            </Button.Background>
+        </Button>
         <Label x:Name="searchToolsLabel" Content="Инструменты поиска" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="searchClientSurnameCheckBox" Content="Клиент" HorizontalAlignment="Left" Margin="150,62,0,0" VerticalAlignment="Top" Checked="searchClientSurnameCheckBox_Checked" Unchecked="searchClientSurnameCheckBox_Unchecked"/>
         <CheckBox x:Name="searchServiceTitleCheckBox" Content="Услуга" HorizontalAlignment="Left" Margin="224,62,0,0" VerticalAlignment="Top" Checked="searchServiceTitleCheckBox_Checked" Unchecked="searchServiceTitleCheckBox_Unchecked" />
         <DatePicker x:Name="beginDateDatePicker" HorizontalAlignment="Left" Margin="483,21,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" SelectedDateChanged="beginDateDatePicker_SelectedDateChanged"/>
         <Label Content="Дата продажи" HorizontalAlignment="Left" Margin="390,19,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addAbonementButton" Content="Добавить" HorizontalAlignment="Left" Margin="10,0,0,37" Width="75" ToolTip="Добавить абонемент" Height="20" VerticalAlignment="Bottom" Click="addAbonementButton_Click"/>
-        <Button x:Name="saveAbonementButton" Content="Сохранить" HorizontalAlignment="Left" Margin="90,0,0,37" Width="75" ToolTip="Сохранить изменения" Height="20" VerticalAlignment="Bottom"/>
-        <Button x:Name="deleteAbonementButton" Content="Удалить" HorizontalAlignment="Left" Margin="170,0,0,37" Width="75" ToolTip="Удалить абонемент" Height="20" VerticalAlignment="Bottom"/>
         <Label x:Name="label" Content="Срок действия, до" HorizontalAlignment="Left" Margin="368,59,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="endDateDatePicker" HorizontalAlignment="Left" Margin="483,61,0,0" VerticalAlignment="Top" SelectedDateChanged="endDateDatePicker_SelectedDateChanged" FirstDayOfWeek="Monday"/>
+        <Button x:Name="descSortingAbonementsButton" HorizontalAlignment="Right" Margin="0,0,12,19" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по убыванию">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/view-sort-descending-5888817974.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ascSortingAbonementsButton"  HorizontalAlignment="Right" Margin="0,0,60,19" Width="45" Height="33" VerticalAlignment="Bottom" ToolTip="Сортировка по возрастанию">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Resources/view-sort-ascending-2398317907.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
